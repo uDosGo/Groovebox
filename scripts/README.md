@@ -1,5 +1,6 @@
 # Scripts
 
+- `groovebox-ping-shake-pong.sh` runs **PING** (inspect), **SHAKE** (clear caches / `.DS_Store` / `__pycache__`), **PONG** (`run-groovebox-checks.sh`); use `ping`, `shake`, `pong`, or `all` (default)
 - `run-groovebox-checks.sh` validates the repo spine, source JSON, examples,
   and basic boundary hygiene for `uDOS-groovebox`
 - `setup-groovebox-first-run.sh` runs Songscribe clone setup once per machine

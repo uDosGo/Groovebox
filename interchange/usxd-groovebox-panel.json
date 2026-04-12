@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "usxd/0.1",
+  "id": "groovebox888-panel",
+  "type": "surface",
+  "title": "GrooveBox888 shell",
+  "kind": "panel",
+  "mode": "canonical",
+  "grid": {
+    "cols": 12,
+    "rows": 8,
+    "tile_px": { "w": 16, "h": 24 }
+  },
+  "render": {
+    "mode": "grid"
+  }
+}

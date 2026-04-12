@@ -77,6 +77,18 @@ require_file "$REPO_ROOT/sessions/compiled/README.md"
 require_file "$REPO_ROOT/sessions/exports/README.md"
 require_file "$REPO_ROOT/sessions/compiled/demo-groovebox-session.json"
 require_file "$REPO_ROOT/tests/test_app_api.py"
+require_file "$REPO_ROOT/AGENTS.md"
+require_file "$REPO_ROOT/DEV.md"
+require_file "$REPO_ROOT/TASKS.md"
+require_file "$REPO_ROOT/docs/dev/WORKFLOW.md"
+require_file "$REPO_ROOT/docs/dev/TASK.md"
+require_file "$REPO_ROOT/docs/dev/CURSOR_COMPLETION_CHECKLIST.md"
+require_file "$REPO_ROOT/.compost/README.md"
+require_file "$REPO_ROOT/interchange/README.md"
+require_file "$REPO_ROOT/interchange/surface-groovebox-shell.json"
+require_file "$REPO_ROOT/interchange/usxd-groovebox-panel.json"
+require_file "$REPO_ROOT/app/static/songscribe-theme.css"
+require_file "$REPO_ROOT/scripts/groovebox-ping-shake-pong.sh"
 
 python3 - <<'PY'
 import json

@@ -1,36 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>uDOS Groovebox</title>
+    <title>GrooveBox888</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/groovebox-ui.css?v=20260401b">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/songscribe-theme.css?v=20260413a">
+    <link rel="stylesheet" href="/static/groovebox-ui.css?v=20260413a">
   </head>
   <body>
-    <main class="shell">
-      <header class="app-nav" aria-label="Main">
+    <main class="shell shell--compact">
+      <header class="app-nav app-nav--compact" aria-label="Main">
         <div class="app-nav-top">
-          <span class="app-nav-brand">uDOS Groovebox</span>
+          <span class="app-nav-brand">GrooveBox888</span>
           <nav class="app-nav-links" aria-label="Pages">
             <a href="#composer" data-nav="composer">Compose</a>
             <a href="#vault" data-nav="vault">Vault</a>
             <a href="#library" data-nav="library">Library</a>
-            <a href="#overview" data-nav="overview">Status</a>
+            <a href="#overview" data-nav="overview" class="app-nav-links--muted">Status</a>
           </nav>
         </div>
-        <div class="app-nav-songscribe" title="Upstream Songscribe UI (port 3000)">
-          <span class="app-nav-songscribe-label">Songscribe</span>
-          <strong id="nav-songscribe-status" class="app-nav-songscribe-status">…</strong>
-          <button id="nav-open-songscribe" type="button" class="btn-compact" disabled>Open</button>
-          <span class="app-nav-docker" id="songscribe-docker-wrap">
-            <button id="songscribe-docker-start" type="button" class="btn-compact" disabled title="docker compose up -d">Docker up</button>
-            <button id="songscribe-docker-stop" type="button" class="btn-compact" disabled title="docker compose stop">Docker stop</button>
-            <button id="songscribe-embed-toggle" type="button" class="btn-compact" disabled title="Show Songscribe inside Groovebox">Embed</button>
-          </span>
-        </div>
+        <details class="app-nav-songscribe-details" open>
+          <summary class="app-nav-songscribe-summary">
+            <span class="app-nav-songscribe-label">Songscribe</span>
+            <strong id="nav-songscribe-status" class="app-nav-songscribe-status">…</strong>
+          </summary>
+          <div class="app-nav-songscribe-body">
+            <button id="nav-open-songscribe" type="button" class="btn-compact" disabled>Open</button>
+            <span class="app-nav-docker" id="songscribe-docker-wrap">
+              <button id="songscribe-docker-start" type="button" class="btn-compact" disabled title="docker compose up -d">Docker up</button>
+              <button id="songscribe-docker-stop" type="button" class="btn-compact" disabled title="docker compose stop">Docker stop</button>
+              <button id="songscribe-embed-toggle" type="button" class="btn-compact" disabled title="Show Songscribe inside Groovebox">Embed</button>
+            </span>
+          </div>
+        </details>
       </header>
       <div id="bootstrap-banner" class="bootstrap-banner bootstrap-banner--hidden" role="status"></div>
       <section id="section-songscribe-embed" class="songscribe-embed-panel bootstrap-banner--hidden" aria-label="Songscribe embedded">
@@ -49,7 +54,7 @@
       <div class="page-stack">
         <section id="page-overview" class="app-page card-page" data-page="overview" hidden>
           <div class="card card--hero">
-            <p class="eyebrow">uDOS Groovebox</p>
+            <p class="eyebrow">GrooveBox888</p>
             <h1 class="page-title">Vault-driven music specs, Songscribe bridge, and backend-timed playback in one local surface.</h1>
           </div>
           <div class="card">
@@ -198,6 +203,6 @@
         </section>
       </div>
     </main>
-    <script src="/static/groovebox-ui.js?v=20260401b" defer></script>
+    <script src="/static/groovebox-ui.js?v=20260413a" defer></script>
   </body>
 </html>

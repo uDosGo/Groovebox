@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Request
@@ -31,6 +32,14 @@ from app.workspaces import list_tree, load_workspace_config, read_file, write_fi
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 STATIC_ROOT = REPO_ROOT / "app" / "static"
+INTERCHANGE_ROOT = REPO_ROOT / "interchange"
+
+
+def _load_interchange_json(name: str) -> dict[str, object]:
+    path = INTERCHANGE_ROOT / name
+    if not path.is_file():
+        raise HTTPException(status_code=404, detail=f"Missing interchange/{name}")
+    return json.loads(path.read_text(encoding="utf-8"))
 
 app = FastAPI(title="uDOS Groovebox", version="0.1.0")
 app.mount("/static", StaticFiles(directory=STATIC_ROOT), name="static")
@@ -340,6 +349,18 @@ def session_save(payload: SessionSavePayload) -> dict[str, object]:
     parsed = parse_markdown_spec(payload.markdown)
     compiled = compile_pattern_document(parsed)
     return save_session(payload.name, compiled)
+
+
+@app.get("/api/interchange/surface-document")
+def interchange_surface_document() -> dict[str, object]:
+    """UniversalSurfaceXD-style surface-document JSON for lab composer handoff."""
+    return _load_interchange_json("surface-groovebox-shell.json")
+
+
+@app.get("/api/usxd/surface")
+def usxd_surface() -> dict[str, object]:
+    """Portable usxd/0.1 surface stub; validate in uDosGo or USXD tooling."""
+    return _load_interchange_json("usxd-groovebox-panel.json")
 
 
 @app.get("/")

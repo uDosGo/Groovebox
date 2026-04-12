@@ -1,6 +1,6 @@
-# Groovebox Docs
+# Groovebox Docs (GrooveBox888)
 
-`/docs` is the stable reference lane for `uDOS-groovebox`.
+`/docs` is the stable reference lane for the groovebox product (repo **GrooveBox888**).
 
 Use it for:
 
@@ -29,6 +29,14 @@ Use `/wiki` for beginner-friendly learning units and quick practical guides.
 
 - `reference-notes.md`
 
+## Developer workflow (`docs/dev/`)
+
+- `dev/WORKFLOW.md` — UDN zones (`.local/`, `TASKS.md`, `.compost/`)
+- `dev/TASK.md` — checkbox task syntax for root `TASKS.md`
+- `dev/CURSOR_COMPLETION_CHECKLIST.md` — milestone gate
+
+Repo root: **`AGENTS.md`**, **`DEV.md`**, **`TASKS.md`**.
+
 ## Rule
 
-Keep stable reference here. Keep forward-looking planning in `@dev/`.
+Keep stable reference here. Keep forward-looking planning in `@dev/` (repo root) and tracked engineering intent in **`TASKS.md`**.

@@ -40,7 +40,8 @@ def songscribe_status(repo_root: Path) -> dict[str, object]:
         "repo_path": str(repo_path),
         "compose_path": str(compose_path),
         "commit": commit,
-        "upstream": "https://github.com/gabe-serna/songscribe",
+        "upstream": "https://github.com/fredporter/songscribe",
+        "upstream_canonical": "https://github.com/gabe-serna/songscribe",
         "container_service": "songscribe",
         "browser_url": "http://127.0.0.1:3000",
     }

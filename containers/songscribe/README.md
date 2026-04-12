@@ -5,7 +5,8 @@ Songscribe bridge.
 
 ## Current Model
 
-- upstream repo: `https://github.com/gabe-serna/songscribe`
+- **Default clone:** [`fredporter/songscribe`](https://github.com/fredporter/songscribe) (family fork)
+- **Upstream lineage:** [`gabe-serna/songscribe`](https://github.com/gabe-serna/songscribe) — override clone with `SONGSCRIBE_REPO_URL` when running `scripts/setup-songscribe.sh`
 - local clone target: `containers/songscribe/repo`
 - compose entrypoint: `docker-compose.yml`
 - setup script: `scripts/setup-songscribe.sh`

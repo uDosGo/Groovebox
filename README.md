@@ -84,6 +84,10 @@ when developing those packages. See **`docs/groovebox-songscribe-convergence.md`
 - `docs/songscribe-contract.md` — Songscribe API and operations
 - `docs/docker-posture.md` — when Docker is optional vs required
 
+## Maintainer workflow
+
+- **`AGENTS.md`** — agent / Cursor map · **`DEV.md`** — commands · **`TASKS.md`** — backlog · **`docs/dev/WORKFLOW.md`** — `.local/` / compost discipline
+
 ## Activation
 
 The repo activation path is documented in `docs/activation.md`.

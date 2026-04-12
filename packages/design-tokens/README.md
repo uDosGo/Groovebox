@@ -12,4 +12,7 @@ Next steps (when you start active UI convergence):
    copy-on-publish).
 3. Document viewport-centred layout tokens (max width, rhythm, “focus” mode).
 
+**Today:** Groovebox shell pulls Songscribe-aligned HSL tokens from
+`app/static/songscribe-theme.css` (see `app/static/groovebox-ui.css` mappings).
+
 See **`docs/groovebox-songscribe-convergence.md`**.

@@ -1,0 +1,43 @@
+{
+  "version": "1",
+  "meta": {
+    "title": "GrooveBox888 — operator shell (USXD handoff)",
+    "description": "Wireframe panels for FastAPI + static UI; load in UniversalSurfaceXD composer for alignment.",
+    "profileId": "udos.groovebox888"
+  },
+  "root": {
+    "kind": "stack",
+    "direction": "vertical",
+    "gap": "1rem",
+    "class": "items-stretch max-w-3xl",
+    "instances": [
+      {
+        "catalogId": "shell.panel",
+        "props": {
+          "kicker": "udos.groovebox888",
+          "title": "Compose",
+          "body": "Markdown spec, visual composer, playback, exports. Served from app/static; API under /api/*."
+        }
+      },
+      {
+        "catalogId": "shell.panel",
+        "props": {
+          "kicker": "Bridge",
+          "title": "Songscribe",
+          "body": "Optional Next.js UI on :3000; status at /api/songscribe/status. Fork: github.com/fredporter/songscribe"
+        }
+      },
+      {
+        "catalogId": "shell.panel",
+        "props": {
+          "kicker": "USXD",
+          "title": "Interchange",
+          "bullets": [
+            "GET /api/interchange/surface-document — surface-document JSON",
+            "GET /api/usxd/surface — usxd/0.1 panel stub"
+          ]
+        }
+      }
+    ]
+  }
+}

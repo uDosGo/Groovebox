@@ -34,6 +34,20 @@ class GrooveboxApiTest(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["status"], "ok")
 
+    def test_interchange_surface_document(self) -> None:
+        response = self.client.get("/api/interchange/surface-document")
+        self.assertEqual(response.status_code, 200)
+        payload = response.json()
+        self.assertEqual(payload["meta"]["profileId"], "udos.groovebox888")
+        self.assertEqual(payload["version"], "1")
+
+    def test_usxd_surface(self) -> None:
+        response = self.client.get("/api/usxd/surface")
+        self.assertEqual(response.status_code, 200)
+        payload = response.json()
+        self.assertEqual(payload["schemaVersion"], "usxd/0.1")
+        self.assertEqual(payload["id"], "groovebox888-panel")
+
     def test_pattern_library(self) -> None:
         response = self.client.get("/api/patterns")
         self.assertEqual(response.status_code, 200)

@@ -4,7 +4,7 @@
     "name": "Songscribe",
     "description": "Cloned local Songscribe frontend used as the Groovebox transcription bridge.",
     "type": "git",
-    "source": "https://github.com/gabe-serna/songscribe",
+    "source": "https://github.com/fredporter/songscribe",
     "ref": "main",
     "repo_path": "containers/songscribe/repo"
   },
