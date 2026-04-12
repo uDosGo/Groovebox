@@ -35,13 +35,25 @@ STATIC_ROOT = REPO_ROOT / "app" / "static"
 INTERCHANGE_ROOT = REPO_ROOT / "interchange"
 
 
+def _read_app_version() -> str:
+    vpath = REPO_ROOT / "VERSION"
+    if vpath.is_file():
+        line = vpath.read_text(encoding="utf-8").strip().splitlines()
+        if line:
+            return line[0].strip()
+    return "1.0.0"
+
+
+APP_VERSION = _read_app_version()
+
+
 def _load_interchange_json(name: str) -> dict[str, object]:
     path = INTERCHANGE_ROOT / name
     if not path.is_file():
         raise HTTPException(status_code=404, detail=f"Missing interchange/{name}")
     return json.loads(path.read_text(encoding="utf-8"))
 
-app = FastAPI(title="uDOS Groovebox", version="0.1.0")
+app = FastAPI(title="GrooveBox888", version=APP_VERSION)
 app.mount("/static", StaticFiles(directory=STATIC_ROOT), name="static")
 
 
@@ -67,7 +79,7 @@ class PatternSavePayload(BaseModel):
 
 @app.get("/api/health")
 def health() -> dict[str, str]:
-    return {"status": "ok", "service": "uDOS-groovebox"}
+    return {"status": "ok", "service": "groovebox888", "version": APP_VERSION}
 
 
 @app.get("/api/bootstrap/status")

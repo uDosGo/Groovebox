@@ -15,6 +15,7 @@ require_file() {
 cd "$REPO_ROOT"
 
 require_file "$REPO_ROOT/README.md"
+require_file "$REPO_ROOT/VERSION"
 require_file "$REPO_ROOT/docs/architecture.md"
 require_file "$REPO_ROOT/docs/boundary.md"
 require_file "$REPO_ROOT/docs/getting-started.md"
@@ -215,4 +216,4 @@ else
   fi
 fi
 
-echo "uDOS-groovebox checks passed"
+echo "GrooveBox888 checks passed"

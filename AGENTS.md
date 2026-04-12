@@ -1,6 +1,6 @@
 # Agent notes — GrooveBox888
 
-**GrooveBox888** is the **uDos** groovebox lane: FastAPI + static UI, pattern library, Songscribe bridge, exports. **uDos** = Universal Device Operating Surface (canonical spelling in new copy).
+**Release:** **1.0.0** (see root `VERSION` / `package.json`). **GrooveBox888** is the **uDos** groovebox lane: FastAPI + static UI, pattern library, Songscribe bridge, exports. **uDos** = Universal Device Operating Surface (canonical spelling in new copy).
 
 ## Where to look
 

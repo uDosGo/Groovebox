@@ -15,7 +15,7 @@ from app.main import app
 client = TestClient(app)
 
 checks = [
-    ("/api/health", {"status", "service"}),
+    ("/api/health", {"status", "service", "version"}),
     ("/api/bootstrap/status", {"songscribe", "docker", "groovebox_startup"}),
     ("/api/songscribe/status", {"configured", "cloned", "running", "browser_url"}),
     ("/api/songscribe/docker", {"compose_exists", "docker_cli", "can_control"}),

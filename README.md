@@ -1,15 +1,16 @@
-> **Archive (uDos v2/v3)**  
-> This is a conceptual uDos v2/v3 project which has been archived for posterity.
->
-> **Scheduled extension track:** **4.1.7** (uDos **4.1.0** line; numbers may be reprioritized in [`uDosDev/TASKS.md`](../uDosDev/TASKS.md)).
->
-> **When to reintegrate:** after `uDosGo` is locked for **v4.0**, when a Task item for this module is scheduled in `uDosDev` (see [dev-process-v4.md](../uDosDev/docs/dev-process-v4.md)).
->
-> **How:** rebuild against the current `uDosGo` contracts and tests; publish as a **submodule under `uDosConnect`** (not merged into `uDosGo`). Extension releases are numbered **4.1.1+** in order of landing.
->
-> ---
+# GrooveBox888
 
-# uDOS-groovebox
+**Standalone** groovebox / pattern-sequencer app for the **uDos** (Universal Device Operating Surface) family: local FastAPI + static UI, Songscribe bridge, pattern library, exports, and USXD interchange JSON.
+
+| | |
+| --- | --- |
+| **Version** | `VERSION` (semver) · `package.json` **1.0.0** |
+| **Repository** | [github.com/fredporter/GrooveBox888](https://github.com/fredporter/GrooveBox888) |
+| **Family specs** | When present: [`uDosConnect/uDosDev`](../uDosConnect/uDosDev) — this repo **versions independently** |
+
+---
+
+# uDOS-groovebox (product)
 
 ## Purpose
 

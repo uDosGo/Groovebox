@@ -32,7 +32,10 @@ class GrooveboxApiTest(unittest.TestCase):
     def test_health(self) -> None:
         response = self.client.get("/api/health")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json()["status"], "ok")
+        payload = response.json()
+        self.assertEqual(payload["status"], "ok")
+        self.assertEqual(payload["service"], "groovebox888")
+        self.assertEqual(payload["version"], (self.repo_root / "VERSION").read_text(encoding="utf-8").strip().splitlines()[0].strip())
 
     def test_interchange_surface_document(self) -> None:
         response = self.client.get("/api/interchange/surface-document")

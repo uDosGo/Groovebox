@@ -1,5 +1,7 @@
 # GrooveBox888 — developer entry
 
+**Release line:** root **`VERSION`** (also `package.json` **version**). Current: **1.0.0**.
+
 ## Commands
 
 | Command | Purpose |

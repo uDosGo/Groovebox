@@ -1,8 +1,8 @@
 {
-  "name": "udos-groovebox-monorepo",
+  "name": "groovebox888",
   "private": true,
-  "version": "0.0.0",
-  "description": "Root for future shared Groovebox/Songscribe UI packages (design tokens, components). FastAPI app remains Python; run npm install only when working on packages/*.",
+  "version": "1.0.0",
+  "description": "GrooveBox888 — groovebox monorepo root (FastAPI app + optional packages/* for Songscribe-aligned design tokens).",
   "workspaces": [
     "packages/*"
   ],
