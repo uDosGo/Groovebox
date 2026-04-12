@@ -14,6 +14,12 @@ Use this order if you are new:
 | 3 | [`getting-started.md`](getting-started.md) — Songscribe clone, Docker |
 | 4 | [`wiki/unit-01-groovebox-basics.md`](../wiki/unit-01-groovebox-basics.md) | First learning unit |
 
+## Sonic / library alignment
+
+- [`DISTRIBUTION.md`](DISTRIBUTION.md) — clone layout next to Sonic/Ventoy, venv, USB bundle convention  
+- [`GROOVEBOX_SONIC_SOUND_CATALOG.md`](GROOVEBOX_SONIC_SOUND_CATALOG.md) — kits ↔ Sonic device-db style; `~/.udos/` paths  
+- [`sound-library.md`](sound-library.md) — full artifact map, audio drivers, retrieval  
+
 ## Reference (stable)
 
 - `getting-started.md`

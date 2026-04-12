@@ -19,6 +19,8 @@ _(none)_
 
 ## Done
 
+- [x] [GB-016] **2.2.1** — product identity + `@dev/` README (GrooveBox888 vs `uDOS-groovebox` wire id); Sonic operator-scope doc rename cross-links #docs
+- [x] [GB-015] **2.2.0** — Sonic-aligned sound catalog + distribution docs (`GROOVEBOX_SONIC_SOUND_CATALOG`, `DISTRIBUTION`), `sound-library` expansion, sample-bank optional metadata #release
 - [x] [GB-014] **2.1.0** — Sonic-style learning intake (`QUICKSTART`, `docs/learning`), MIT `LICENSE`, `CONTRIBUTING`, `docs/PUBLIC` #release
 - [x] [GB-012] **1.0.0** independent standalone release (VERSION, health `version`, README, CHANGELOG) #release
 - [x] [GB-009] Songscribe-themed shell + USXD interchange exposure #ui

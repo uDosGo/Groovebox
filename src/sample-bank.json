@@ -1,5 +1,5 @@
 {
-  "version": "v2.0.0",
+  "version": "v2.2.1",
   "owner": "uDOS-groovebox",
   "bank_type": "sample-bank",
   "kits": [
@@ -7,13 +7,32 @@
       "id": "drum-808-core",
       "name": "808 Core",
       "voices": ["kick", "snare", "hat"],
-      "mode": "synthetic-web-audio"
+      "mode": "synthetic-web-audio",
+      "lineage": { "style": "tr-808-style", "era": "1980s" },
+      "sonic.tags": ["drum-machine", "analog-model"],
+      "source": { "license": "synthetic", "note": "Web Audio synthesis; no sampled ROMs" }
     },
     {
       "id": "retro-noise-core",
       "name": "Retro Noise Core",
       "voices": ["noise-hit", "pulse-click"],
-      "mode": "synthetic-web-audio"
+      "mode": "synthetic-web-audio",
+      "lineage": { "style": "chiptune-arcade", "era": "8-bit" },
+      "sonic.tags": ["video-game", "noise"],
+      "source": { "license": "synthetic" }
+    },
+    {
+      "id": "groovebox-style-demo",
+      "name": "Groovebox style (demo tags)",
+      "voices": ["bass", "chord", "scratch"],
+      "mode": "synthetic-web-audio",
+      "lineage": { "style": "groovebox-303-404-character", "era": "1990s" },
+      "sonic.tags": ["groovebox-style", "sample-pack-placeholder"],
+      "source": {
+        "license": "MIT",
+        "url": "https://github.com/fredporter/GrooveBox888",
+        "note": "Educational style tags only; add CC0/CC-BY packs under GROOVEBOX_AUDIO_ROOT when staging samples"
+      }
     }
   ]
 }

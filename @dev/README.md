@@ -1,4 +1,4 @@
-# `uDOS-groovebox` Dev Workspace
+# GrooveBox888 — `@dev/` workspace
 
 This repo owns its own development rounds under `@dev/`.
 
@@ -10,5 +10,6 @@ Use this workspace for:
 - repo-specific notes in `@dev/notes/`
 - repo-specific round records in `@dev/rounds/`
 
-Family-wide planning, cross-repo routing, and release coordination stay in
-`uDOS-dev/@dev`.
+Family-wide planning, cross-repo routing, and release coordination live in
+**[uDosDev](https://github.com/fredporter/uDosDev)** (often cloned as
+`uDosConnect/uDosDev` beside this repo).

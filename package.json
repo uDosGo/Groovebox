@@ -1,7 +1,7 @@
 {
   "name": "groovebox888",
   "private": true,
-  "version": "2.1.0",
+  "version": "2.2.1",
   "description": "GrooveBox888 — groovebox monorepo root (FastAPI app + optional packages/* for Songscribe-aligned design tokens).",
   "workspaces": [
     "packages/*"

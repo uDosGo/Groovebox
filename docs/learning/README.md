@@ -17,6 +17,8 @@ This page is the **public, beginner-friendly** map for the repo. It mirrors how 
 | 3 | [`docs/getting-started.md`](../getting-started.md) | Songscribe clone, Docker hints |
 | 4 | [`docs/README.md`](../README.md) | Full **reference** index |
 | 5 | [`docs/architecture.md`](../architecture.md) | How the pieces fit |
+| 6 | [`docs/DISTRIBUTION.md`](../DISTRIBUTION.md) | Install beside **SonicScrewdriver**, **`~/.udos/library/`**, hot USB |
+| 7 | [`docs/sound-library.md`](../sound-library.md) | Sound library paths, drivers, **GROOVEBOX_AUDIO_ROOT** |
 
 ## uDos family (public URLs)
 
@@ -26,7 +28,7 @@ No sibling folder required — use the **published** governance and teaching sur
 | --- | --- |
 | **uDos dev process (v4)** | [uDosDev — `dev-process-v4.md`](https://github.com/fredporter/uDosDev/blob/main/docs/process/dev-process-v4.md) |
 | **v4 spec index** | [uDosDev — `docs/specs/v4/`](https://github.com/fredporter/uDosDev/tree/main/docs/specs/v4) |
-| **Student / public teaching hub** | [AgentDigital-docs — `docs/public/`](https://github.com/fredporter/AgentDigital-docs/tree/main/docs/public) |
+| **Student / public teaching hub** | [AppStoreDocs — `docs/public/`](https://github.com/fredporter/AppStoreDocs/tree/main/docs/public) |
 | **Integration monorepo (optional)** | [uDosGo](https://github.com/fredporter/uDosGo) |
 
 GrooveBox888 **versions independently**; it aligns conceptually with uDos but does not require living inside `uDosConnect`.

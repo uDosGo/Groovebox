@@ -1,5 +1,26 @@
 # Changelog
 
+## 2.2.1 — 2026-04-13
+
+### Changed
+
+- **README** — product identity: **GrooveBox888** vs stable wire id `uDOS-groovebox` on JSON `owner` fields  
+- **`@dev/README.md`** — GrooveBox888 title; family governance pointer to uDosDev (sibling `uDosConnect/uDosDev`)
+- **`docs/PUBLIC.md`**, **`AGENTS.md`** — **Tool family** monetization boundary: locked **[`UDOS_TOOL_FAMILY_MONETIZATION_AND_ETHICS_v4.5.1`](https://github.com/fredporter/uDosDev/blob/main/docs/specs/v4/UDOS_TOOL_FAMILY_MONETIZATION_AND_ETHICS_v4.5.1.md)** (free tools vs commercial products)
+
+## 2.2.0 — 2026-04-13
+
+### Added
+
+- **`docs/GROOVEBOX_SONIC_SOUND_CATALOG.md`** — kits ↔ Sonic device-db mental model, `~/.udos/library/groovebox/` layout, FOSS-first retro style tags  
+- **`docs/DISTRIBUTION.md`** — sibling clones (`~/Code/`), venv, hot USB / `library/bundles/groovebox888/`, link to Sonic integration  
+- **`config/groovebox-library.example.json`** — example env-relative library root hints  
+
+### Changed
+
+- **`docs/sound-library.md`** — audio “drivers”, plugin/SFZ resources, retrieval priority (`GROOVEBOX_AUDIO_ROOT`, `UDOS_LIBRARY_DIR`), Sonic cross-links  
+- **`src/sample-bank.json`** — optional `lineage`, `source`, `sonic.tags` on example kits (documentation / future filtering)  
+
 ## 2.1.0 — 2026-04-13
 
 ### Added

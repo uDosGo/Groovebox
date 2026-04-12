@@ -1,6 +1,6 @@
 # GrooveBox888 — developer entry
 
-**Release line:** root **`VERSION`** (also `package.json` **version**). Current: **2.1.0**. **License:** [MIT](LICENSE).
+**Release line:** root **`VERSION`** (also `package.json` **version**). Current: **2.2.1**. **License:** [MIT](LICENSE).
 
 ## Commands
 

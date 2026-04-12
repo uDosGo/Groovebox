@@ -12,7 +12,11 @@
 
 **uDos** (Universal Device Operating Surface) is the family umbrella. This repository is a **standalone** open-source project: it shares vocabulary and interchange ideas (for example **USXD** JSON under [`interchange/`](../interchange/)) but ships on its own release line (`VERSION` / `package.json`).
 
-Teaching and value-ladder policy for the wider family are documented in uDos governance and in **[AgentDigital-docs](https://github.com/fredporter/AgentDigital-docs)** — not duplicated here.
+Teaching and value-ladder policy for the wider family are documented in uDos governance and in **[AppStoreDocs](https://github.com/fredporter/AppStoreDocs)** — not duplicated here.
+
+## Monetization (tool lane)
+
+**GrooveBox888** stays **MIT / free at the point of use** — no paywalls, no “pro” edition of the same app, no feature gating. Optional support is **donation-style** (“buy me a beer”) if you want to say thanks; see the locked family spec **[UDOS_TOOL_FAMILY_MONETIZATION_AND_ETHICS_v4.5.1](https://github.com/fredporter/uDosDev/blob/main/docs/specs/v4/UDOS_TOOL_FAMILY_MONETIZATION_AND_ETHICS_v4.5.1.md)** in **uDosDev** (sibling clone: `uDosConnect/uDosDev`). Commercial uDos **products** (native apps) use a separate model — see that spec for the boundary.
 
 ## Privacy / network
 

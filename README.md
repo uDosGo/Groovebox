@@ -4,19 +4,24 @@
 
 | | |
 | --- | --- |
-| **Version** | **2.1.0** — see `VERSION` · `package.json` |
+| **Version** | **2.2.1** — see `VERSION` · `package.json` |
 | **License** | [MIT](LICENSE) |
 | **Repository** | [github.com/fredporter/GrooveBox888](https://github.com/fredporter/GrooveBox888) |
 | **Quick start** | **[`QUICKSTART.md`](QUICKSTART.md)** (about five minutes) |
 | **Learning intake** | **[`docs/learning/README.md`](docs/learning/README.md)** (Sonic-style hub: beginner path + public uDos links) |
 
-**Family context:** this repo **versions independently**. Public uDos governance and teaching surfaces: [uDosDev](https://github.com/fredporter/uDosDev), [AgentDigital-docs](https://github.com/fredporter/AgentDigital-docs) (`docs/public/`). Optional local sibling: `uDosConnect/uDosDev` when you have it checked out.
+**Family context:** this repo **versions independently**. Public uDos governance and teaching surfaces: [uDosDev](https://github.com/fredporter/uDosDev), [AppStoreDocs](https://github.com/fredporter/AppStoreDocs) (`docs/public/`). Optional local sibling: `uDosConnect/uDosDev` when you have it checked out.
 
 **Contributing:** [`CONTRIBUTING.md`](CONTRIBUTING.md) · **Public posture:** [`docs/PUBLIC.md`](docs/PUBLIC.md)
 
 ---
 
-# uDOS-groovebox (product)
+## Product identity
+
+**GrooveBox888** is the repository and user-facing product name. Interchange
+and validation scripts still use the stable wire id **`uDOS-groovebox`** on JSON
+`owner` fields and related checks — do not rename those without a coordinated
+schema bump.
 
 ## Purpose
 

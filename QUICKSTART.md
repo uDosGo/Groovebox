@@ -31,6 +31,10 @@ bash scripts/run-groovebox-checks.sh
 2. **[`docs/learning/README.md`](docs/learning/README.md)** — full intake map (Sonic-style hub)  
 3. **[`docs/README.md`](docs/README.md)** — reference docs index  
 
+## Next to Sonic / hot USB (optional)
+
+If you use **SonicScrewdriver** for hardware and **`~/.udos/library/`** payloads, install GrooveBox888 as a **sibling clone** (e.g. `~/Code/GrooveBox888/`) and see **[`docs/DISTRIBUTION.md`](docs/DISTRIBUTION.md)** plus Sonic **[`groovebox888-family-integration`](https://github.com/fredporter/SonicScrewdriver/blob/main/docs/groovebox888-family-integration.md)**. Large **sample packs** belong under **`GROOVEBOX_AUDIO_ROOT`** or **`$UDOS_LIBRARY_DIR/groovebox/`**, not in git.
+
 ## License
 
 **MIT** — see [`LICENSE`](LICENSE).

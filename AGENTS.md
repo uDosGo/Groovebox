@@ -1,6 +1,6 @@
 # Agent notes — GrooveBox888
 
-**Release:** **2.1.0** (see root `VERSION` / `package.json`). **MIT** — [`LICENSE`](LICENSE). **GrooveBox888** is the **uDos** groovebox lane: FastAPI + static UI, pattern library, Songscribe bridge, exports. **uDos** = Universal Device Operating Surface (canonical spelling in new copy).
+**Release:** **2.2.1** (see root `VERSION` / `package.json`). **MIT** — [`LICENSE`](LICENSE). **GrooveBox888** is the **uDos** groovebox lane: FastAPI + static UI, pattern library, Songscribe bridge, exports. **uDos** = Universal Device Operating Surface (canonical spelling in new copy).
 
 ## Where to look
 
@@ -11,8 +11,11 @@
 | [`QUICKSTART.md`](QUICKSTART.md) | Five-minute beginner run |
 | [`docs/learning/README.md`](docs/learning/README.md) | Sonic-style learning intake + public uDos links |
 | [`docs/README.md`](docs/README.md) | Stable reference index |
+| [`docs/PUBLIC.md`](docs/PUBLIC.md) | Free / OSS audience; **tool vs commercial** boundary ([`UDOS_TOOL_FAMILY_MONETIZATION_AND_ETHICS_v4.5.1`](https://github.com/fredporter/uDosDev/blob/main/docs/specs/v4/UDOS_TOOL_FAMILY_MONETIZATION_AND_ETHICS_v4.5.1.md)) |
 | [`docs/dev/WORKFLOW.md`](docs/dev/WORKFLOW.md) | UDN: `.local/` → `TASKS.md` → `.compost/` |
 | [`docs/architecture.md`](docs/architecture.md) | Product architecture |
+| [`docs/DISTRIBUTION.md`](docs/DISTRIBUTION.md) | Sonic-aligned install, `~/.udos/library/`, USB bundles |
+| [`docs/GROOVEBOX_SONIC_SOUND_CATALOG.md`](docs/GROOVEBOX_SONIC_SOUND_CATALOG.md) | Kits ↔ Sonic device-db style; library roots |
 | [`docs/groovebox-songscribe-convergence.md`](docs/groovebox-songscribe-convergence.md) | Songscribe + UI roadmap |
 
 ## Family context
