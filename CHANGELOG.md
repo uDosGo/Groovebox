@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.1.0 — 2026-04-13
+
+### Added
+
+- **`QUICKSTART.md`** — five-minute beginner path to the local UI  
+- **`docs/learning/README.md`** — Sonic-style **learning intake hub** (public uDos links, no private monorepo required)  
+- **`docs/PUBLIC.md`** — free / OSS / beginner audience and privacy posture  
+- **`CONTRIBUTING.md`** — contributor expectations  
+- **`LICENSE`** — **MIT**  
+
+### Changed
+
+- **`docs/README.md`**, **`wiki/README.md`**, **`wiki/unit-01-groovebox-basics.md`** — GrooveBox888 branding and learning cross-links  
+- **`README.md`** — version **2.1.0**, Quickstart + learning intake up front  
+
 ## 1.0.0 — 2026-04-13
 
 Independent **GrooveBox888** release ([repository](https://github.com/fredporter/GrooveBox888)). This repo versions on its own; it remains conceptually aligned with the uDos family but is no longer framed as an archived uDos v2/v3 submodule-only experiment.

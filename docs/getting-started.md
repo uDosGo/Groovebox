@@ -1,6 +1,8 @@
 # Getting Started
 
-1. Read `docs/README.md`.
+**Fastest path:** [`QUICKSTART.md`](../QUICKSTART.md) — then return here for Songscribe and Docker detail.
+
+1. Read `docs/README.md` (or the learning hub: `docs/learning/README.md`).
 2. Run the repo checks.
 3. Run the local UI (first launch clones Songscribe automatically — see below).
 4. Inspect the seeded artifacts.

@@ -1,6 +1,6 @@
 # Agent notes — GrooveBox888
 
-**Release:** **1.0.0** (see root `VERSION` / `package.json`). **GrooveBox888** is the **uDos** groovebox lane: FastAPI + static UI, pattern library, Songscribe bridge, exports. **uDos** = Universal Device Operating Surface (canonical spelling in new copy).
+**Release:** **2.1.0** (see root `VERSION` / `package.json`). **MIT** — [`LICENSE`](LICENSE). **GrooveBox888** is the **uDos** groovebox lane: FastAPI + static UI, pattern library, Songscribe bridge, exports. **uDos** = Universal Device Operating Surface (canonical spelling in new copy).
 
 ## Where to look
 
@@ -8,6 +8,8 @@
 | --- | --- |
 | [`TASKS.md`](TASKS.md) | Engineering backlog (Task Forge / `docs/dev/TASK.md` syntax) |
 | [`DEV.md`](DEV.md) | Commands, checks, UI entrypoints |
+| [`QUICKSTART.md`](QUICKSTART.md) | Five-minute beginner run |
+| [`docs/learning/README.md`](docs/learning/README.md) | Sonic-style learning intake + public uDos links |
 | [`docs/README.md`](docs/README.md) | Stable reference index |
 | [`docs/dev/WORKFLOW.md`](docs/dev/WORKFLOW.md) | UDN: `.local/` → `TASKS.md` → `.compost/` |
 | [`docs/architecture.md`](docs/architecture.md) | Product architecture |

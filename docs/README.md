@@ -1,17 +1,20 @@
 # Groovebox Docs (GrooveBox888)
 
-`/docs` is the stable reference lane for the groovebox product (repo **GrooveBox888**).
+`/docs` is the **stable reference** lane for the groovebox product (repo **GrooveBox888**). It is **public**, **free to read**, and aimed at operators and contributors as well as beginners who outgrow the wiki units.
 
-Use it for:
+## Learning intake (beginner-first, Sonic-style)
 
-- groovebox purpose and ownership
-- activation and setup
-- stable sequencing and bridge references
-- examples and boundary rules
+Use this order if you are new:
 
-Use `/wiki` for beginner-friendly learning units and quick practical guides.
+| Step | Doc |
+| --- | --- |
+| 0 | [`QUICKSTART.md`](../QUICKSTART.md) — run the UI fast |
+| 1 | [`learning/README.md`](learning/README.md) — **hub**: public uDos links + path |
+| 2 | [`PUBLIC.md`](PUBLIC.md) — OSS posture, audience, privacy |
+| 3 | [`getting-started.md`](getting-started.md) — Songscribe clone, Docker |
+| 4 | [`wiki/unit-01-groovebox-basics.md`](../wiki/unit-01-groovebox-basics.md) | First learning unit |
 
-## Start Here
+## Reference (stable)
 
 - `getting-started.md`
 - `activation.md`
@@ -25,7 +28,7 @@ Use `/wiki` for beginner-friendly learning units and quick practical guides.
 - `boundary.md`
 - `examples.md`
 
-## Core References
+## Core references
 
 - `reference-notes.md`
 
@@ -35,8 +38,12 @@ Use `/wiki` for beginner-friendly learning units and quick practical guides.
 - `dev/TASK.md` — checkbox task syntax for root `TASKS.md`
 - `dev/CURSOR_COMPLETION_CHECKLIST.md` — milestone gate
 
-Repo root: **`AGENTS.md`**, **`DEV.md`**, **`TASKS.md`**.
+Repo root: **`AGENTS.md`**, **`DEV.md`**, **`TASKS.md`**, **`CONTRIBUTING.md`**.
 
-## Rule
+## Zones
+
+- **`/docs`** — normative reference (this folder)
+- **`/wiki`** — short learning units and how-tos
+- **`@dev/`** — maintainer planning drafts (see `@dev/README.md`)
 
 Keep stable reference here. Keep forward-looking planning in `@dev/` (repo root) and tracked engineering intent in **`TASKS.md`**.

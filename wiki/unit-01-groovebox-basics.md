@@ -1,34 +1,44 @@
-# Unit 01: Groovebox Basics
+# Unit 01: GrooveBox888 basics
 
-## What This Module Is
+## What this module is
 
-`uDOS-groovebox` is the family module for pattern-first sequencing, portable
-composition artifacts, and local-first music workflow examples.
+**GrooveBox888** is an open-source (**MIT**) app for **pattern-first** sequencing, portable composition artifacts, and local-first music workflow. It lives in the **uDos** family but **versions on its own** ([repo](https://github.com/fredporter/GrooveBox888)).
 
-## What You Should Learn
+## What you should learn
 
 By the end of this unit you should be able to:
 
-- explain what Groovebox owns
-- run the repo checks
+- explain what GrooveBox888 owns (and what it does not)
+- run the repo checks and launch the local UI
 - inspect the seeded pattern and bridge artifacts
-- describe how Groovebox differs from shell or network execution layers
+- name one **USXD** interchange URL the app exposes
 
-## Practical How-To
+## Practical how-to
 
-1. Run the repo checks.
-2. Launch the local UI.
-3. Inspect the seeded pattern and bridge files.
+1. Follow [`QUICKSTART.md`](../QUICKSTART.md) or run:
 
 ```bash
 bash scripts/run-groovebox-checks.sh
 bash scripts/run-groovebox-ui.sh
 ```
 
-## Quick Check
+2. Open **http://127.0.0.1:8766/** and switch between **Compose**, **Vault**, **Library**, and **Status**.
+
+3. Optional: fetch interchange JSON (app running):
+
+```bash
+curl -s http://127.0.0.1:8766/api/interchange/surface-document | head -c 200
+```
+
+## Quick check
 
 You pass this unit if you can answer:
 
-- What does Groovebox own?
+- What does GrooveBox888 own?
 - Which files define the seeded pattern and bridge artifacts?
-- What stays outside this repo?
+- What stays outside this repo (shell, DAW-grade workstation, etc.)?
+
+## Next
+
+- [`docs/learning/README.md`](../docs/learning/README.md) — full learning map  
+- [`docs/architecture.md`](../docs/architecture.md) — deeper structure  

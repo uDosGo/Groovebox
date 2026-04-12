@@ -19,6 +19,7 @@ _(none)_
 
 ## Done
 
+- [x] [GB-014] **2.1.0** — Sonic-style learning intake (`QUICKSTART`, `docs/learning`), MIT `LICENSE`, `CONTRIBUTING`, `docs/PUBLIC` #release
 - [x] [GB-012] **1.0.0** independent standalone release (VERSION, health `version`, README, CHANGELOG) #release
 - [x] [GB-009] Songscribe-themed shell + USXD interchange exposure #ui
 - [x] [GB-008] Songscribe dark theme tokens + compact shell chrome; USXD API routes; fork default URL #refactor

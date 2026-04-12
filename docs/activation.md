@@ -1,6 +1,6 @@
-# uDOS-groovebox Activation
+# GrooveBox888 activation
 
-Groovebox is active as the family sequencing and composition lane.
+Groovebox is active as the family sequencing and composition lane. **New users:** start with [`QUICKSTART.md`](../QUICKSTART.md) and [`learning/README.md`](learning/README.md).
 
 ## Activated Surfaces
 

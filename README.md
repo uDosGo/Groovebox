@@ -1,12 +1,18 @@
 # GrooveBox888
 
-**Standalone** groovebox / pattern-sequencer app for the **uDos** (Universal Device Operating Surface) family: local FastAPI + static UI, Songscribe bridge, pattern library, exports, and USXD interchange JSON.
+**Free, open-source (MIT)** pattern groovebox for the **uDos** (Universal Device Operating Surface) family: local **FastAPI** + static UI, optional **Songscribe** bridge, pattern library, exports, and **USXD** interchange JSON.
 
 | | |
 | --- | --- |
-| **Version** | `VERSION` (semver) · `package.json` **1.0.0** |
+| **Version** | **2.1.0** — see `VERSION` · `package.json` |
+| **License** | [MIT](LICENSE) |
 | **Repository** | [github.com/fredporter/GrooveBox888](https://github.com/fredporter/GrooveBox888) |
-| **Family specs** | When present: [`uDosConnect/uDosDev`](../uDosConnect/uDosDev) — this repo **versions independently** |
+| **Quick start** | **[`QUICKSTART.md`](QUICKSTART.md)** (about five minutes) |
+| **Learning intake** | **[`docs/learning/README.md`](docs/learning/README.md)** (Sonic-style hub: beginner path + public uDos links) |
+
+**Family context:** this repo **versions independently**. Public uDos governance and teaching surfaces: [uDosDev](https://github.com/fredporter/uDosDev), [AgentDigital-docs](https://github.com/fredporter/AgentDigital-docs) (`docs/public/`). Optional local sibling: `uDosConnect/uDosDev` when you have it checked out.
+
+**Contributing:** [`CONTRIBUTING.md`](CONTRIBUTING.md) · **Public posture:** [`docs/PUBLIC.md`](docs/PUBLIC.md)
 
 ---
 
@@ -15,7 +21,7 @@
 ## Purpose
 
 Pattern-first music sequencing, transport bridges, and portable composition
-artifacts for uDOS.
+artifacts for uDos.
 
 ## Ownership
 
