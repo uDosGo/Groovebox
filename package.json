@@ -1,0 +1,15 @@
+{
+  "name": "udos-groovebox-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Root for future shared Groovebox/Songscribe UI packages (design tokens, components). FastAPI app remains Python; run npm install only when working on packages/*.",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "docs": "node -e \"console.log('No JS build yet. See docs/groovebox-songscribe-convergence.md')\""
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

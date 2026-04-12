@@ -1,0 +1,21 @@
+{
+  "container": {
+    "id": "songscribe",
+    "name": "Songscribe",
+    "description": "Cloned local Songscribe frontend used as the Groovebox transcription bridge.",
+    "type": "git",
+    "source": "https://github.com/gabe-serna/songscribe",
+    "ref": "main",
+    "repo_path": "containers/songscribe/repo"
+  },
+  "service": {
+    "container_name": "udos-groovebox-songscribe",
+    "browser_url": "http://127.0.0.1:3000",
+    "compose_file": "containers/songscribe/docker-compose.yml"
+  },
+  "integration": {
+    "workspace_owner": "uDOS-groovebox",
+    "bridge_target": "app/spec_parser.py",
+    "status_endpoint": "/api/songscribe/status"
+  }
+}

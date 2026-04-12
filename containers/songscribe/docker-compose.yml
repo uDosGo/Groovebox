@@ -1,0 +1,15 @@
+services:
+  songscribe:
+    image: node:20-bookworm
+    container_name: udos-groovebox-songscribe
+    working_dir: /workspace
+    command: sh -lc "npm install && npm run dev -- --hostname 0.0.0.0"
+    ports:
+      - "3000:3000"
+    environment:
+      # Stem split / YouTube / MIDI API (https://github.com/gabe-serna/songscribe-api).
+      # NEXT_PUBLIC_* is read by the browser: use loopback when the API is on the host (default).
+      # Linux without host.docker.internal: keep 127.0.0.1 if API publishes -p 8000:8000.
+      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-http://127.0.0.1:8000}
+    volumes:
+      - ./repo:/workspace

@@ -1,0 +1,20 @@
+# Optional overlay: Songscribe UI + upstream songscribe-api (stem isolation).
+#
+# Prerequisite: clone the API next to this file (gitignored):
+#   cd containers/songscribe && git clone https://github.com/gabe-serna/songscribe-api.git songscribe-api
+#
+# Run (from repo root):
+#   docker compose -f containers/songscribe/docker-compose.yml -f containers/songscribe/docker-compose.stem.yml --profile stem up --build
+#
+# The browser on the host uses NEXT_PUBLIC_API_BASE_URL=http://127.0.0.1:8000 (default in docker-compose.yml).
+# First API build can take a long time (ML dependencies).
+
+services:
+  songscribe-api:
+    profiles: ["stem"]
+    build:
+      context: ./songscribe-api
+      dockerfile: Dockerfile
+    container_name: udos-songscribe-api
+    ports:
+      - "8000:8000"

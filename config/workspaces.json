@@ -1,0 +1,28 @@
+{
+  "roots": [
+    {
+      "id": "udos-core-binder",
+      "label": "uDOS-core/binder",
+      "path": "${family_root}/uDOS-core/binder",
+      "kind": "binder"
+    },
+    {
+      "id": "udos-core-vault",
+      "label": "uDOS-core/vault",
+      "path": "${family_root}/uDOS-core/vault",
+      "kind": "vault"
+    },
+    {
+      "id": "uhome-server-vault",
+      "label": "uHOME-server/vault",
+      "path": "${family_root}/uHOME-server/vault",
+      "kind": "vault"
+    },
+    {
+      "id": "sonic-screwdriver-vault",
+      "label": "sonic-screwdriver/vault",
+      "path": "${family_root}/sonic-screwdriver/vault",
+      "kind": "vault"
+    }
+  ]
+}

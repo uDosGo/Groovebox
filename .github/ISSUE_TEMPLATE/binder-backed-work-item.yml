@@ -1,0 +1,33 @@
+name: Binder-backed work item
+description: Track a binder-scoped change in the v2 repo family.
+title: "[binder] "
+labels: ["binder"]
+body:
+  - type: input
+    id: binder
+    attributes:
+      label: Binder ID
+      description: Use #binder/<repo-or-stream>-<objective>
+      placeholder: "#binder/groovebox-pattern-contract"
+    validations:
+      required: true
+  - type: dropdown
+    id: repo
+    attributes:
+      label: Owning repo
+      options:
+        - uDOS-groovebox
+    validations:
+      required: true
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+    validations:
+      required: true

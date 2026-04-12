@@ -1,0 +1,21 @@
+{
+  "pattern_id": "demo-four-on-the-floor",
+  "name": "Demo Four On The Floor",
+  "tempo": 124,
+  "time_signature": "4/4",
+  "swing": 0,
+  "tracks": [
+    {
+      "track_id": "kick",
+      "instrument": "drum-808-kick",
+      "steps": [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "track_id": "snare",
+      "instrument": "drum-808-snare",
+      "steps": [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    }
+  ],
+  "source": "manual",
+  "owner": "uDOS-groovebox"
+}

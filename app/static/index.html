@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>uDOS Groovebox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/groovebox-ui.css?v=20260401b">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="app-nav" aria-label="Main">
+        <div class="app-nav-top">
+          <span class="app-nav-brand">uDOS Groovebox</span>
+          <nav class="app-nav-links" aria-label="Pages">
+            <a href="#composer" data-nav="composer">Compose</a>
+            <a href="#vault" data-nav="vault">Vault</a>
+            <a href="#library" data-nav="library">Library</a>
+            <a href="#overview" data-nav="overview">Status</a>
+          </nav>
+        </div>
+        <div class="app-nav-songscribe" title="Upstream Songscribe UI (port 3000)">
+          <span class="app-nav-songscribe-label">Songscribe</span>
+          <strong id="nav-songscribe-status" class="app-nav-songscribe-status">…</strong>
+          <button id="nav-open-songscribe" type="button" class="btn-compact" disabled>Open</button>
+          <span class="app-nav-docker" id="songscribe-docker-wrap">
+            <button id="songscribe-docker-start" type="button" class="btn-compact" disabled title="docker compose up -d">Docker up</button>
+            <button id="songscribe-docker-stop" type="button" class="btn-compact" disabled title="docker compose stop">Docker stop</button>
+            <button id="songscribe-embed-toggle" type="button" class="btn-compact" disabled title="Show Songscribe inside Groovebox">Embed</button>
+          </span>
+        </div>
+      </header>
+      <div id="bootstrap-banner" class="bootstrap-banner bootstrap-banner--hidden" role="status"></div>
+      <section id="section-songscribe-embed" class="songscribe-embed-panel bootstrap-banner--hidden" aria-label="Songscribe embedded">
+        <div class="songscribe-embed-toolbar">
+          <span class="songscribe-embed-title">Songscribe</span>
+          <button id="songscribe-embed-close" type="button" class="btn-compact">Close embed</button>
+        </div>
+        <iframe
+          id="songscribe-embed-frame"
+          title="Songscribe"
+          sandbox="allow-scripts allow-same-origin allow-forms allow-downloads allow-popups"
+          loading="lazy"
+        ></iframe>
+      </section>
+
+      <div class="page-stack">
+        <section id="page-overview" class="app-page card-page" data-page="overview" hidden>
+          <div class="card card--hero">
+            <p class="eyebrow">uDOS Groovebox</p>
+            <h1 class="page-title">Vault-driven music specs, Songscribe bridge, and backend-timed playback in one local surface.</h1>
+          </div>
+          <div class="card">
+            <div class="status-row status-row--songscribe">
+              <span>Songscribe</span>
+              <div class="status-row-actions">
+                <strong id="songscribe-status">checking</strong>
+                <button id="open-songscribe" type="button" class="btn-compact" disabled>Open Songscribe</button>
+              </div>
+            </div>
+            <div class="status-row">
+              <span>Workspace roots</span>
+              <strong id="workspace-count">0</strong>
+            </div>
+          </div>
+        </section>
+
+        <section id="page-vault" class="app-page card-page" data-page="vault" hidden>
+          <div class="card">
+            <div class="panel-header">
+              <h2>Vault browser</h2>
+              <p class="page-lede">Pick a workspace root, move through folders, then load a file into the composer.</p>
+            </div>
+            <div class="vault-toolbar">
+              <label class="field field-inline">
+                <span>Workspace</span>
+                <select id="root-select"></select>
+              </label>
+              <button id="path-up" type="button" class="btn-secondary">Up</button>
+            </div>
+            <div class="path-row">
+              <code id="current-path" class="path-code">.</code>
+            </div>
+            <div id="tree" class="tree"></div>
+            <p class="page-hint"><a href="#composer">Open Compose</a> to edit the loaded path and markdown.</p>
+          </div>
+        </section>
+
+        <section id="page-library" class="app-page card-page" data-page="library" hidden>
+          <div class="card">
+            <div class="panel-header">
+              <h2>Pattern library</h2>
+              <strong id="pattern-library-count" class="count-pill">0</strong>
+            </div>
+            <p class="page-lede">Demos and saved patterns. Selecting one loads it into the composer and parses playback.</p>
+            <div id="pattern-library-meta" class="muted library-meta"></div>
+            <div id="pattern-library-list" class="library-list library-list--page"></div>
+            <section class="resource-placeholder" aria-label="Future sounds">
+              <h3 class="resource-placeholder-title">Sounds &amp; resources</h3>
+              <p class="muted">Sample packs and instrument resources will plug in here; for now, patterns above carry tempo, tracks, and export hooks.</p>
+            </section>
+          </div>
+        </section>
+
+        <section id="page-composer" class="app-page card-page" data-page="composer">
+          <div class="card">
+            <div class="panel-header panel-header--stack">
+              <h2>Markdown music spec</h2>
+              <div class="action-row">
+                <button id="load-selected" type="button">Load</button>
+                <button id="save-file" type="button">Save</button>
+                <button id="save-session" type="button">Save Session</button>
+                <button id="save-pattern" type="button">Save Pattern</button>
+                <button id="parse-spec" type="button">Parse</button>
+                <button id="compile-spec" type="button">Compile</button>
+                <button id="preview-playback" type="button">Preview</button>
+                <button id="export-midi" type="button">Export .mid</button>
+                <button id="export-wav" type="button">Render .wav</button>
+                <button id="export-notation" type="button">Export Notation</button>
+                <button id="export-mml" type="button">Export MML</button>
+                <button id="export-musicxml" type="button">Export MusicXML</button>
+              </div>
+            </div>
+            <label class="field">
+              <span>File path</span>
+              <input id="editor-path" type="text" value="session/demo-groovebox.md">
+            </label>
+          </div>
+
+          <div class="card">
+            <div class="panel-header compact-header">
+              <h2>Composer</h2>
+              <strong id="composer-track-count" class="count-pill">0</strong>
+            </div>
+            <div class="composer-arrangement-header">
+              <span class="field-label">Arrangement</span>
+              <button id="add-arrangement-section" type="button">Add Section</button>
+            </div>
+            <div id="arrangement-editor" class="arrangement-editor"></div>
+            <div id="arrangement-timeline" class="arrangement-timeline"></div>
+            <div id="composer-section-picker" class="composer-section-picker"></div>
+            <div class="composer-tools">
+              <label class="field compact">
+                <span>Phrase brush</span>
+                <select id="phrase-brush"></select>
+              </label>
+              <label class="field compact">
+                <span>Automation brush</span>
+                <select id="automation-brush"></select>
+              </label>
+            </div>
+            <div class="composer-history">
+              <button id="composer-undo" type="button">Undo</button>
+              <button id="composer-redo" type="button">Redo</button>
+            </div>
+            <div id="composer-editor" class="composer-editor"></div>
+          </div>
+
+          <div class="card card--editor">
+            <label class="field field-tight">
+              <span>Source</span>
+            </label>
+            <textarea id="markdown-editor" spellcheck="false"></textarea>
+          </div>
+
+          <div class="card">
+            <div class="panel-header">
+              <h2>Playback</h2>
+            </div>
+            <div class="transport-card">
+              <div class="transport-actions">
+                <button id="transport-play" type="button">Play</button>
+                <button id="transport-stop" type="button">Stop</button>
+              </div>
+              <div class="transport-meta">
+                <label class="field compact">
+                  <span>BPM</span>
+                  <input id="transport-tempo" type="number" min="40" max="240" value="122">
+                </label>
+                <div class="transport-state">
+                  <span class="muted">State</span>
+                  <strong id="transport-state">idle</strong>
+                </div>
+                <div class="transport-state">
+                  <span class="muted">Step</span>
+                  <strong id="transport-step">0</strong>
+                </div>
+              </div>
+              <div id="master-step-grid" class="master-step-grid"></div>
+            </div>
+            <div id="parse-summary" class="summary-card"></div>
+            <div id="session-summary" class="summary-card compact-summary"></div>
+            <pre id="pattern-json" class="pattern-json"></pre>
+            <div id="channels" class="channels"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="/static/groovebox-ui.js?v=20260401b" defer></script>
+  </body>
+</html>

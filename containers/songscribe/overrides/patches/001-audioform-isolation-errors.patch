@@ -1,0 +1,16 @@
+--- a/app/audio/AudioForm.tsx
++++ b/app/audio/AudioForm.tsx
+@@ -97,6 +97,14 @@
+         } else {
+           switch (error.message) {
++            case "MISSING_API_BASE":
++              message =
++                "NEXT_PUBLIC_API_BASE_URL is not set. Copy containers/songscribe/env.local.example to repo/.env.local and point it at a running songscribe-api server (see uDOS-groovebox docs/songscribe-isolate-audio.md).";
++              break;
++            case "0":
++              message =
++                "Could not complete the isolation request (network, CORS, or API error). Run songscribe-api, verify NEXT_PUBLIC_API_BASE_URL, and check the API logs.";
++              break;
+             case "404":
+               message = "Endpoint not Found.";
+               break;

@@ -1,0 +1,19 @@
+{
+  "version": "v2.0.0",
+  "owner": "uDOS-groovebox",
+  "bank_type": "sample-bank",
+  "kits": [
+    {
+      "id": "drum-808-core",
+      "name": "808 Core",
+      "voices": ["kick", "snare", "hat"],
+      "mode": "synthetic-web-audio"
+    },
+    {
+      "id": "retro-noise-core",
+      "name": "Retro Noise Core",
+      "voices": ["noise-hit", "pulse-click"],
+      "mode": "synthetic-web-audio"
+    }
+  ]
+}

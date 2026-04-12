@@ -1,0 +1,14 @@
+name: Family Policy Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  family-policy-check:
+    uses: fredporter/uDOS-dev/.github/workflows/family-policy-check.yml@main

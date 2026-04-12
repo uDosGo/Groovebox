@@ -1,0 +1,8 @@
+{
+  "version": "v2.0.0",
+  "owner": "uDOS-groovebox",
+  "bridge_type": "songscribe-pattern-bridge",
+  "input_format": "songscribe-text",
+  "output_format": "groovebox-pattern",
+  "supported_modes": ["parse", "render", "pattern", "transport-bridge"]
+}

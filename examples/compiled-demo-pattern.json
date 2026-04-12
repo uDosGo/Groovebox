@@ -1,0 +1,23 @@
+{
+  "schema": "udos-groovebox-pattern/v0",
+  "title": "Compiled Demo Pattern",
+  "tempo": 124,
+  "source": "markdown-spec",
+  "exports": ["midi", "wav", "songscribe-pattern"],
+  "tracks": [
+    {
+      "track_id": "drums",
+      "name": "drums",
+      "engine": "sampler",
+      "source": "markdown",
+      "steps": [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "track_id": "bass",
+      "name": "bass",
+      "engine": "synth",
+      "source": "markdown",
+      "steps": [1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0]
+    }
+  ]
+}

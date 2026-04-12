@@ -1,0 +1,25 @@
+{
+  "pattern_id": "demo-songscribe-bridge",
+  "name": "Demo Songscribe Bridge",
+  "tempo": 96,
+  "time_signature": "4/4",
+  "songscribe": {
+    "source_text": "K... S... K.K. S...",
+    "render_mode": "pattern",
+    "bridge_owner": "uDOS-groovebox"
+  },
+  "tracks": [
+    {
+      "track_id": "pulse",
+      "instrument": "drum-808-kick",
+      "steps": [1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "track_id": "backbeat",
+      "instrument": "drum-808-snare",
+      "steps": [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    }
+  ],
+  "source": "songscribe",
+  "owner": "uDOS-groovebox"
+}

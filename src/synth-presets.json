@@ -1,0 +1,21 @@
+{
+  "version": "v2.0.0",
+  "owner": "uDOS-groovebox",
+  "preset_type": "synth-bank",
+  "presets": [
+    {
+      "id": "acid-bass",
+      "oscillator": "sawtooth",
+      "filter_hz": 520,
+      "attack_ms": 10,
+      "release_ms": 180
+    },
+    {
+      "id": "square-lead",
+      "oscillator": "square",
+      "filter_hz": 1400,
+      "attack_ms": 8,
+      "release_ms": 220
+    }
+  ]
+}

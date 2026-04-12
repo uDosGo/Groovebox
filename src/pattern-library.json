@@ -1,0 +1,14 @@
+{
+  "version": "v2.0.0",
+  "owner": "uDOS-groovebox",
+  "library_type": "pattern-library",
+  "exports": ["midi", "wav", "notation"],
+  "patterns": [
+    {
+      "pattern_id": "demo-four-on-the-floor",
+      "name": "Demo Four On The Floor",
+      "tempo": 124,
+      "track_count": 2
+    }
+  ]
+}

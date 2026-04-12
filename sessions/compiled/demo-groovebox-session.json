@@ -1,0 +1,28 @@
+{
+  "exports": [
+    "midi",
+    "wav",
+    "songscribe-pattern"
+  ],
+  "saved_at": "2026-03-22T00:00:00+00:00",
+  "schema": "udos-groovebox-pattern/v0",
+  "source": "markdown-spec",
+  "tempo": 124,
+  "title": "Demo Groovebox Session",
+  "tracks": [
+    {
+      "engine": "sampler",
+      "name": "drums",
+      "source": "markdown",
+      "steps": [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+      "track_id": "drums"
+    },
+    {
+      "engine": "synth",
+      "name": "bass",
+      "source": "markdown",
+      "steps": [1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+      "track_id": "bass"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "pattern_id": "demo-two-bar-groove",
+  "name": "Demo Two Bar Groove",
+  "tempo": 118,
+  "time_signature": "4/4",
+  "swing": 0,
+  "bars": 2,
+  "steps_per_bar": 16,
+  "tracks": [
+    {
+      "track_id": "drums",
+      "instrument": "drum-808-kick",
+      "steps": [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+      "phrases": [
+        {"active": true, "velocity": 122, "accent": true, "gate_steps": 1, "note_offset": 0, "symbol": "X"},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": true, "velocity": 96, "accent": false, "gate_steps": 1, "note_offset": 0, "symbol": "x"},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": true, "velocity": 58, "accent": false, "gate_steps": 1, "note_offset": 0, "symbol": "o"},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": true, "velocity": 96, "accent": false, "gate_steps": 1, "note_offset": 0, "symbol": "x"},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": true, "velocity": 96, "accent": false, "gate_steps": 1, "note_offset": 0, "symbol": "x"},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": true, "velocity": 58, "accent": false, "gate_steps": 1, "note_offset": 0, "symbol": "o"},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": true, "velocity": 96, "accent": false, "gate_steps": 1, "note_offset": 0, "symbol": "x"},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": true, "velocity": 96, "accent": false, "gate_steps": 1, "note_offset": 0, "symbol": "x"},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": true, "velocity": 108, "accent": true, "gate_steps": 1, "note_offset": 7, "symbol": "^"},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": true, "velocity": 96, "accent": false, "gate_steps": 1, "note_offset": 0, "symbol": "x"},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": true, "velocity": 88, "accent": false, "gate_steps": 1, "note_offset": -5, "symbol": "v"},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."},
+        {"active": true, "velocity": 96, "accent": false, "gate_steps": 1, "note_offset": 0, "symbol": "x"},
+        {"active": false, "velocity": 0, "accent": false, "gate_steps": 0, "note_offset": 0, "symbol": "."}
+      ]
+    },
+    {
+      "track_id": "bass",
+      "instrument": "mono-bass",
+      "steps": [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+      "automation": {
+        "cutoff": [0.333, 0.4, 0.467, 0.533, 0.6, 0.667, 0.733, 0.8, 0.333, 0.4, 0.467, 0.533, 0.6, 0.667, 0.733, 0.8, 0.533, 0.6, 0.667, 0.733, 0.8, 0.867, 0.933, 1.0, 0.533, 0.6, 0.667, 0.733, 0.8, 0.867, 0.933, 1.0],
+        "level": [0.733, 0.733, 0.733, 0.733, 0.667, 0.667, 0.667, 0.667, 0.6, 0.6, 0.6, 0.6, 0.533, 0.533, 0.533, 0.533, 0.533, 0.533, 0.533, 0.533, 0.6, 0.6, 0.6, 0.6, 0.667, 0.667, 0.667, 0.667, 0.733, 0.733, 0.733, 0.733]
+      }
+    }
+  ],
+  "source": "manual",
+  "owner": "uDOS-groovebox",
+  "exports": ["midi", "wav", "songscribe-pattern"]
+}

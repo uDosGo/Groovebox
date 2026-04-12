@@ -1,0 +1,8 @@
+{
+  "version": "v2.0.0",
+  "owner": "uDOS-groovebox",
+  "request_type": "songscribe-bridge-request",
+  "input_modes": ["markdown", "audio-url", "file-upload"],
+  "output_modes": ["pattern", "midi", "stems"],
+  "fields": ["source", "preset", "save_session", "target_pattern_id"]
+}
