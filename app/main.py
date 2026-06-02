@@ -378,3 +378,33 @@ def usxd_surface() -> dict[str, object]:
 @app.get("/")
 def index() -> FileResponse:
     return FileResponse(STATIC_ROOT / "index.html")
+
+
+@app.get("/api/surfaces")
+def surfaces() -> dict[str, object]:
+    """Surface registry for UI-Hub discovery — reports Groovebox and Songscribe status."""
+    ss = songscribe_status(REPO_ROOT)
+    return {
+        "surfaces": [
+            {
+                "id": "groovebox",
+                "name": "Groovebox",
+                "subtitle": "Music Production",
+                "description": "Vault-driven music specs, Songscribe bridge, and backend-timed playback in one local surface.",
+                "port": 8888,
+                "color": "#d4a800",
+                "icon": "🎹",
+                "status": "running",
+            },
+            {
+                "id": "songscribe",
+                "name": "Songscribe",
+                "subtitle": "Music Transcription",
+                "description": "AI-powered music transcription. Transcribe, edit, and export your music notation.",
+                "port": 3000,
+                "color": "#7c3aed",
+                "icon": "🎵",
+                "status": "running" if ss.get("running") else "stopped",
+            },
+        ]
+    }
