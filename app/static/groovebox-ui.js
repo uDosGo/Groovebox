@@ -1596,3 +1596,267 @@ if (songscribeEmbedClose) {
 Promise.all([loadRoots(), loadPatternLibrary(), loadSongscribeStatus(), loadSongscribeDockerControls(), parseSpec(), compileSpec(), previewPlayback()]).catch((error) => {
   parseSummary.innerHTML = `<p>${error.message}</p>`;
 });
+
+/* ─── Surface Toolbar Controls ─────────────────────────────────── */
+(function initSurfaceToolbar() {
+  const STORAGE_KEY = 'groovebox-prefs';
+
+  /* ── Palette definitions (matching ProseUI) ── */
+  const PALETTES = [
+    { id: 'paper', label: 'Paper', lightBg: '#faf6ef', lightAccent: '#5c4a32', darkBg: '#1a1612', darkAccent: '#c49a6c' },
+    { id: 'parchment', label: 'Parchment', lightBg: '#f5ecd6', lightAccent: '#5c4a32', darkBg: '#1e1812', darkAccent: '#d4845a' },
+    { id: 'modern', label: 'Modern', lightBg: '#ffffff', lightAccent: '#1a73e8', darkBg: '#0f172a', darkAccent: '#60a5fa' },
+    { id: 'forest', label: 'Forest', lightBg: '#f0f7f0', lightAccent: '#2d6a4f', darkBg: '#0f1a0f', darkAccent: '#52b788' },
+    { id: 'sunset', label: 'Sunset', lightBg: '#fef0e8', lightAccent: '#c2410c', darkBg: '#1e1410', darkAccent: '#f97316' },
+    { id: 'notion', label: 'Notion', lightBg: '#ffffff', lightAccent: '#37352f', darkBg: '#121212', darkAccent: '#bb86fc' },
+    { id: 'dark', label: 'Dark', lightBg: '#ffffff', lightAccent: '#bb86fc', darkBg: '#121212', darkAccent: '#bb86fc' },
+  ];
+
+  /* ── Load saved prefs ── */
+  function loadPrefs() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+      return JSON.parse(raw);
+    } catch { return null; }
+  }
+
+  function savePrefs(prefs) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs)); } catch {}
+  }
+
+  const saved = loadPrefs();
+  const prefs = {
+    themeMode: saved?.themeMode || 'dark',
+    fontSize: saved?.fontSize || 'medium',
+    fontPack: saved?.fontPack || 'modern',
+    paletteId: saved?.paletteId || 'modern',
+  };
+
+  /* ── Font size progression (matching USX ThemeControls) ── */
+  const FONT_SIZES = ['small', 'medium', 'large', 'xlarge', 'xxlarge'];
+  const FONT_SIZE_LABELS = { small: 'S', medium: 'M', large: 'L', xlarge: 'XL', xxlarge: 'XXL' };
+
+  /* ── Font pack presets (matching USX ThemeControls) ── */
+  const FONT_PACKS = [
+    {
+      id: 'modern',
+      label: 'Modern',
+      fonts: {
+        body: "'SF Pro', sans-serif",
+        desktop: "'SF Pro', sans-serif",
+        document: "'SF Pro', sans-serif",
+        mono: "'SourceCodePro', monospace",
+        ui: "'SF Pro', sans-serif",
+      },
+    },
+    {
+      id: 'retro',
+      label: 'Retro',
+      fonts: {
+        body: "'Athene', serif",
+        desktop: "'ChicagoFLF', monospace",
+        document: "'Athene', serif",
+        mono: "'Teletext50', monospace",
+        ui: "'ChicagoFLF', monospace",
+      },
+    },
+    {
+      id: 'classic',
+      label: 'Classic',
+      fonts: {
+        body: "'Poppins', sans-serif",
+        desktop: "'Liverpool', sans-serif",
+        document: "'Poppins', sans-serif",
+        mono: "'PressStart2P', monospace",
+        ui: "'Liverpool', sans-serif",
+      },
+    },
+  ];
+
+  /* ── Apply theme mode (USX convention: .usx-dark class + data-theme attr) ── */
+  function applyTheme(mode) {
+    const root = document.documentElement;
+    if (mode === 'light') {
+      root.classList.remove('usx-dark');
+      root.setAttribute('data-theme', 'light');
+    } else {
+      root.classList.add('usx-dark');
+      root.setAttribute('data-theme', 'dark');
+    }
+    // Update SVG icon in theme button (moon for dark, sun for light)
+    const themeBtn = document.getElementById('toolbar-theme');
+    if (themeBtn) {
+      themeBtn.innerHTML = mode === 'light'
+        ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>'
+        : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    }
+  }
+
+  /* ── Apply font size (USX convention: data-font-size on :root, S/M/L/XL/XXL display) ── */
+  function applyFontSize(size) {
+    document.documentElement.setAttribute('data-font-size', size);
+    const sizeEl = document.getElementById('toolbar-font-size');
+    if (sizeEl) sizeEl.textContent = FONT_SIZE_LABELS[size] || 'M';
+  }
+
+  /* ── Apply font pack (sets all USX font-family CSS vars) ── */
+  function applyFontPack(packId) {
+    const pack = FONT_PACKS.find(p => p.id === packId) || FONT_PACKS[0];
+    const root = document.documentElement;
+    root.style.setProperty('--usx-font-family-body', pack.fonts.body);
+    root.style.setProperty('--usx-font-family-desktop', pack.fonts.desktop);
+    root.style.setProperty('--usx-font-family-document', pack.fonts.document);
+    root.style.setProperty('--usx-font-family-mono', pack.fonts.mono);
+    root.style.setProperty('--usx-font-family-ui', pack.fonts.ui);
+    // Update label
+    const labelEl = document.getElementById('toolbar-font-pack-label');
+    if (labelEl) labelEl.textContent = pack.label;
+    const packBtn = document.getElementById('toolbar-font-pack');
+    if (packBtn) packBtn.title = `Font Pack: ${pack.label}`;
+  }
+
+  /* ── Apply palette ── */
+  function applyPalette(paletteId) {
+    document.documentElement.classList.remove(...PALETTES.map(p => `palette-${p.id}`));
+    document.documentElement.classList.add(`palette-${paletteId}`);
+    // Update active state in palette panel
+    document.querySelectorAll('.palette-btn').forEach(btn => {
+      const pid = btn.dataset.paletteId;
+      btn.classList.toggle('active', pid === paletteId);
+      const check = btn.querySelector('.palette-check');
+      if (check) check.textContent = pid === paletteId ? '✓' : '';
+    });
+  }
+
+  /* ── Persist and apply all ── */
+  function persistAndApply() {
+    savePrefs(prefs);
+    applyTheme(prefs.themeMode);
+    applyFontSize(prefs.fontSize);
+    applyFontPack(prefs.fontPack);
+    applyPalette(prefs.paletteId);
+  }
+
+  /* ── Initial apply ── */
+  persistAndApply();
+
+  /* ── Theme toggle ── */
+  const themeBtn = document.getElementById('toolbar-theme');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      prefs.themeMode = prefs.themeMode === 'light' ? 'dark' : 'light';
+      persistAndApply();
+    });
+  }
+
+  /* ── Font size controls (USX ThemeControls style: cycle S/M/L/XL/XXL) ── */
+  const fontDecBtn = document.getElementById('toolbar-font-dec');
+  const fontIncBtn = document.getElementById('toolbar-font-inc');
+  if (fontDecBtn) {
+    fontDecBtn.addEventListener('click', () => {
+      const idx = FONT_SIZES.indexOf(prefs.fontSize);
+      if (idx > 0) {
+        prefs.fontSize = FONT_SIZES[idx - 1];
+        persistAndApply();
+      }
+    });
+  }
+  if (fontIncBtn) {
+    fontIncBtn.addEventListener('click', () => {
+      const idx = FONT_SIZES.indexOf(prefs.fontSize);
+      if (idx < FONT_SIZES.length - 1) {
+        prefs.fontSize = FONT_SIZES[idx + 1];
+        persistAndApply();
+      }
+    });
+  }
+
+  /* ── Font pack cycle (USX ThemeControls style: Modern → Retro → Classic) ── */
+  const fontPackBtn = document.getElementById('toolbar-font-pack');
+  if (fontPackBtn) {
+    fontPackBtn.addEventListener('click', () => {
+      const idx = FONT_PACKS.findIndex(p => p.id === prefs.fontPack);
+      prefs.fontPack = FONT_PACKS[(idx + 1) % FONT_PACKS.length].id;
+      persistAndApply();
+    });
+  }
+
+  /* ── Palette panel ── */
+  const paletteBtn = document.getElementById('toolbar-palette');
+  let palettePanelOpen = false;
+  let palettePanelEl = null;
+
+  function closePalettePanel() {
+    if (palettePanelEl) {
+      palettePanelEl.remove();
+      palettePanelEl = null;
+    }
+    palettePanelOpen = false;
+  }
+
+  function buildPalettePanel() {
+    const panel = document.createElement('div');
+    panel.className = 'palette-panel';
+    panel.innerHTML = `
+      <div class="palette-panel-header">
+        <span class="palette-panel-title">Colour Schemes</span>
+        <button type="button" class="palette-panel-close" id="palette-panel-close">✕</button>
+      </div>
+      <div class="palette-panel-body">
+        ${PALETTES.map(p => `
+          <button type="button" class="palette-btn ${p.id === prefs.paletteId ? 'active' : ''}" data-palette-id="${p.id}">
+            <div class="palette-swatches">
+              <span class="palette-swatch" style="background:${p.lightBg}"></span>
+              <span class="palette-swatch" style="background:${p.lightAccent}"></span>
+              <span class="palette-swatch" style="background:${p.darkBg}"></span>
+              <span class="palette-swatch" style="background:${p.darkAccent}"></span>
+            </div>
+            <span class="palette-label">${p.label}</span>
+            <span class="palette-check">${p.id === prefs.paletteId ? '✓' : ''}</span>
+          </button>
+        `).join('')}
+      </div>
+    `;
+
+    // Close button
+    panel.querySelector('#palette-panel-close').addEventListener('click', closePalettePanel);
+
+    // Palette selection
+    panel.querySelectorAll('.palette-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        prefs.paletteId = btn.dataset.paletteId;
+        persistAndApply();
+        closePalettePanel();
+      });
+    });
+
+    return panel;
+  }
+
+  if (paletteBtn) {
+    paletteBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (palettePanelOpen) {
+        closePalettePanel();
+        return;
+      }
+      closePalettePanel(); // remove any stale panel
+      palettePanelEl = buildPalettePanel();
+      // Position relative to the toolbar container
+      const toolbar = document.getElementById('surface-toolbar');
+      if (toolbar) {
+        toolbar.style.position = 'relative';
+        toolbar.appendChild(palettePanelEl);
+      }
+      palettePanelOpen = true;
+    });
+  }
+
+  // Close palette panel on outside click
+  document.addEventListener('mousedown', (e) => {
+    if (palettePanelOpen && palettePanelEl && !palettePanelEl.contains(e.target) && e.target !== paletteBtn) {
+      closePalettePanel();
+    }
+  });
+})();

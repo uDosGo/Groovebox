@@ -1,0 +1,141 @@
+/* ═══════════════════════════════════════════════════════════════════
+   @usx/tokens/typography.css — USX Typography Tokens
+   Includes M3 type scale + USXD role-based font families + font zoom
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ===== ROLE-BASED FONT FAMILIES (USXD-compatible) ===== */
+  --usx-font-family-body:
+    'SF Pro', 'Quicksand', 'Poppins', 'Athene',
+    'Ubuntu', 'Roboto', 'Cantarell', 'Noto Sans',
+    system-ui, -apple-system, sans-serif;
+
+  --usx-font-family-desktop:
+    'ChicagoFLF', 'SanFrisco', 'Liverpool', 'SF Pro', 'Quicksand', 'Poppins', 'Athene',
+    'Ubuntu', 'Roboto', 'Cantarell', 'Noto Sans',
+    system-ui, -apple-system, sans-serif;
+
+  --usx-font-family-document:
+    'SF Pro', 'Quicksand', 'Poppins', 'Athene',
+    'Ubuntu', 'Roboto', 'Cantarell', 'Noto Sans',
+    system-ui, -apple-system, sans-serif;
+
+  --usx-font-family-mono:
+    'SourceCodePro', 'Teletext50', 'PressStart2P', 'PetMe128',
+    'Ubuntu Mono', 'Courier New', 'Menlo', 'Monaco',
+    'Cascadia Code', 'Consolas', monospace;
+
+  --usx-font-family-ui:
+    'ChicagoFLF', 'SF Pro', 'SanFrisco', 'Liverpool', 'Quicksand', 'Poppins', 'Athene',
+    'Ubuntu', 'Roboto', 'Cantarell', 'Noto Sans',
+    system-ui, -apple-system, sans-serif;
+
+  --usx-font-family-teletext:
+    'Teletext50 Condensed', 'Teletext50', 'PetMe128 Double', 'PetMe128',
+    monospace;
+
+  /* ===== FONT SIZES (rem-based) ===== */
+  --usx-font-size-xs: 0.75rem;
+  --usx-font-size-sm: 0.875rem;
+  --usx-font-size-base: 1rem;
+  --usx-font-size-lg: 1.125rem;
+  --usx-font-size-xl: 1.25rem;
+  --usx-font-size-2xl: 1.5rem;
+  --usx-font-size-3xl: 1.875rem;
+  --usx-font-size-4xl: 2.25rem;
+  --usx-font-size-5xl: 3rem;
+
+  --usx-font-size-desktop-title: 1.5rem;
+  --usx-font-size-document-title: 1.25rem;
+  --usx-font-size-code: 0.875rem;
+  --usx-font-size-ui: 1rem;
+
+  /* ===== FONT WEIGHTS ===== */
+  --usx-font-weight-normal: 400;
+  --usx-font-weight-medium: 500;
+  --usx-font-weight-semibold: 600;
+  --usx-font-weight-bold: 700;
+
+  --usx-font-weight-body: 400;
+  --usx-font-weight-desktop: 700;
+  --usx-font-weight-document: 600;
+  --usx-font-weight-mono: 400;
+  --usx-font-weight-ui: 500;
+
+  /* ===== LINE HEIGHTS ===== */
+  --usx-line-height-tight: 1.2;
+  --usx-line-height-normal: 1.5;
+  --usx-line-height-relaxed: 1.75;
+
+  /* ===== M3 TYPE SCALE (legacy) ===== */
+  --usx-typescale-display-large-family: var(--usx-font-family-body);
+  --usx-typescale-display-large-size: 3.5625rem;
+  --usx-typescale-display-large-weight: 400;
+
+  --usx-typescale-display-medium-family: var(--usx-font-family-body);
+  --usx-typescale-display-medium-size: 2.8125rem;
+  --usx-typescale-display-medium-weight: 400;
+
+  --usx-typescale-display-small-family: var(--usx-font-family-body);
+  --usx-typescale-display-small-size: 2.25rem;
+  --usx-typescale-display-small-weight: 400;
+
+  --usx-typescale-headline-large-family: var(--usx-font-family-body);
+  --usx-typescale-headline-large-size: 2rem;
+  --usx-typescale-headline-large-weight: 400;
+
+  --usx-typescale-headline-medium-family: var(--usx-font-family-body);
+  --usx-typescale-headline-medium-size: 1.75rem;
+  --usx-typescale-headline-medium-weight: 400;
+
+  --usx-typescale-headline-small-family: var(--usx-font-family-body);
+  --usx-typescale-headline-small-size: 1.5rem;
+  --usx-typescale-headline-small-weight: 400;
+
+  --usx-typescale-title-large-family: var(--usx-font-family-body);
+  --usx-typescale-title-large-size: 1.375rem;
+  --usx-typescale-title-large-weight: 400;
+
+  --usx-typescale-title-medium-family: var(--usx-font-family-body);
+  --usx-typescale-title-medium-size: 1rem;
+  --usx-typescale-title-medium-weight: 500;
+
+  --usx-typescale-title-small-family: var(--usx-font-family-body);
+  --usx-typescale-title-small-size: 0.875rem;
+  --usx-typescale-title-small-weight: 500;
+
+  --usx-typescale-label-large-family: var(--usx-font-family-body);
+  --usx-typescale-label-large-size: 0.875rem;
+  --usx-typescale-label-large-weight: 500;
+
+  --usx-typescale-label-medium-family: var(--usx-font-family-body);
+  --usx-typescale-label-medium-size: 0.75rem;
+  --usx-typescale-label-medium-weight: 500;
+
+  --usx-typescale-label-small-family: var(--usx-font-family-body);
+  --usx-typescale-label-small-size: 0.6875rem;
+  --usx-typescale-label-small-weight: 500;
+
+  --usx-typescale-body-large-family: var(--usx-font-family-body);
+  --usx-typescale-body-large-size: 1rem;
+  --usx-typescale-body-large-weight: 400;
+
+  --usx-typescale-body-medium-family: var(--usx-font-family-body);
+  --usx-typescale-body-medium-size: 0.875rem;
+  --usx-typescale-body-medium-weight: 400;
+
+  --usx-typescale-body-small-family: var(--usx-font-family-body);
+  --usx-typescale-body-small-size: 0.75rem;
+  --usx-typescale-body-small-weight: 400;
+}
+
+/* ===== FONT ZOOM SUPPORT (USXD-compatible) ===== */
+:root {
+  font-size: var(--usx-font-size-base);
+}
+
+:root[data-font-size="small"] { font-size: var(--usx-font-size-base); }
+:root[data-font-size="medium"] { font-size: var(--usx-font-size-base); }
+:root[data-font-size="large"] { font-size: var(--usx-font-size-lg); }
+:root[data-font-size="xlarge"] { font-size: var(--usx-font-size-xl); }
+:root[data-font-size="xxlarge"] { font-size: var(--usx-font-size-2xl); }

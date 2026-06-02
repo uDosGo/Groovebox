@@ -1,25 +1,37 @@
 :root {
-  /* Mapped from songscribe-theme.css (shadcn HSL components) */
-  --bg: hsl(var(--background));
-  --bg-elevated: hsl(var(--card));
-  --bg-input: hsl(var(--input));
-  --bg-muted: hsl(var(--muted));
-  --line: hsl(var(--border));
-  --line-strong: hsl(var(--foreground) / 0.22);
-  --text: hsl(var(--foreground));
-  --muted: hsl(var(--muted-foreground));
-  --accent: hsl(45 88% 52%);
-  --accent-hover: hsl(45 88% 46%);
-  --accent-text: hsl(26 35% 10%);
+  /* ─── Groovebox surface variables (mapped from USX tokens) ─── */
+  --bg: var(--usx-color-surface);
+  --bg-elevated: var(--usx-color-surface-container);
+  --bg-input: var(--usx-color-surface-variant);
+  --bg-muted: var(--usx-color-surface-container-high);
+  --line: var(--usx-color-outline-variant);
+  --line-strong: var(--usx-color-outline);
+  --text: var(--usx-color-on-surface);
+  --muted: var(--usx-color-on-surface-variant);
+  --accent: var(--usx-color-primary);
+  --accent-hover: var(--usx-color-primary-container);
+  --accent-text: var(--usx-color-on-primary);
   --good: #2dd4bf;
-  --danger: hsl(var(--destructive));
-  --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.28);
-  --radius-card: 20px;
-  --radius-control: 14px;
-  --radius-pill: 999px;
-  --font: var(--font-nunito);
-  --font-display: var(--font-lexend);
+  --danger: var(--usx-color-error);
+  --shadow: var(--usx-elevation-level3);
+  --shadow-soft: var(--usx-elevation-level1);
+  --radius-card: var(--usx-shape-corner-large);
+  --radius-control: var(--usx-shape-corner-medium);
+  --radius-pill: var(--usx-shape-corner-full);
+  --font: var(--usx-font-family-body);
+  --font-display: var(--usx-font-family-desktop);
+  /* Smooth theme transitions */
+  --theme-transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* ─── Font family overrides (USX convention: data-font-family) ─── */
+[data-font-family="serif"] {
+  --font: var(--usx-font-family-document);
+  --font-display: var(--usx-font-family-document);
+}
+[data-font-family="mono"] {
+  --font: var(--usx-font-family-mono);
+  --font-display: var(--usx-font-family-mono);
 }
 
 * {
@@ -39,6 +51,7 @@ body {
   font-size: 15px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  transition: var(--theme-transition);
 }
 
 .shell {
@@ -60,6 +73,7 @@ body {
   position: sticky;
   top: 12px;
   z-index: 200;
+  transition: var(--theme-transition);
 }
 
 .app-nav-top {
@@ -108,6 +122,128 @@ body {
 
 .app-nav-links a.app-nav-links--muted {
   opacity: 0.82;
+}
+
+/* ─── Surface Toolbar (USX ThemeControls style) ───────────────── */
+.app-nav-toolbar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: rgb(var(--usx-color-text) / 0.05);
+  border: 1px solid rgb(var(--usx-color-border));
+  border-radius: var(--usx-radius-xl);
+  transition: var(--theme-transition);
+}
+
+/* ─── Palette Dropdown Panel ───────────────────────────────────── */
+.palette-panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  width: 200px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow);
+  z-index: 300;
+  overflow: hidden;
+  animation: panelFadeIn 0.12s ease-out;
+}
+
+@keyframes panelFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.palette-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.palette-panel-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.palette-panel-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.palette-panel-close:hover {
+  background: var(--bg-muted);
+  color: var(--text);
+}
+
+.palette-panel-body {
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.palette-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: var(--text);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.82rem;
+  transition: all 0.12s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.palette-btn:hover {
+  background: var(--bg-muted);
+}
+
+.palette-btn.active {
+  border-color: var(--accent);
+  background: var(--bg-input);
+}
+
+.palette-swatches {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.palette-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+}
+
+.palette-label {
+  flex: 1;
+}
+
+.palette-check {
+  font-size: 0.72rem;
+  color: var(--accent);
 }
 
 .shell--compact {
@@ -197,6 +333,7 @@ body {
   margin-bottom: 20px;
   background: var(--bg-elevated);
   box-shadow: var(--shadow-soft);
+  transition: var(--theme-transition);
 }
 
 .songscribe-embed-toolbar {
@@ -206,6 +343,7 @@ body {
   padding: 12px 16px;
   border-bottom: 1px solid var(--line);
   background: var(--bg-input);
+  transition: var(--theme-transition);
 }
 
 .songscribe-embed-title {
@@ -243,6 +381,7 @@ body {
   background: var(--bg-elevated);
   box-shadow: var(--shadow-soft);
   padding: 22px 24px;
+  transition: var(--theme-transition);
 }
 
 .card--hero {
@@ -351,6 +490,7 @@ body {
   font-size: 0.92rem;
   line-height: 1.45;
   background: var(--bg-elevated);
+  transition: var(--theme-transition);
 }
 
 .bootstrap-banner strong {
@@ -482,7 +622,8 @@ body {
   gap: 8px;
 }
 
-button,
+/* ─── Generic form controls (NOT USX buttons) ─────────────────── */
+button:not(.usx-btn),
 select,
 input,
 textarea {
@@ -493,7 +634,7 @@ textarea {
   font-family: inherit;
 }
 
-button {
+button:not(.usx-btn) {
   padding: 10px 14px;
   cursor: pointer;
   background: var(--accent);
@@ -503,11 +644,11 @@ button {
   box-shadow: 0 2px 8px rgba(212, 168, 0, 0.22);
 }
 
-button:hover:not(:disabled) {
+button:not(.usx-btn):hover:not(:disabled) {
   background: var(--accent-hover);
 }
 
-button:disabled {
+button:not(.usx-btn):disabled {
   opacity: 0.5;
   cursor: not-allowed;
   box-shadow: none;

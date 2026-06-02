@@ -1,0 +1,22 @@
+/* ═══════════════════════════════════════════════════════════════════
+   @usx/tokens/shapes.css — USX Shape Tokens (M3-inspired)
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  --usx-shape-corner-none: 0px;
+  --usx-shape-corner-extra-small: 4px;
+  --usx-shape-corner-small: 8px;
+  --usx-shape-corner-medium: 12px;
+  --usx-shape-corner-large: 16px;
+  --usx-shape-corner-extra-large: 28px;
+  --usx-shape-corner-full: 9999px;
+
+  /* M3 Legacy Aliases */
+  --md-sys-shape-corner-none: var(--usx-shape-corner-none);
+  --md-sys-shape-corner-extra-small: var(--usx-shape-corner-extra-small);
+  --md-sys-shape-corner-small: var(--usx-shape-corner-small);
+  --md-sys-shape-corner-medium: var(--usx-shape-corner-medium);
+  --md-sys-shape-corner-large: var(--usx-shape-corner-large);
+  --md-sys-shape-corner-extra-large: var(--usx-shape-corner-extra-large);
+  --md-sys-shape-corner-full: var(--usx-shape-corner-full);
+}

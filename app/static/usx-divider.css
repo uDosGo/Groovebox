@@ -1,0 +1,19 @@
+/* ═══════════════════════════════════════════════════════════════════
+   @usx/components/divider — USX Divider (M3-inspired)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.usx-divider {
+  border: none;
+  height: 1px;
+  background: var(--usx-color-outline-variant);
+  margin: 8px 0;
+}
+
+.usx-divider--inset {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+/* ─── M3 Legacy ─────────────────────────────────────────────────── */
+.m3-divider { @extend .usx-divider; }
+.m3-divider--inset { @extend .usx-divider--inset; }

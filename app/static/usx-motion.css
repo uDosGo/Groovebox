@@ -1,0 +1,39 @@
+/* ═══════════════════════════════════════════════════════════════════
+   @usx/tokens/motion.css — USX Motion Tokens (M3-inspired)
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ─── Durations ───────────────────────────────────────────────── */
+  --usx-motion-duration-short1: 50ms;
+  --usx-motion-duration-short2: 100ms;
+  --usx-motion-duration-short3: 150ms;
+  --usx-motion-duration-medium1: 200ms;
+  --usx-motion-duration-medium2: 250ms;
+  --usx-motion-duration-medium3: 300ms;
+  --usx-motion-duration-long1: 350ms;
+  --usx-motion-duration-long2: 400ms;
+  --usx-motion-duration-long3: 500ms;
+
+  /* ─── Easings ─────────────────────────────────────────────────── */
+  --usx-motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1.0);
+  --usx-motion-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1.0);
+  --usx-motion-easing-emphasized-accelerate: cubic-bezier(0.3, 0.0, 0.8, 0.15);
+  --usx-motion-easing-standard: cubic-bezier(0.2, 0.0, 0, 1.0);
+  --usx-motion-easing-linear: cubic-bezier(0, 0, 1, 1);
+
+  /* M3 Legacy Aliases */
+  --md-sys-motion-duration-short1: var(--usx-motion-duration-short1);
+  --md-sys-motion-duration-short2: var(--usx-motion-duration-short2);
+  --md-sys-motion-duration-short3: var(--usx-motion-duration-short3);
+  --md-sys-motion-duration-medium1: var(--usx-motion-duration-medium1);
+  --md-sys-motion-duration-medium2: var(--usx-motion-duration-medium2);
+  --md-sys-motion-duration-medium3: var(--usx-motion-duration-medium3);
+  --md-sys-motion-duration-long1: var(--usx-motion-duration-long1);
+  --md-sys-motion-duration-long2: var(--usx-motion-duration-long2);
+  --md-sys-motion-duration-long3: var(--usx-motion-duration-long3);
+  --md-sys-motion-easing-emphasized: var(--usx-motion-easing-emphasized);
+  --md-sys-motion-easing-emphasized-decelerate: var(--usx-motion-easing-emphasized-decelerate);
+  --md-sys-motion-easing-emphasized-accelerate: var(--usx-motion-easing-emphasized-accelerate);
+  --md-sys-motion-easing-standard: var(--usx-motion-easing-standard);
+  --md-sys-motion-easing-linear: var(--usx-motion-easing-linear);
+}

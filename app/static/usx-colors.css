@@ -1,0 +1,150 @@
+/* ═══════════════════════════════════════════════════════════════════
+   @usx/tokens/colors.css — USX Colour Tokens (M3-inspired + Mono)
+   Standardised across all UIs: gridui, code3ui, proseui, code4ui, USXD
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ===== PRIMARY ===== */
+  --usx-color-primary: #6750A4;
+  --usx-color-on-primary: #FFFFFF;
+  --usx-color-primary-container: #EADDFF;
+  --usx-color-on-primary-container: #21005E;
+  --usx-color-fixed-primary: #EADDFF;
+  --usx-color-on-fixed-primary: #21005E;
+
+  /* ===== SECONDARY ===== */
+  --usx-color-secondary: #625B71;
+  --usx-color-on-secondary: #FFFFFF;
+  --usx-color-secondary-container: #E8DEF8;
+  --usx-color-on-secondary-container: #1E192B;
+  --usx-color-fixed-secondary: #E8DEF8;
+  --usx-color-on-fixed-secondary: #1E192B;
+
+  /* ===== TERTIARY ===== */
+  --usx-color-tertiary: #7D5260;
+  --usx-color-on-tertiary: #FFFFFF;
+  --usx-color-tertiary-container: #FFD8E4;
+  --usx-color-on-tertiary-container: #31111D;
+  --usx-color-fixed-tertiary: #FFD8E4;
+  --usx-color-on-fixed-tertiary: #31111D;
+
+  /* ===== NEUTRAL ===== */
+  --usx-color-background: #FFFBFE;
+  --usx-color-on-background: #1C1B1F;
+  --usx-color-surface: #FFFBFE;
+  --usx-color-on-surface: #1C1B1F;
+  --usx-color-surface-variant: #E7E0EC;
+  --usx-color-on-surface-variant: #49454F;
+  --usx-color-outline: #79747E;
+  --usx-color-outline-variant: #CAC4D0;
+  --usx-color-inverse-surface: #313033;
+  --usx-color-inverse-on-surface: #F4EFF4;
+
+  /* ===== SURFACE HIERARCHY ===== */
+  --usx-color-surface-dim: #DED8E3;
+  --usx-color-surface-bright: #FFFBFE;
+  --usx-color-surface-container-lowest: #FFFFFF;
+  --usx-color-surface-container-low: #F7F2FA;
+  --usx-color-surface-container: #F3EDF7;
+  --usx-color-surface-container-high: #ECE6F0;
+  --usx-color-surface-container-highest: #E6E0E9;
+
+  /* ===== ERROR ===== */
+  --usx-color-error: #BA1A1A;
+  --usx-color-on-error: #FFFFFF;
+  --usx-color-error-container: #FFDAD6;
+  --usx-color-on-error-container: #410E0B;
+
+  /* ===== STATIC ===== */
+  --usx-color-shadow: #000000;
+  --usx-color-scrim: #000000;
+
+  /* ===== USX CORE TOKENS (legacy aliases) ===== */
+  --usx-ink: var(--usx-color-on-surface);
+  --usx-paper: var(--usx-color-surface);
+  --usx-grid: var(--usx-color-surface-variant);
+  --usx-accent: var(--usx-color-primary);
+  --usx-error: var(--usx-color-error);
+  --usx-warning: #FFCC00;
+
+  /* ===== MONO PALETTE (USXD-compatible) ===== */
+  --usx-color-text: 15 23 42;
+  --usx-color-text-muted: 100 116 139;
+  --usx-color-border: 226 232 240;
+  --usx-color-highlight: 15 23 42;
+  --usx-color-highlight-text: 255 255 255;
+  --usx-color-success: 22 163 74;
+  --usx-color-danger: 220 38 38;
+  --usx-color-warning: 234 179 8;
+}
+
+/* ─── Dark Theme ────────────────────────────────────────────────── */
+.usx-dark {
+  --usx-color-primary: #D0BCFF;
+  --usx-color-on-primary: #381E72;
+  --usx-color-primary-container: #4F378B;
+  --usx-color-on-primary-container: #EADDFF;
+
+  --usx-color-secondary: #CCC2DC;
+  --usx-color-on-secondary: #332D41;
+  --usx-color-secondary-container: #4A4458;
+  --usx-color-on-secondary-container: #E8DEF8;
+
+  --usx-color-tertiary: #EFB8C8;
+  --usx-color-on-tertiary: #492532;
+  --usx-color-tertiary-container: #633B48;
+  --usx-color-on-tertiary-container: #FFD8E4;
+
+  --usx-color-background: #1C1B1F;
+  --usx-color-on-background: #E6E1E5;
+  --usx-color-surface: #1C1B1F;
+  --usx-color-on-surface: #E6E1E5;
+  --usx-color-surface-variant: #49454F;
+  --usx-color-on-surface-variant: #CAC4D0;
+  --usx-color-outline: #938F99;
+  --usx-color-outline-variant: #49454F;
+  --usx-color-inverse-surface: #E6E1E5;
+  --usx-color-inverse-on-surface: #313033;
+
+  --usx-color-error: #F2B8B5;
+  --usx-color-on-error: #601410;
+  --usx-color-error-container: #8C1D18;
+  --usx-color-on-error-container: #FFDAD6;
+
+  --usx-color-surface-dim: #141218;
+  --usx-color-surface-bright: #3B383E;
+  --usx-color-surface-container-lowest: #0F0D13;
+  --usx-color-surface-container-low: #1C1B1F;
+  --usx-color-surface-container: #211F26;
+  --usx-color-surface-container-high: #2B2930;
+  --usx-color-surface-container-highest: #36343B;
+
+  /* Legacy aliases */
+  --usx-ink: var(--usx-color-on-surface);
+  --usx-paper: var(--usx-color-surface);
+  --usx-accent: var(--usx-color-primary);
+  --usx-error: var(--usx-color-error);
+
+  /* Mono palette (dark) */
+  --usx-color-text: 236 236 236;
+  --usx-color-text-muted: 168 168 168;
+  --usx-color-border: 51 51 51;
+  --usx-color-highlight: 255 255 255;
+  --usx-color-highlight-text: 33 33 33;
+}
+
+/* ─── Contrast Level Overrides ──────────────────────────────────── */
+[data-contrast="medium"] {
+  --usx-color-primary: #4F378B;
+  --usx-color-on-primary: #FFFFFF;
+  --usx-color-secondary: #4A4458;
+  --usx-color-on-secondary: #FFFFFF;
+}
+
+[data-contrast="high"] {
+  --usx-color-primary: #381E72;
+  --usx-color-on-primary: #FFFFFF;
+  --usx-color-secondary: #332D41;
+  --usx-color-on-secondary: #FFFFFF;
+  --usx-color-outline: #000000;
+}

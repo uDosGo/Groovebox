@@ -1,0 +1,26 @@
+/* ═══════════════════════════════════════════════════════════════════
+   @usx/tokens/spacing.css — USX Spacing Scale + Icon System
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ===== SPACING SCALE ===== */
+  --usx-spacing-0: 0;
+  --usx-spacing-1: 0.25rem;
+  --usx-spacing-2: 0.5rem;
+  --usx-spacing-3: 0.75rem;
+  --usx-spacing-4: 1rem;
+  --usx-spacing-5: 1.25rem;
+  --usx-spacing-6: 1.5rem;
+  --usx-spacing-8: 2rem;
+  --usx-spacing-10: 2.5rem;
+  --usx-spacing-12: 3rem;
+  --usx-spacing-16: 4rem;
+
+  /* ===== ICON SYSTEM (USXD-compatible) ===== */
+  --usx-icon-size-sm: 20px;
+  --usx-icon-size-md: 24px;
+  --usx-icon-size-lg: 28px;
+  --usx-icon-size-xl: 32px;
+  --usx-icon-padding: 8px;
+  --usx-icon-touch-target: 44px;
+}

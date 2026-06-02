@@ -1,0 +1,35 @@
+/* ═══════════════════════════════════════════════════════════════════
+   @usx/tokens/elevation.css — USX Elevation Tokens (M3-inspired)
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  --usx-elevation-level0: 0px 0px 0px 0px rgba(0,0,0,0);
+  --usx-elevation-level1: 0px 1px 3px 1px rgba(0,0,0,0.15), 0px 1px 2px 0px rgba(0,0,0,0.30);
+  --usx-elevation-level2: 0px 2px 6px 2px rgba(0,0,0,0.15), 0px 1px 2px 0px rgba(0,0,0,0.30);
+  --usx-elevation-level3: 0px 4px 8px 3px rgba(0,0,0,0.15), 0px 1px 3px 0px rgba(0,0,0,0.30);
+  --usx-elevation-level4: 0px 6px 10px 4px rgba(0,0,0,0.15), 0px 2px 3px 0px rgba(0,0,0,0.30);
+  --usx-elevation-level5: 0px 8px 12px 6px rgba(0,0,0,0.15), 0px 4px 4px 0px rgba(0,0,0,0.30);
+
+  /* M3 Legacy Aliases */
+  --md-sys-elevation-level0: var(--usx-elevation-level0);
+  --md-sys-elevation-level1: var(--usx-elevation-level1);
+  --md-sys-elevation-level2: var(--usx-elevation-level2);
+  --md-sys-elevation-level3: var(--usx-elevation-level3);
+  --md-sys-elevation-level4: var(--usx-elevation-level4);
+  --md-sys-elevation-level5: var(--usx-elevation-level5);
+}
+
+/* ─── Elevation Utility Classes ─────────────────────────────────── */
+.usx-elevation-0 { box-shadow: var(--usx-elevation-level0); }
+.usx-elevation-1 { box-shadow: var(--usx-elevation-level1); }
+.usx-elevation-2 { box-shadow: var(--usx-elevation-level2); }
+.usx-elevation-3 { box-shadow: var(--usx-elevation-level3); }
+.usx-elevation-4 { box-shadow: var(--usx-elevation-level4); }
+.usx-elevation-5 { box-shadow: var(--usx-elevation-level5); }
+
+.m3-elevation-0 { box-shadow: var(--md-sys-elevation-level0); }
+.m3-elevation-1 { box-shadow: var(--md-sys-elevation-level1); }
+.m3-elevation-2 { box-shadow: var(--md-sys-elevation-level2); }
+.m3-elevation-3 { box-shadow: var(--md-sys-elevation-level3); }
+.m3-elevation-4 { box-shadow: var(--md-sys-elevation-level4); }
+.m3-elevation-5 { box-shadow: var(--md-sys-elevation-level5); }

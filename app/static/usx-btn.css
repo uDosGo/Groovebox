@@ -1,0 +1,106 @@
+/* ═══════════════════════════════════════════════════════════════════
+   @usx/components/btn — USX Button (M3-inspired)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.usx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 24px;
+  height: 40px;
+  border: none;
+  border-radius: var(--usx-shape-corner-full);
+  font-family: var(--usx-typescale-label-large-family);
+  font-size: var(--usx-typescale-label-large-size);
+  font-weight: var(--usx-typescale-label-large-weight);
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: box-shadow var(--usx-motion-duration-short3) var(--usx-motion-easing-standard),
+              background var(--usx-motion-duration-short3) var(--usx-motion-easing-standard);
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.usx-btn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ─── Variants ──────────────────────────────────────────────────── */
+.usx-btn--filled {
+  background: var(--usx-color-primary);
+  color: var(--usx-color-on-primary);
+  box-shadow: var(--usx-elevation-level1);
+}
+.usx-btn--filled:hover {
+  box-shadow: var(--usx-elevation-level2);
+}
+
+.usx-btn--tonal {
+  background: var(--usx-color-secondary-container);
+  color: var(--usx-color-on-secondary-container);
+}
+.usx-btn--tonal:hover {
+  background: color-mix(in srgb, var(--usx-color-secondary-container) 92%, var(--usx-color-shadow));
+}
+
+.usx-btn--outlined {
+  background: transparent;
+  color: var(--usx-color-primary);
+  border: 1px solid var(--usx-color-outline);
+}
+.usx-btn--outlined:hover {
+  background: var(--usx-color-primary-container);
+}
+
+.usx-btn--text {
+  background: transparent;
+  color: var(--usx-color-primary);
+  padding: 0 12px;
+}
+.usx-btn--text:hover {
+  background: var(--usx-color-primary-container);
+}
+
+.usx-btn--elevated {
+  background: var(--usx-color-surface-container-low);
+  color: var(--usx-color-primary);
+  box-shadow: var(--usx-elevation-level1);
+}
+.usx-btn--elevated:hover {
+  box-shadow: var(--usx-elevation-level2);
+}
+
+/* ─── Icon Button ───────────────────────────────────────────────── */
+.usx-btn--icon {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: var(--usx-shape-corner-full);
+}
+
+/* ─── Sizes ─────────────────────────────────────────────────────── */
+.usx-btn--small {
+  height: 32px;
+  padding: 0 16px;
+  font-size: calc(var(--usx-typescale-label-large-size) * 0.85);
+}
+.usx-btn--large {
+  height: 48px;
+  padding: 0 32px;
+  font-size: calc(var(--usx-typescale-label-large-size) * 1.15);
+}
+
+/* ─── M3 Legacy ─────────────────────────────────────────────────── */
+.m3-btn { @extend .usx-btn; }
+.m3-btn--filled { @extend .usx-btn--filled; }
+.m3-btn--tonal { @extend .usx-btn--tonal; }
+.m3-btn--outlined { @extend .usx-btn--outlined; }
+.m3-btn--text { @extend .usx-btn--text; }
+.m3-btn--elevated { @extend .usx-btn--elevated; }
+.m3-btn--icon { @extend .usx-btn--icon; }
