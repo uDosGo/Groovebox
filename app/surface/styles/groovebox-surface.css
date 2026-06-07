@@ -1,593 +1,701 @@
-/* ============================================
- * Groovebox Surface — USXD ProseUI Style
- * Based on uCode2 design patterns (SURFACE_STYLE_GUIDE.md)
- * Uses USX CSS custom properties for theming
- * ============================================ */
+/* ═══════════════════════════════════════════════════════════════════
+   GrooveBox888 Surface — Bootstrap 5.3 + GitHub dark theme
+   Music production surface with Songscribe tab integration.
+   Uses Bootstrap Icons (no emoji).
+   ═══════════════════════════════════════════════════════════════════ */
 
-/* ---- CSS Custom Properties ---- */
+/* ─── Bootstrap Variable Overrides (GitHub Dark Theme) ─────────── */
 .groovebox-surface {
-  --groovebox-bg: #ffffff;
-  --groovebox-text: #1a1a2e;
-  --groovebox-text-secondary: #6b6b6b;
-  --groovebox-text-tertiary: #b0b0b0;
-  --groovebox-border: #e9e9e7;
-  --groovebox-surface-bg: #f7f6f3;
-  --groovebox-surface-hover: #e9e9e7;
-  --groovebox-primary: #2e7d64;
-  --groovebox-primary-hover: #236b54;
-  --groovebox-accent: #d4a800;
-  --groovebox-accent-hover: #c49a00;
-  --groovebox-accent-text: #1a1a0e;
-  --groovebox-good: #2dd4bf;
-  --groovebox-danger: #eb5757;
-  --groovebox-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-  --groovebox-shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
-  --groovebox-radius-card: 20px;
-  --groovebox-radius-control: 14px;
-  --groovebox-radius-pill: 999px;
-  --groovebox-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --groovebox-font-display: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --groovebox-font-mono: ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
-
-  /* Inherit from USXD if available */
-  background: var(--groovebox-bg);
-  color: var(--groovebox-text);
-  font-family: var(--groovebox-font);
-  font-size: 15px;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
+  --bs-body-bg: #0d1117;
+  --bs-body-color: #c9d1d9;
+  --bs-border-color: #30363d;
+  --bs-border-color-translucent: rgba(48, 54, 61, 0.5);
+  --bs-link-color: #58a6ff;
+  --bs-link-hover-color: #79c0ff;
+  --bs-card-bg: #161b22;
+  --bs-card-border-color: #21262d;
+  --bs-card-cap-bg: #161b22;
+  --bs-card-cap-color: #8b949e;
+  --bs-tertiary-bg: #161b22;
+  --bs-secondary-color: #8b949e;
+  --bs-tertiary-color: #484f58;
+  --bs-light: #21262d;
+  --bs-dark: #0d1117;
+  --bs-primary: #58a6ff;
+  --bs-primary-rgb: 88, 166, 255;
+  --bs-success: #3fb950;
+  --bs-success-rgb: 63, 185, 80;
+  --bs-warning: #d29922;
+  --bs-warning-rgb: 210, 153, 34;
+  --bs-danger: #f85149;
+  --bs-danger-rgb: 248, 81, 73;
+  --bs-info: #79c0ff;
+  --bs-info-rgb: 121, 192, 255;
 }
 
-/* ---- Layout ---- */
+/* ─── CSS Reset ────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #0d1117;
+}
+
+/* ─── Groovebox Design Tokens (GitHub Dark) ────────────────────── */
 .groovebox-surface {
-  width: min(880px, calc(100vw - 28px));
-  margin: 0 auto;
-  padding: 16px 0 40px;
+  --groovebox-bg: #0d1117;
+  --groovebox-bg-alt: #161b22;
+  --groovebox-bg-card: #161b22;
+  --groovebox-bg-hover: #1c2333;
+  --groovebox-border: #30363d;
+  --groovebox-border-light: #21262d;
+  --groovebox-text: #e6edf3;
+  --groovebox-text-secondary: #8b949e;
+  --groovebox-text-muted: #484f58;
+  --groovebox-accent: #58a6ff;
+  --groovebox-accent-dim: #1f3a5f;
+  --groovebox-success: #3fb950;
+  --groovebox-warning: #d29922;
+  --groovebox-error: #f85149;
+  --groovebox-font-size: 13px;
+  --groovebox-radius: 6px;
+  --groovebox-radius-sm: 4px;
+  --groovebox-transition: 150ms ease;
+  --groovebox-spacing: 16px;
+  --groovebox-spacing-sm: 8px;
+  --groovebox-spacing-lg: 24px;
+}
+
+/* ─── Surface Container ───────────────────────────────────────── */
+.groovebox-surface {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--groovebox-bg);
+  color: var(--groovebox-text);
+  font-size: var(--groovebox-font-size);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  overflow: hidden;
 }
 
 .groovebox-pages {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--groovebox-spacing-lg);
 }
 
-/* ---- Navigation ---- */
+/* ─── Nav Bar ─────────────────────────────────────────────────── */
 .groovebox-nav {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 12px 16px;
-  margin-bottom: 16px;
-  border-radius: var(--groovebox-radius-card);
-  border: 1px solid var(--groovebox-border);
-  background: var(--groovebox-surface-bg);
-  box-shadow: var(--groovebox-shadow-soft);
-  position: sticky;
-  top: 12px;
-  z-index: 200;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--groovebox-spacing-sm) var(--groovebox-spacing);
+  background: var(--groovebox-bg-alt);
+  border-bottom: 1px solid var(--groovebox-border);
+  gap: var(--groovebox-spacing);
+  flex-shrink: 0;
 }
 
 .groovebox-nav-top {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px 20px;
+  gap: var(--groovebox-spacing);
+  width: 100%;
 }
 
 .groovebox-nav-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--groovebox-spacing-sm);
+  flex-shrink: 0;
 }
 
 .groovebox-nav-home {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border: 1px solid var(--groovebox-border);
-  border-radius: 8px;
+  border-radius: var(--groovebox-radius);
   background: transparent;
   color: var(--groovebox-text-secondary);
   cursor: pointer;
-  transition: all 0.15s ease;
-  padding: 0;
+  transition: all var(--groovebox-transition);
+  font-size: 0.9rem;
 }
 
 .groovebox-nav-home:hover {
-  background: var(--groovebox-surface-hover);
-  color: var(--groovebox-primary);
-  border-color: var(--groovebox-primary);
+  background: var(--groovebox-bg-hover);
+  color: var(--groovebox-text);
+  border-color: var(--groovebox-accent);
 }
 
 .groovebox-nav-title {
-  font-family: var(--groovebox-font-display);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  font-size: 1.02rem;
+  font-size: 1rem;
   color: var(--groovebox-text);
+  letter-spacing: -0.02em;
 }
 
 .groovebox-nav-links {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  gap: 4px;
+  flex: 1;
 }
 
 .groovebox-nav-link {
-  color: var(--groovebox-text-secondary);
-  text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 600;
-  padding: 8px 14px;
-  border-radius: var(--groovebox-radius-pill);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
   border: 1px solid transparent;
+  border-radius: var(--groovebox-radius);
   background: transparent;
+  color: var(--groovebox-text-secondary);
+  font-size: 0.85rem;
   cursor: pointer;
-  font-family: inherit;
-  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  transition: all var(--groovebox-transition);
+  white-space: nowrap;
 }
 
 .groovebox-nav-link:hover {
+  background: var(--groovebox-bg-hover);
   color: var(--groovebox-text);
-  background: var(--groovebox-surface-hover);
+  border-color: var(--groovebox-border);
 }
 
 .groovebox-nav-link.is-active {
-  color: var(--groovebox-accent-text);
-  background: var(--groovebox-accent);
-  border-color: rgba(0, 0, 0, 0.06);
+  background: var(--groovebox-accent-dim);
+  color: var(--groovebox-accent);
+  border-color: var(--groovebox-accent);
 }
 
-/* ---- Songscribe Nav Section ---- */
-.groovebox-nav-songscribe {
-  border-radius: 20px;
-  border: 1px solid var(--groovebox-border);
-  background: var(--groovebox-surface-bg);
+.groovebox-nav-link-icon {
+  font-size: 1rem;
+  line-height: 1;
 }
 
-.groovebox-nav-songscribe-summary {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 12px;
-  padding: 10px 14px;
-  cursor: pointer;
-  user-select: none;
+.groovebox-nav-link-label {
+  font-weight: 500;
 }
 
-.groovebox-nav-songscribe details summary::-webkit-details-marker {
-  display: none;
+.groovebox-nav-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
 }
 
-.groovebox-nav-songscribe-label {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--groovebox-text-secondary);
-  font-weight: 700;
+.dot-online {
+  background: var(--groovebox-success);
+  box-shadow: 0 0 4px rgba(63, 185, 80, 0.5);
 }
 
-.groovebox-nav-songscribe-status {
-  font-size: 0.82rem;
-  color: var(--groovebox-text);
-  max-width: 14rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-weight: 600;
+.dot-offline {
+  background: var(--groovebox-text-muted);
 }
 
-.groovebox-nav-songscribe-body {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 12px;
-  padding: 0 14px 12px;
-  border-top: 1px solid var(--groovebox-border);
-}
-
-.groovebox-nav-docker {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-items: center;
-  border-left: 1px solid var(--groovebox-border);
-  padding-left: 12px;
-  margin-left: 4px;
-}
-
-/* ---- Embed Panel ---- */
-.groovebox-embed-panel {
-  border-radius: var(--groovebox-radius-card);
-  border: 1px solid var(--groovebox-border);
-  overflow: hidden;
-  margin-bottom: 20px;
-  background: var(--groovebox-surface-bg);
-  box-shadow: var(--groovebox-shadow-soft);
-}
-
-.groovebox-embed-toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--groovebox-border);
-  background: var(--groovebox-surface-bg);
-}
-
-.groovebox-embed-title {
-  font-size: 0.8rem;
-  color: var(--groovebox-text);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-.groovebox-embed-frame {
-  display: block;
-  width: 100%;
-  min-height: min(78vh, 900px);
-  height: 78vh;
-  border: 0;
-  background: #f8fafc;
-}
-
-/* ---- Cards ---- */
+/* ─── Cards ───────────────────────────────────────────────────── */
 .groovebox-card {
-  border-radius: var(--groovebox-radius-card);
+  background: var(--groovebox-bg-card);
   border: 1px solid var(--groovebox-border);
-  background: var(--groovebox-surface-bg);
-  box-shadow: var(--groovebox-shadow-soft);
-  padding: 22px 24px;
+  border-radius: var(--groovebox-radius);
+  padding: var(--groovebox-spacing);
+  margin-bottom: var(--groovebox-spacing);
 }
 
 .groovebox-card--hero {
-  padding: 28px 26px;
-}
-
-.groovebox-card--editor {
-  padding-bottom: 16px;
+  border-left: 3px solid var(--groovebox-accent);
 }
 
 .groovebox-eyebrow {
-  margin: 0 0 10px;
-  color: var(--groovebox-text-secondary);
-  letter-spacing: 0.14em;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  font-size: 0.68rem;
-  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--groovebox-text-secondary);
+  margin: 0 0 4px;
 }
 
 .groovebox-page-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--groovebox-text);
   margin: 0;
-  font-family: var(--groovebox-font-display);
-  font-size: clamp(1.5rem, 4.5vw, 2rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.15;
-  max-width: 42rem;
+  line-height: 1.4;
 }
 
 .groovebox-lede {
-  margin: 0;
   color: var(--groovebox-text-secondary);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   line-height: 1.5;
-  max-width: 40rem;
 }
 
-.groovebox-hint {
-  margin: 18px 0 0;
-  font-size: 0.88rem;
-  color: var(--groovebox-text-secondary);
-}
-
-.groovebox-hint a {
-  color: var(--groovebox-text);
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.groovebox-muted {
-  color: var(--groovebox-text-secondary);
-}
-
-/* ---- Panel Header ---- */
-.groovebox-panel-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.groovebox-panel-header--stack {
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.groovebox-panel-header h2 {
-  margin: 0;
-  font-size: 1.05rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--groovebox-text);
-}
-
-.groovebox-action-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-/* ---- Buttons ---- */
+/* ─── Buttons ─────────────────────────────────────────────────── */
 .groovebox-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 10px 14px;
-  border-radius: var(--groovebox-radius-control);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background: var(--groovebox-accent);
-  color: var(--groovebox-accent-text);
-  font-family: inherit;
-  font-weight: 700;
-  font-size: 0.875rem;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid var(--groovebox-border);
+  border-radius: var(--groovebox-radius);
+  background: transparent;
+  color: var(--groovebox-text);
+  font-size: 0.85rem;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(212, 168, 0, 0.22);
-  transition: background 0.15s ease;
+  transition: all var(--groovebox-transition);
+  font-family: inherit;
 }
 
-.groovebox-btn:hover:not(:disabled) {
-  background: var(--groovebox-accent-hover);
+.groovebox-btn:hover {
+  background: var(--groovebox-bg-hover);
+  border-color: var(--groovebox-accent);
+}
+
+.groovebox-btn--sm {
+  padding: 4px 10px;
+  font-size: 0.8rem;
 }
 
 .groovebox-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  box-shadow: none;
 }
 
-.groovebox-btn--sm {
-  padding: 7px 12px;
-  font-size: 0.78rem;
-  border-radius: 12px;
-  box-shadow: none;
+/* ─── Drop Panel ──────────────────────────────────────────────── */
+.drop-panel {
+  border: 2px dashed var(--groovebox-border);
+  border-radius: var(--groovebox-radius);
+  padding: var(--groovebox-spacing);
+  transition: all var(--groovebox-transition);
+  background: var(--groovebox-bg-alt);
+  outline: none;
 }
 
-.groovebox-btn--secondary {
-  border: 1px solid var(--groovebox-border);
-  background: var(--groovebox-surface-bg);
-  color: var(--groovebox-text);
-  box-shadow: none;
+.drop-panel:focus-visible {
+  border-color: var(--groovebox-accent);
+  box-shadow: 0 0 0 2px var(--groovebox-accent-dim);
 }
 
-.groovebox-btn--secondary:hover:not(:disabled) {
-  background: var(--groovebox-surface-hover);
+.drop-panel--drag-over {
+  border-color: var(--groovebox-accent);
+  background: var(--groovebox-accent-dim);
+  border-style: solid;
 }
 
-/* ---- Fields ---- */
-.groovebox-field {
-  display: block;
-  margin-bottom: 12px;
-}
-
-.groovebox-field--compact {
-  margin-bottom: 0;
-}
-
-.groovebox-field--tight {
-  margin-bottom: 8px;
-}
-
-.groovebox-field--inline {
-  flex: 1 1 200px;
-  margin-bottom: 0;
-}
-
-.groovebox-field span {
-  display: block;
-  margin-bottom: 6px;
-  color: var(--groovebox-text-secondary);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-}
-
-.groovebox-field input,
-.groovebox-field select {
-  width: 100%;
-  padding: 10px 12px;
-  border-radius: var(--groovebox-radius-control);
-  border: 1px solid var(--groovebox-border);
-  background: var(--groovebox-surface-bg);
-  color: var(--groovebox-text);
-  font-family: inherit;
-  font-size: 0.875rem;
-}
-
-/* ---- Vault ---- */
-.groovebox-vault-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: flex-end;
-  margin-bottom: 12px;
-}
-
-.groovebox-path-row {
-  margin-bottom: 12px;
-}
-
-.groovebox-path-code {
-  display: block;
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: var(--groovebox-radius-control);
-  background: var(--groovebox-surface-bg);
-  border: 1px solid var(--groovebox-border);
-  font-size: 0.85rem;
-  color: var(--groovebox-text-secondary);
-  overflow-x: auto;
-  font-family: var(--groovebox-font-mono);
-}
-
-.groovebox-tree {
+.drop-panel-zone {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-}
-
-/* ---- Count Pill ---- */
-.groovebox-count-pill {
-  display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 2rem;
-  padding: 4px 10px;
-  border-radius: var(--groovebox-radius-pill);
-  background: var(--groovebox-surface-bg);
+  padding: 32px var(--groovebox-spacing);
+  cursor: pointer;
+  text-align: center;
+  gap: var(--groovebox-spacing-sm);
+}
+
+.drop-panel-icon {
+  color: var(--groovebox-text-secondary);
+  opacity: 0.6;
+}
+
+.drop-panel--drag-over .drop-panel-icon {
+  color: var(--groovebox-accent);
+  opacity: 1;
+}
+
+.drop-panel-text {
+  margin: 0;
   font-size: 0.85rem;
-  font-weight: 700;
-}
-
-/* ---- Library ---- */
-.groovebox-library-meta {
-  margin-bottom: 8px;
-  font-size: 0.88rem;
-}
-
-.groovebox-library-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-height: min(52vh, 520px);
-  overflow: auto;
-  margin-top: 16px;
-}
-
-.groovebox-resource-placeholder {
-  margin-top: 28px;
-  padding-top: 22px;
-  border-top: 1px dashed var(--groovebox-border);
-}
-
-.groovebox-resource-placeholder-title {
-  margin: 0 0 8px;
-  font-size: 0.95rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-
-/* ---- Transport ---- */
-.groovebox-transport-card {
-  border-radius: 20px;
-  padding: 14px;
-  background: var(--groovebox-surface-bg);
-  border: 1px solid var(--groovebox-border);
-  min-width: 0;
-  max-width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 14px;
-}
-
-.groovebox-transport-actions {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.groovebox-transport-meta {
-  display: grid;
-  grid-template-columns: 110px repeat(2, 1fr);
-  gap: 12px;
-  align-items: end;
-  margin-bottom: 12px;
-}
-
-.groovebox-transport-state {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.groovebox-master-step-grid {
-  display: grid;
-  grid-template-columns: repeat(16, minmax(0, 1fr));
-  gap: 4px;
-  min-width: 0;
-  max-width: 100%;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* ---- Summary Cards ---- */
-.groovebox-summary-card {
-  border-radius: 20px;
-  padding: 14px;
-  background: var(--groovebox-surface-bg);
-  border: 1px solid var(--groovebox-border);
-  min-width: 0;
-  max-width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 14px;
-}
-
-.groovebox-summary-card--compact {
-  padding: 10px 14px;
-  min-height: 56px;
-}
-
-.groovebox-pattern-json {
-  display: none;
-}
-
-.groovebox-channels {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-/* ---- Markdown Editor ---- */
-.groovebox-markdown-editor {
-  width: 100%;
-  min-height: 320px;
-  padding: 16px;
-  resize: vertical;
-  font-family: var(--groovebox-font-mono);
-  font-size: 0.88rem;
   line-height: 1.5;
-  background: var(--groovebox-surface-bg);
+}
+
+.drop-panel-url-section {
+  margin-top: var(--groovebox-spacing-sm);
+}
+
+.drop-panel-files {
+  margin-top: var(--groovebox-spacing);
+  border-top: 1px solid var(--groovebox-border-light);
+  padding-top: var(--groovebox-spacing);
+}
+
+.drop-panel-files-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--groovebox-spacing-sm);
+}
+
+.drop-panel-files-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.drop-panel-file-item {
+  display: flex;
+  align-items: center;
+  gap: var(--groovebox-spacing-sm);
+  padding: 8px 10px;
+  border-radius: var(--groovebox-radius-sm);
+  background: var(--groovebox-bg);
+  border: 1px solid var(--groovebox-border-light);
+}
+
+.drop-panel-file-preview {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.drop-panel-file-icon {
+  font-size: 1.2rem;
+  width: 28px;
+  text-align: center;
+  color: var(--groovebox-text-secondary);
+}
+
+.drop-panel-file-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.drop-panel-file-name {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.drop-panel-file-size {
+  font-size: 0.7rem;
+}
+
+.drop-panel-file-remove {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  opacity: 0.5;
+}
+
+.drop-panel-file-remove:hover {
+  opacity: 1;
+}
+
+.drop-panel-actions {
+  display: flex;
+  gap: var(--groovebox-spacing-sm);
+  margin-top: var(--groovebox-spacing);
+  flex-wrap: wrap;
+}
+
+.drop-panel-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.drop-panel-processing {
+  margin-top: var(--groovebox-spacing-sm);
+}
+
+/* ─── Songscribe Tab ──────────────────────────────────────────── */
+.songscribe-tab {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.songscribe-notation-preview {
+  background: var(--groovebox-bg);
   border: 1px solid var(--groovebox-border);
-  border-radius: var(--groovebox-radius-control);
+  border-radius: var(--groovebox-radius);
+  padding: var(--groovebox-spacing);
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--groovebox-text);
+  margin: 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* ─── Bootstrap Overrides for GitHub Dark ─────────────────────── */
+.groovebox-surface .nav-tabs {
+  border-bottom-color: var(--groovebox-border);
+}
+
+.groovebox-surface .nav-tabs .nav-link {
+  color: var(--groovebox-text-secondary);
+  border: 1px solid transparent;
+  border-top-left-radius: var(--groovebox-radius);
+  border-top-right-radius: var(--groovebox-radius);
+  padding: 8px 16px;
+  font-size: 0.85rem;
+}
+
+.groovebox-surface .nav-tabs .nav-link:hover {
+  border-color: var(--groovebox-border);
   color: var(--groovebox-text);
 }
 
-/* ---- Dark Mode ---- */
-@media (prefers-color-scheme: dark) {
-  .groovebox-surface {
-    --groovebox-bg: #1a1a2e;
-    --groovebox-text: #e0e0e0;
-    --groovebox-text-secondary: #a0a0c0;
-    --groovebox-text-tertiary: #6b6b8a;
-    --groovebox-border: #2a2a4a;
-    --groovebox-surface-bg: #16213e;
-    --groovebox-surface-hover: #2a2a4a;
-    --groovebox-primary: #2e7d64;
-    --groovebox-primary-hover: #236b54;
-    --groovebox-accent: #d4a800;
-    --groovebox-accent-hover: #c49a00;
-    --groovebox-accent-text: #1a1a0e;
-    --groovebox-good: #2dd4bf;
-    --groovebox-danger: #eb5757;
-    --groovebox-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-    --groovebox-shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.28);
+.groovebox-surface .nav-tabs .nav-link.active {
+  color: var(--groovebox-accent);
+  background: var(--groovebox-bg-alt);
+  border-color: var(--groovebox-border);
+  border-bottom-color: var(--groovebox-bg-alt);
+}
+
+.groovebox-surface .nav-tabs .nav-link:disabled {
+  opacity: 0.4;
+}
+
+.groovebox-surface .form-control {
+  background: var(--groovebox-bg);
+  border: 1px solid var(--groovebox-border);
+  color: var(--groovebox-text);
+  font-size: 0.85rem;
+  padding: 8px 12px;
+}
+
+.groovebox-surface .form-control:focus {
+  border-color: var(--groovebox-accent);
+  box-shadow: 0 0 0 2px var(--groovebox-accent-dim);
+  background: var(--groovebox-bg);
+  color: var(--groovebox-text);
+}
+
+.groovebox-surface .form-control::placeholder {
+  color: var(--groovebox-text-muted);
+}
+
+.groovebox-surface .form-control:read-only {
+  background: var(--groovebox-bg-alt);
+  opacity: 0.7;
+}
+
+.groovebox-surface .form-label {
+  color: var(--groovebox-text-secondary);
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+}
+
+.groovebox-surface .input-group .btn {
+  border-color: var(--groovebox-border);
+  color: var(--groovebox-text-secondary);
+  background: var(--groovebox-bg-alt);
+  padding: 6px 12px;
+}
+
+.groovebox-surface .input-group .btn:hover {
+  background: var(--groovebox-bg-hover);
+  color: var(--groovebox-text);
+}
+
+.groovebox-surface .input-group-text {
+  background: var(--groovebox-bg-alt);
+  border-color: var(--groovebox-border);
+  color: var(--groovebox-text-secondary);
+  font-size: 0.85rem;
+}
+
+.groovebox-surface .btn {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  border-radius: var(--groovebox-radius);
+  transition: all var(--groovebox-transition);
+}
+
+.groovebox-surface .btn-sm {
+  padding: 4px 10px;
+  font-size: 0.8rem;
+}
+
+.groovebox-surface .btn-outline-primary {
+  border-color: var(--groovebox-accent);
+  color: var(--groovebox-accent);
+}
+
+.groovebox-surface .btn-outline-primary:hover {
+  background: var(--groovebox-accent-dim);
+  color: var(--groovebox-accent);
+  border-color: var(--groovebox-accent);
+}
+
+.groovebox-surface .btn-outline-secondary {
+  border-color: var(--groovebox-border);
+  color: var(--groovebox-text-secondary);
+}
+
+.groovebox-surface .btn-outline-secondary:hover {
+  background: var(--groovebox-bg-hover);
+  color: var(--groovebox-text);
+  border-color: var(--groovebox-text-secondary);
+}
+
+.groovebox-surface .btn-outline-success {
+  border-color: var(--groovebox-success);
+  color: var(--groovebox-success);
+}
+
+.groovebox-surface .btn-outline-success:hover {
+  background: rgba(63, 185, 80, 0.1);
+  color: var(--groovebox-success);
+  border-color: var(--groovebox-success);
+}
+
+.groovebox-surface .btn-link {
+  color: var(--groovebox-accent);
+  text-decoration: none;
+}
+
+.groovebox-surface .btn-link:hover {
+  color: var(--groovebox-link-hover-color);
+  text-decoration: underline;
+}
+
+.groovebox-surface .alert {
+  border-radius: var(--groovebox-radius);
+  border: 1px solid transparent;
+  padding: var(--groovebox-spacing);
+  font-size: 0.85rem;
+}
+
+.groovebox-surface .alert-warning {
+  background: rgba(210, 153, 34, 0.1);
+  border-color: rgba(210, 153, 34, 0.3);
+  color: var(--groovebox-warning);
+}
+
+.groovebox-surface .alert-danger {
+  background: rgba(248, 81, 73, 0.1);
+  border-color: rgba(248, 81, 73, 0.3);
+  color: var(--groovebox-error);
+}
+
+.groovebox-surface .alert-success {
+  background: rgba(63, 185, 80, 0.1);
+  border-color: rgba(63, 185, 80, 0.3);
+  color: var(--groovebox-success);
+}
+
+.groovebox-surface .badge {
+  font-weight: 500;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: var(--groovebox-radius-sm);
+}
+
+.groovebox-surface .progress {
+  background: var(--groovebox-border-light);
+  border-radius: 2px;
+}
+
+.groovebox-surface .progress-bar {
+  background: var(--groovebox-accent);
+}
+
+.groovebox-surface .text-muted {
+  color: var(--groovebox-text-secondary) !important;
+}
+
+.groovebox-surface .text-success {
+  color: var(--groovebox-success) !important;
+}
+
+.groovebox-surface .text-warning {
+  color: var(--groovebox-warning) !important;
+}
+
+.groovebox-surface code {
+  color: var(--groovebox-accent);
+  font-size: 0.85em;
+}
+
+.groovebox-surface pre {
+  background: var(--groovebox-bg);
+  border: 1px solid var(--groovebox-border);
+  border-radius: var(--groovebox-radius);
+  padding: var(--groovebox-spacing);
+  font-size: 0.8rem;
+  overflow-x: auto;
+}
+
+/* ─── Spacing Utilities ───────────────────────────────────────── */
+.groovebox-surface .gap-1 { gap: 4px; }
+.groovebox-surface .gap-2 { gap: 8px; }
+.groovebox-surface .gap-3 { gap: 12px; }
+.groovebox-surface .gap-4 { gap: 16px; }
+.groovebox-surface .gap-5 { gap: 24px; }
+
+.groovebox-surface .mb-1 { margin-bottom: 4px; }
+.groovebox-surface .mb-2 { margin-bottom: 8px; }
+.groovebox-surface .mb-3 { margin-bottom: 12px; }
+.groovebox-surface .mb-4 { margin-bottom: 16px; }
+.groovebox-surface .mb-5 { margin-bottom: 24px; }
+
+.groovebox-surface .mt-1 { margin-top: 4px; }
+.groovebox-surface .mt-2 { margin-top: 8px; }
+.groovebox-surface .mt-3 { margin-top: 12px; }
+.groovebox-surface .mt-4 { margin-top: 16px; }
+.groovebox-surface .mt-5 { margin-top: 24px; }
+
+.groovebox-surface .me-1 { margin-right: 4px; }
+.groovebox-surface .me-2 { margin-right: 8px; }
+
+.groovebox-surface .ms-1 { margin-left: 4px; }
+.groovebox-surface .ms-2 { margin-left: 8px; }
+
+.groovebox-surface .py-1 { padding-top: 4px; padding-bottom: 4px; }
+.groovebox-surface .py-2 { padding-top: 8px; padding-bottom: 8px; }
+.groovebox-surface .py-3 { padding-top: 12px; padding-bottom: 12px; }
+
+.groovebox-surface .px-1 { padding-left: 4px; padding-right: 4px; }
+.groovebox-surface .px-2 { padding-left: 8px; padding-right: 8px; }
+
+.groovebox-surface .pt-1 { padding-top: 4px; }
+.groovebox-surface .pt-2 { padding-top: 8px; }
+.groovebox-surface .pt-3 { padding-top: 12px; }
+
+/* ─── Scrollbar ───────────────────────────────────────────────── */
+.groovebox-surface ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.groovebox-surface ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.groovebox-surface ::-webkit-scrollbar-thumb {
+  background: var(--groovebox-border);
+  border-radius: 4px;
+}
+
+.groovebox-surface ::-webkit-scrollbar-thumb:hover {
+  background: var(--groovebox-text-muted);
+}
+
+/* ─── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .groovebox-nav {
+    flex-direction: column;
+    gap: var(--groovebox-spacing-sm);
+  }
+
+  .groovebox-nav-links {
+    flex-wrap: wrap;
+  }
+
+  .groovebox-pages {
+    padding: var(--groovebox-spacing);
   }
 }

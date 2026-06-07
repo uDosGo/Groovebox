@@ -3,8 +3,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import httpx
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
@@ -53,6 +54,7 @@ def _load_interchange_json(name: str) -> dict[str, object]:
         raise HTTPException(status_code=404, detail=f"Missing interchange/{name}")
     return json.loads(path.read_text(encoding="utf-8"))
 
+
 app = FastAPI(title="GrooveBox888", version=APP_VERSION)
 app.mount("/static", StaticFiles(directory=STATIC_ROOT), name="static")
 
@@ -77,6 +79,9 @@ class PatternSavePayload(BaseModel):
     markdown: str
 
 
+# ── Health & Bootstrap ────────────────────────────────────────────
+
+
 @app.get("/api/health")
 def health() -> dict[str, str]:
     return {"status": "ok", "service": "groovebox888", "version": APP_VERSION}
@@ -86,6 +91,9 @@ def health() -> dict[str, str]:
 def bootstrap() -> dict[str, object]:
     """Songscribe + Docker hints from startup (env set by run-groovebox-ui.sh) and live status."""
     return bootstrap_status(REPO_ROOT)
+
+
+# ── Songscribe Docker Control ─────────────────────────────────────
 
 
 @app.get("/api/songscribe/docker")
@@ -148,9 +156,93 @@ def songscribe_runtime_stop_route(request: Request, mode: str = "local") -> dict
     return songscribe_runtime_stop(REPO_ROOT, mode=mode)
 
 
+# ── Songscribe Proxy (for in-tab transcription) ───────────────────
+
+
+@app.api_route("/api/songscribe/{path:path}", methods=["GET", "POST", "PUT", "DELETE", "HEAD"])
+async def songscribe_proxy(request: Request, path: str):
+    """Proxy requests to the Songscribe backend (127.0.0.1:3000)."""
+    target_url = f"http://127.0.0.1:3000/{path}"
+    query = str(request.query_params)
+    if query:
+        target_url += f"?{query}"
+
+    body = await request.body()
+    headers = dict(request.headers)
+    # Remove hop-by-hop headers
+    for hop in ("host", "connection", "content-length", "transfer-encoding"):
+        headers.pop(hop, None)
+
+    try:
+        async with httpx.AsyncClient(timeout=180.0) as client:
+            resp = await client.request(
+                method=request.method,
+                url=target_url,
+                headers=headers,
+                content=body,
+            )
+        return JSONResponse(
+            content=resp.json() if resp.headers.get("content-type", "").startswith("application/json") else resp.text,
+            status_code=resp.status_code,
+            headers=dict(resp.headers),
+        )
+    except httpx.ConnectError:
+        raise HTTPException(status_code=502, detail="Songscribe backend not reachable on 127.0.0.1:3000")
+    except httpx.TimeoutException:
+        raise HTTPException(status_code=504, detail="Songscribe backend timed out")
+
+
+# ── Workspaces ────────────────────────────────────────────────────
+
+
 @app.get("/api/workspaces")
 def workspaces() -> dict[str, object]:
     return {"roots": load_workspace_config()}
+
+
+@app.get("/api/workspaces/roots")
+def workspaces_roots() -> dict[str, object]:
+    """Alias for /api/workspaces — returns workspace roots for the surface UI."""
+    return {"roots": load_workspace_config()}
+
+
+@app.get("/api/workspaces/tree")
+def workspace_tree(root_id: str, path: str = "") -> dict[str, object]:
+    try:
+        return list_tree(root_id, path)
+    except KeyError:
+        raise HTTPException(status_code=404, detail="Unknown workspace root")
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="Path not found")
+    except NotADirectoryError:
+        raise HTTPException(status_code=400, detail="Path is not a directory")
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid path")
+
+
+@app.get("/api/workspaces/file")
+def workspace_file(root_id: str, path: str) -> dict[str, object]:
+    try:
+        return read_file(root_id, path)
+    except KeyError:
+        raise HTTPException(status_code=404, detail="Unknown workspace root")
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="File not found")
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid path")
+
+
+@app.put("/api/workspaces/file")
+def workspace_file_write(payload: WorkspaceWritePayload) -> dict[str, object]:
+    try:
+        return write_file(payload.root_id, payload.path, payload.content)
+    except KeyError:
+        raise HTTPException(status_code=404, detail="Unknown workspace root")
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid path")
+
+
+# ── Patterns ──────────────────────────────────────────────────────
 
 
 @app.get("/api/patterns")
@@ -190,40 +282,7 @@ def pattern_save(payload: PatternSavePayload) -> dict[str, object]:
     }
 
 
-@app.get("/api/workspaces/tree")
-def workspace_tree(root_id: str, path: str = "") -> dict[str, object]:
-    try:
-        return list_tree(root_id, path)
-    except KeyError:
-        raise HTTPException(status_code=404, detail="Unknown workspace root")
-    except FileNotFoundError:
-        raise HTTPException(status_code=404, detail="Path not found")
-    except NotADirectoryError:
-        raise HTTPException(status_code=400, detail="Path is not a directory")
-    except ValueError:
-        raise HTTPException(status_code=400, detail="Invalid path")
-
-
-@app.get("/api/workspaces/file")
-def workspace_file(root_id: str, path: str) -> dict[str, object]:
-    try:
-        return read_file(root_id, path)
-    except KeyError:
-        raise HTTPException(status_code=404, detail="Unknown workspace root")
-    except FileNotFoundError:
-        raise HTTPException(status_code=404, detail="File not found")
-    except ValueError:
-        raise HTTPException(status_code=400, detail="Invalid path")
-
-
-@app.put("/api/workspaces/file")
-def workspace_file_write(payload: WorkspaceWritePayload) -> dict[str, object]:
-    try:
-        return write_file(payload.root_id, payload.path, payload.content)
-    except KeyError:
-        raise HTTPException(status_code=404, detail="Unknown workspace root")
-    except ValueError:
-        raise HTTPException(status_code=400, detail="Invalid path")
+# ── Spec / Compile / Playback ─────────────────────────────────────
 
 
 @app.post("/api/spec/parse")
@@ -242,6 +301,9 @@ def playback_preview(payload: MarkdownPayload) -> dict[str, object]:
 def spec_compile(payload: MarkdownPayload) -> dict[str, object]:
     parsed = parse_markdown_spec(payload.markdown)
     return compile_pattern_document(parsed)
+
+
+# ── Exports ───────────────────────────────────────────────────────
 
 
 @app.post("/api/exports/midi")
@@ -335,6 +397,9 @@ def musicxml_export_file(payload: MarkdownPayload) -> dict[str, object]:
     }
 
 
+# ── Songscribe Status & Bridge ────────────────────────────────────
+
+
 @app.get("/api/songscribe/status")
 def songscribe() -> dict[str, object]:
     return songscribe_status(REPO_ROOT)
@@ -351,6 +416,9 @@ def songscribe_bridge(payload: MarkdownPayload) -> dict[str, object]:
     }
 
 
+# ── Sessions ──────────────────────────────────────────────────────
+
+
 @app.get("/api/sessions")
 def sessions() -> dict[str, object]:
     return {"sessions": list_sessions()}
@@ -361,6 +429,9 @@ def session_save(payload: SessionSavePayload) -> dict[str, object]:
     parsed = parse_markdown_spec(payload.markdown)
     compiled = compile_pattern_document(parsed)
     return save_session(payload.name, compiled)
+
+
+# ── Interchange / USXD ────────────────────────────────────────────
 
 
 @app.get("/api/interchange/surface-document")
@@ -375,36 +446,33 @@ def usxd_surface() -> dict[str, object]:
     return _load_interchange_json("usxd-groovebox-panel.json")
 
 
+# ── Index / SPA ───────────────────────────────────────────────────
+
+
 @app.get("/")
 def index() -> FileResponse:
     return FileResponse(STATIC_ROOT / "index.html")
 
 
+# ── Surface Registry ──────────────────────────────────────────────
+
+
 @app.get("/api/surfaces")
 def surfaces() -> dict[str, object]:
-    """Surface registry for UI-Hub discovery — reports Groovebox and Songscribe status."""
+    """Surface registry for UI-Hub discovery — Groovebox now includes Songscribe as a tab."""
     ss = songscribe_status(REPO_ROOT)
     return {
         "surfaces": [
             {
                 "id": "groovebox",
                 "name": "Groovebox",
-                "subtitle": "Music Production",
-                "description": "Vault-driven music specs, Songscribe bridge, and backend-timed playback in one local surface.",
+                "subtitle": "Music Production + Songscribe",
+                "description": "Vault-driven music specs, Songscribe transcription tab, and backend-timed playback in one local surface.",
                 "port": 8888,
                 "color": "#d4a800",
-                "icon": "🎹",
+                "icon": "bi-music-note-beamed",
                 "status": "running",
-            },
-            {
-                "id": "songscribe",
-                "name": "Songscribe",
-                "subtitle": "Music Transcription",
-                "description": "AI-powered music transcription. Transcribe, edit, and export your music notation.",
-                "port": 3000,
-                "color": "#7c3aed",
-                "icon": "🎵",
-                "status": "running" if ss.get("running") else "stopped",
+                "features": ["composer", "vault", "library", "songscribe"],
             },
         ]
     }

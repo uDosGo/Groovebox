@@ -1,6 +1,12 @@
 {
   "roots": [
     {
+      "id": "groovebox",
+      "label": "GrooveBox888",
+      "path": "${family_root}/Groovebox/sessions",
+      "kind": "vault"
+    },
+    {
       "id": "udos-core-binder",
       "label": "uDOS-core/binder",
       "path": "${family_root}/uDOS-core/binder",

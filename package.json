@@ -1,13 +1,29 @@
 {
   "name": "groovebox888",
   "private": true,
-  "version": "2.2.1",
-  "description": "GrooveBox888 — groovebox monorepo root (FastAPI app + optional packages/* for Songscribe-aligned design tokens).",
+  "version": "3.0.0",
+  "description": "GrooveBox888 — React + Bootstrap + GitHub dark theme surface with Songscribe tab",
+  "type": "module",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "docs": "node -e \"console.log('No JS build yet. See docs/groovebox-songscribe-convergence.md')\""
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.13.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.6.3",
+    "vite": "^6.0.0"
   },
   "engines": {
     "node": ">=18"
