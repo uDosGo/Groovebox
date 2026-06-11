@@ -743,3 +743,15 @@ body {
     padding: var(--groovebox-spacing);
   }
 }
+/* ─── NestFrame: Touch target sizing ─── */
+:root {
+  --font-base: 20px;
+  --touch-min: 48px;
+  --space-scale: 1;
+}
+@media (min-width: 1800px) and (min-height: 800px) {
+  :root { --font-base: 32px; --touch-min: 72px; --space-scale: 1.5; }
+}
+@media (max-width: 720px) {
+  :root { --font-base: 16px; --touch-min: 44px; --space-scale: 0.75; }
+}
