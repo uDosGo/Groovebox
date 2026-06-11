@@ -4,6 +4,50 @@
  * Based on uCode2 design patterns (SURFACE_STYLE_GUIDE.md)
  * ============================================ */
 
+/* ─── NestFrame: Focus Visible ──────────────────────────────────── */
+*:focus-visible {
+  outline: 3px solid var(--songscribe-primary, #7c3aed);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (min-width: 1800px) and (min-height: 800px) {
+  *:focus-visible {
+    outline: 6px solid var(--songscribe-primary, #7c3aed);
+    outline-offset: 4px;
+  }
+}
+
+/* ─── NestFrame: Reduced Motion ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── NestFrame: TV / 10-foot Sizing ────────────────────────────── */
+@media (min-width: 1800px) and (min-height: 800px) {
+  .songscribe-surface {
+    font-size: 28px;
+  }
+  .songscribe-page-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+  }
+  .songscribe-btn {
+    padding: 16px 28px;
+    font-size: 22px;
+  }
+  .songscribe-nav-link {
+    padding: 12px 24px;
+    font-size: 20px;
+  }
+  .songscribe-card {
+    padding: 32px 40px;
+  }
+}
+
 /* ---- CSS Custom Properties ---- */
 .songscribe-surface {
   --songscribe-bg: #ffffff;

@@ -4,6 +4,50 @@
    Uses Bootstrap Icons (no emoji).
    ═══════════════════════════════════════════════════════════════════ */
 
+/* ─── NestFrame: Focus Visible ──────────────────────────────────── */
+*:focus-visible {
+  outline: 3px solid var(--bs-primary, #58a6ff);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (min-width: 1800px) and (min-height: 800px) {
+  *:focus-visible {
+    outline: 6px solid var(--bs-primary, #58a6ff);
+    outline-offset: 4px;
+  }
+}
+
+/* ─── NestFrame: Reduced Motion ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── NestFrame: TV / 10-foot Sizing ────────────────────────────── */
+@media (min-width: 1800px) and (min-height: 800px) {
+  .groovebox-surface {
+    --groovebox-font-size: 24px;
+  }
+  .groovebox-nav-link {
+    padding: 12px 24px;
+    font-size: 20px;
+  }
+  .groovebox-btn {
+    padding: 12px 24px;
+    font-size: 20px;
+  }
+  .groovebox-page-title {
+    font-size: 2rem;
+  }
+  .groovebox-lede {
+    font-size: 1.2rem;
+  }
+}
+
 /* ─── Bootstrap Variable Overrides (GitHub Dark Theme) ─────────── */
 .groovebox-surface {
   --bs-body-bg: #0d1117;
