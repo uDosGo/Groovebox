@@ -1,50 +1,81 @@
-/* ============================================
- * Songscribe Surface — USXD ProseUI Style
- * Companion surface for Groovebox
- * Based on uCode2 design patterns (SURFACE_STYLE_GUIDE.md)
- * ============================================ */
+/* ═══════════════════════════════════════════════════════════════════
+   Songscribe Surface — USX Standard ProseUI Style
+   Companion surface for Groovebox
+   ═══════════════════════════════════════════════════════════════════ */
 
-/* ─── NestFrame: Focus Visible ──────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════
+   USX Standard — NestFrame Compliance Layer
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── USX: Design Tokens (NestFrame) ────────────────────────────── */
+:root {
+  --font-base: 16px;
+  --touch-min: 48px;
+  --space-scale: 1;
+  --focus-ring: var(--songscribe-primary, #7c3aed);
+}
+
+@media (min-width: 1800px) and (min-height: 800px) {
+  :root {
+    --font-base: 32px;
+    --touch-min: 72px;
+    --space-scale: 1.5;
+  }
+}
+
+@media (max-width: 720px) {
+  :root {
+    --font-base: 16px;
+    --touch-min: 44px;
+    --space-scale: 0.75;
+  }
+}
+
+/* ─── USX: Focus Visible ────────────────────────────────────────── */
 *:focus-visible {
-  outline: 3px solid var(--songscribe-primary, #7c3aed);
+  outline: 4px solid var(--focus-ring);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 @media (min-width: 1800px) and (min-height: 800px) {
   *:focus-visible {
-    outline: 6px solid var(--songscribe-primary, #7c3aed);
+    outline: 6px solid var(--focus-ring);
     outline-offset: 4px;
   }
 }
 
-/* ─── NestFrame: Reduced Motion ─────────────────────────────────── */
+/* ─── USX: Reduced Motion ───────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-/* ─── NestFrame: TV / 10-foot Sizing ────────────────────────────── */
+/* ─── USX: TV / 10-foot Sizing ──────────────────────────────────── */
 @media (min-width: 1800px) and (min-height: 800px) {
   .songscribe-surface {
-    font-size: 28px;
+    font-size: 32px;
   }
   .songscribe-page-title {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
   }
   .songscribe-btn {
     padding: 16px 28px;
-    font-size: 22px;
+    font-size: 24px;
   }
   .songscribe-nav-link {
-    padding: 12px 24px;
-    font-size: 20px;
+    padding: 16px 28px;
+    font-size: 24px;
   }
   .songscribe-card {
     padding: 32px 40px;
+  }
+  .songscribe-nav {
+    padding: 16px 24px;
   }
 }
 
@@ -320,15 +351,31 @@
     --songscribe-shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.28);
   }
 }
-/* ─── NestFrame: Touch target sizing ─── */
-:root {
-  --font-base: 20px;
-  --touch-min: 48px;
-  --space-scale: 1;
+/* ─── USX: Responsive Grid ────────────────────────────────────── */
+.songscribe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
 }
-@media (min-width: 1800px) and (min-height: 800px) {
-  :root { --font-base: 32px; --touch-min: 72px; --space-scale: 1.5; }
+
+/* ─── USX: Prose Max Width ────────────────────────────────────── */
+.songscribe-prose {
+  max-width: 80ch;
 }
-@media (max-width: 720px) {
-  :root { --font-base: 16px; --touch-min: 44px; --space-scale: 0.75; }
+
+/* ─── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .songscribe-nav {
+    padding: 10px 12px;
+  }
+  .songscribe-nav-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .songscribe-card {
+    padding: 16px;
+  }
+  .songscribe-grid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -4,47 +4,82 @@
    Uses Bootstrap Icons (no emoji).
    ═══════════════════════════════════════════════════════════════════ */
 
-/* ─── NestFrame: Focus Visible ──────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════
+   USX Standard — NestFrame Compliance Layer
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── USX: Design Tokens (NestFrame) ────────────────────────────── */
+:root {
+  --font-base: 16px;
+  --touch-min: 48px;
+  --space-scale: 1;
+  --focus-ring: var(--bs-primary, #58a6ff);
+}
+
+@media (min-width: 1800px) and (min-height: 800px) {
+  :root {
+    --font-base: 32px;
+    --touch-min: 72px;
+    --space-scale: 1.5;
+  }
+}
+
+@media (max-width: 720px) {
+  :root {
+    --font-base: 16px;
+    --touch-min: 44px;
+    --space-scale: 0.75;
+  }
+}
+
+/* ─── USX: Focus Visible ────────────────────────────────────────── */
 *:focus-visible {
-  outline: 3px solid var(--bs-primary, #58a6ff);
+  outline: 4px solid var(--focus-ring);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 @media (min-width: 1800px) and (min-height: 800px) {
   *:focus-visible {
-    outline: 6px solid var(--bs-primary, #58a6ff);
+    outline: 6px solid var(--focus-ring);
     outline-offset: 4px;
   }
 }
 
-/* ─── NestFrame: Reduced Motion ─────────────────────────────────── */
+/* ─── USX: Reduced Motion ───────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-/* ─── NestFrame: TV / 10-foot Sizing ────────────────────────────── */
+/* ─── USX: TV / 10-foot Sizing ──────────────────────────────────── */
 @media (min-width: 1800px) and (min-height: 800px) {
   .groovebox-surface {
-    --groovebox-font-size: 24px;
+    --groovebox-font-size: 32px;
   }
   .groovebox-nav-link {
-    padding: 12px 24px;
-    font-size: 20px;
+    padding: 16px 28px;
+    font-size: 24px;
   }
   .groovebox-btn {
-    padding: 12px 24px;
-    font-size: 20px;
+    padding: 16px 28px;
+    font-size: 24px;
   }
   .groovebox-page-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   .groovebox-lede {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+  }
+  .groovebox-card {
+    padding: 32px;
+  }
+  .groovebox-nav {
+    padding: 16px 24px;
   }
 }
 
@@ -104,7 +139,7 @@ body {
   --groovebox-success: #3fb950;
   --groovebox-warning: #d29922;
   --groovebox-error: #f85149;
-  --groovebox-font-size: 13px;
+  --groovebox-font-size: 14px;
   --groovebox-radius: 6px;
   --groovebox-radius-sm: 4px;
   --groovebox-transition: 150ms ease;
@@ -728,6 +763,13 @@ body {
   background: var(--groovebox-text-muted);
 }
 
+/* ─── USX: Responsive Grid ────────────────────────────────────── */
+.groovebox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--groovebox-spacing);
+}
+
 /* ─── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 640px) {
   .groovebox-nav {
@@ -742,16 +784,8 @@ body {
   .groovebox-pages {
     padding: var(--groovebox-spacing);
   }
-}
-/* ─── NestFrame: Touch target sizing ─── */
-:root {
-  --font-base: 20px;
-  --touch-min: 48px;
-  --space-scale: 1;
-}
-@media (min-width: 1800px) and (min-height: 800px) {
-  :root { --font-base: 32px; --touch-min: 72px; --space-scale: 1.5; }
-}
-@media (max-width: 720px) {
-  :root { --font-base: 16px; --touch-min: 44px; --space-scale: 0.75; }
+
+  .groovebox-grid {
+    grid-template-columns: 1fr;
+  }
 }
