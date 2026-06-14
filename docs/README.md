@@ -1,3 +1,11 @@
+---
+title: "Groovebox Docs (GrooveBox888)"
+status: draft
+last_updated: 2026-04-13T01:20:28+10:00
+category: readme
+tags: [groovebox]
+description: "`/docs` is the **stable reference** lane for the groovebox product (repo **GrooveBox888**). It is **public**, **free ..."
+---
 # Groovebox Docs (GrooveBox888)
 
 `/docs` is the **stable reference** lane for the groovebox product (repo **GrooveBox888**). It is **public**, **free to read**, and aimed at operators and contributors as well as beginners who outgrow the wiki units.

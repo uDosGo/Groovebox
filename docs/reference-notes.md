@@ -1,3 +1,11 @@
+---
+title: "Archived Reference Notes"
+status: draft
+last_updated: 2026-04-13T00:09:52+10:00
+category: reference
+tags: [groovebox, reference]
+description: "These are the most useful archived v1 reference surfaces found while"
+---
 # Archived Reference Notes
 
 These are the most useful archived v1 reference surfaces found while

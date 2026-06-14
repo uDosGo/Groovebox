@@ -1,3 +1,11 @@
+---
+title: "Groovebox product checklist"
+status: draft
+last_updated: 2026-04-13T00:09:52+10:00
+category: documentation
+tags: [groovebox]
+description: "Use this as the **release and operator gate** for `uDOS-groovebox`: it turns the"
+---
 # Groovebox product checklist
 
 Use this as the **release and operator gate** for `uDOS-groovebox`: it turns the

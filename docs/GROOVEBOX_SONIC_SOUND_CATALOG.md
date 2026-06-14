@@ -1,3 +1,11 @@
+---
+title: "GrooveBox888 ↔ Sonic device DB — sound catalog alignment"
+status: draft
+last_updated: 2026-04-13T01:20:28+10:00
+category: documentation
+tags: [audio, cli, groovebox, sonic]
+description: "This document maps **GrooveBox888** sound-library concepts to **Sonic v4** inventory style ([`SONIC_v4_device-databas..."
+---
 # GrooveBox888 ↔ Sonic device DB — sound catalog alignment
 
 This document maps **GrooveBox888** sound-library concepts to **Sonic v4** inventory style ([`SONIC_v4_device-database`](https://github.com/fredporter/uDosDev/blob/main/docs/specs/v4/SONIC_v4_device-database.md)) and family **`~/.udos/`** paths ([Sonic `local-artifact-paths.md`](https://github.com/fredporter/SonicScrewdriver/blob/main/docs/local-artifact-paths.md)).

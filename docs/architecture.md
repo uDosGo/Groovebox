@@ -1,3 +1,11 @@
+---
+title: "uDOS-groovebox Architecture"
+status: draft
+last_updated: 2026-04-13T00:09:52+10:00
+category: architecture
+tags: [architecture, groovebox]
+description: "`uDOS-groovebox` is the public sequencing lane for music-oriented artifacts in"
+---
 # uDOS-groovebox Architecture
 
 `uDOS-groovebox` is the public sequencing lane for music-oriented artifacts in

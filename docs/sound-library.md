@@ -1,3 +1,11 @@
+---
+title: "Sound library and artifact paths"
+status: draft
+last_updated: 2026-04-13T01:20:28+10:00
+category: documentation
+tags: [groovebox]
+description: "This document is the **canonical map** for pattern metadata, samples, presets,"
+---
 # Sound library and artifact paths
 
 This document is the **canonical map** for pattern metadata, samples, presets,

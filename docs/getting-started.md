@@ -1,3 +1,11 @@
+---
+title: "Getting Started"
+status: draft
+last_updated: 2026-04-13T00:21:46+10:00
+category: tutorial
+tags: [groovebox, tutorial]
+description: "**Fastest path:** [`QUICKSTART.md`](../QUICKSTART.md) — then return here for Songscribe and Docker detail."
+---
 # Getting Started
 
 **Fastest path:** [`QUICKSTART.md`](../QUICKSTART.md) — then return here for Songscribe and Docker detail.

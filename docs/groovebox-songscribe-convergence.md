@@ -1,3 +1,11 @@
+---
+title: "Groovebox ↔ Songscribe convergence (UI, library, rights)"
+status: draft
+last_updated: 2026-04-13T00:09:52+10:00
+category: documentation
+tags: [audio, groovebox]
+description: "This document frames **intended** integration work. It is a roadmap, not a"
+---
 # Groovebox ↔ Songscribe convergence (UI, library, rights)
 
 This document frames **intended** integration work. It is a roadmap, not a

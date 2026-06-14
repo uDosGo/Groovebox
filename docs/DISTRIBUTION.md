@@ -1,3 +1,11 @@
+---
+title: "Distribution — GrooveBox888 (Sonic-aligned)"
+status: draft
+last_updated: 2026-04-13T01:20:28+10:00
+category: documentation
+tags: [groovebox]
+description: "GrooveBox888 follows the same **family disk contract** as **SonicScrewdriver** ([`docs/local-artifact-paths`](https:/..."
+---
 # Distribution — GrooveBox888 (Sonic-aligned)
 
 GrooveBox888 follows the same **family disk contract** as **SonicScrewdriver** ([`docs/local-artifact-paths`](https://github.com/fredporter/SonicScrewdriver/blob/main/docs/local-artifact-paths.md), [uDos `foundation-distribution`](https://github.com/fredporter/uDosDev/blob/main/docs/foundation-distribution.md) when published).

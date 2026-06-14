@@ -1,3 +1,11 @@
+---
+title: "Groovebox Examples"
+status: draft
+last_updated: 2026-04-13T00:09:52+10:00
+category: documentation
+tags: [groovebox]
+description: "The initial examples focus on the smallest public artifacts needed to discuss"
+---
 # Groovebox Examples
 
 The initial examples focus on the smallest public artifacts needed to discuss

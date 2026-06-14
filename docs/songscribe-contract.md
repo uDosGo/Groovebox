@@ -1,3 +1,11 @@
+---
+title: "Songscribe processing contract"
+status: draft
+last_updated: 2026-04-13T00:09:52+10:00
+category: documentation
+tags: [audio, groovebox]
+description: "Groovebox integrates **Songscribe** in two ways:"
+---
 # Songscribe processing contract
 
 Groovebox integrates **Songscribe** in two ways:

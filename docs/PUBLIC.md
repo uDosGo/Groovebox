@@ -1,3 +1,11 @@
+---
+title: "Public, free, open-source posture"
+status: draft
+last_updated: 2026-04-13T01:20:28+10:00
+category: documentation
+tags: [groovebox]
+description: "**GrooveBox888** is **MIT-licensed** ([`LICENSE`](../LICENSE)). You may use, study, modify, and distribute it under t..."
+---
 # Public, free, open-source posture
 
 **GrooveBox888** is **MIT-licensed** ([`LICENSE`](../LICENSE)). You may use, study, modify, and distribute it under those terms.

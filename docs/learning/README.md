@@ -1,3 +1,11 @@
+---
+title: "Learning intake — GrooveBox888 (Sonic-style hub)"
+status: draft
+last_updated: 2026-04-13T01:20:28+10:00
+category: readme
+tags: [groovebox]
+description: "This page is the **public, beginner-friendly** map for the repo. It mirrors how sibling tools like **SonicScrewdriver..."
+---
 # Learning intake — GrooveBox888 (Sonic-style hub)
 
 This page is the **public, beginner-friendly** map for the repo. It mirrors how sibling tools like **SonicScrewdriver** expose **QUICKSTART → docs hub → wiki/units → family specs**, without requiring a private monorepo checkout.

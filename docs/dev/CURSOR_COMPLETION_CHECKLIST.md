@@ -1,3 +1,11 @@
+---
+title: "Cursor completion — GrooveBox888"
+status: draft
+last_updated: 2026-04-13T00:17:27+10:00
+category: documentation
+tags: [groovebox]
+description: "Before merging a substantive change:"
+---
 # Cursor completion — GrooveBox888
 
 Before merging a substantive change:

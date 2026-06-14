@@ -1,3 +1,11 @@
+---
+title: "Docker posture (Groovebox)"
+status: draft
+last_updated: 2026-04-13T00:09:52+10:00
+category: documentation
+tags: [deployment, docker, groovebox]
+description: "Optional compatibility services for this repo are registered in"
+---
 # Docker posture (Groovebox)
 
 ## Post-08 O3 (family lifecycle registry)

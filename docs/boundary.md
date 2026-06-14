@@ -1,3 +1,11 @@
+---
+title: "uDOS-groovebox Boundary"
+status: draft
+last_updated: 2026-04-13T00:09:52+10:00
+category: documentation
+tags: [groovebox]
+description: "`uDOS-groovebox` owns:"
+---
 # uDOS-groovebox Boundary
 
 `uDOS-groovebox` owns:
