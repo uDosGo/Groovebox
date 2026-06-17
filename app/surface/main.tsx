@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { GrooveboxSurface } from './GrooveboxSurface';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import '@usx/styles';
 import './styles/groovebox-surface.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

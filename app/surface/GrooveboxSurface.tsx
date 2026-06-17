@@ -7,6 +7,7 @@ import { GrooveboxPlayback } from './GrooveboxPlayback';
 import { GrooveboxExports } from './GrooveboxExports';
 import { GrooveboxSongscribeBridge } from './GrooveboxSongscribeBridge';
 import { SongscribeTab } from './components/SongscribeTab';
+import { GrooveboxFilePicker } from './GrooveboxFilePicker';
 import { useGrooveboxAPI } from './hooks/useGrooveboxAPI';
 import './styles/groovebox-surface.css';
 
@@ -14,6 +15,7 @@ type GrooveboxPage = 'composer' | 'vault' | 'library' | 'overview' | 'songscribe
 
 export function GrooveboxSurface() {
   const [page, setPage] = useState<GrooveboxPage>('composer');
+  const [filePickerOpen, setFilePickerOpen] = useState(false);
   const {
     bootstrapStatus,
     loading,
@@ -31,6 +33,13 @@ export function GrooveboxSurface() {
     }
   }, []);
 
+  const handleSelectFile = useCallback((rootId: string, path: string, content: string) => {
+    // Dispatch custom event so composer can pick up the file content
+    window.dispatchEvent(new CustomEvent('groovebox:load-file', {
+      detail: { rootId, path, content },
+    }));
+  }, []);
+
   return (
     <div className="groovebox-surface">
       <GrooveboxNav
@@ -39,31 +48,42 @@ export function GrooveboxSurface() {
         songscribeRunning={songscribeRunning}
         songscribeCloned={songscribeCloned}
         songscribeUrl={songscribeUrl}
+        onToggleFilePicker={() => setFilePickerOpen(prev => !prev)}
+        filePickerOpen={filePickerOpen}
       />
 
-      <div className="groovebox-pages">
-        {page === 'overview' && (
-          <GrooveboxSongscribeBridge
-            bootstrapStatus={bootstrapStatus}
-            onRefresh={loadBootstrapStatus}
+      <div className="groovebox-body">
+        {filePickerOpen && (
+          <GrooveboxFilePicker
+            onSelectFile={handleSelectFile}
+            onClose={() => setFilePickerOpen(false)}
           />
         )}
-        {page === 'vault' && <GrooveboxVault />}
-        {page === 'library' && <GrooveboxLibrary />}
-        {page === 'songscribe' && (
-          <SongscribeTab
-            songscribeRunning={songscribeRunning}
-            songscribeUrl={songscribeUrl}
-            onNavigateToGroovebox={() => setPage('composer')}
-          />
-        )}
-        {page === 'composer' && (
-          <>
-            <GrooveboxComposer />
-            <GrooveboxPlayback />
-            <GrooveboxExports />
-          </>
-        )}
+
+        <div className="groovebox-pages">
+          {page === 'overview' && (
+            <GrooveboxSongscribeBridge
+              bootstrapStatus={bootstrapStatus}
+              onRefresh={loadBootstrapStatus}
+            />
+          )}
+          {page === 'vault' && <GrooveboxVault />}
+          {page === 'library' && <GrooveboxLibrary />}
+          {page === 'songscribe' && (
+            <SongscribeTab
+              songscribeRunning={songscribeRunning}
+              songscribeUrl={songscribeUrl}
+              onNavigateToGroovebox={() => setPage('composer')}
+            />
+          )}
+          {page === 'composer' && (
+            <>
+              <GrooveboxComposer />
+              <GrooveboxPlayback />
+              <GrooveboxExports />
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

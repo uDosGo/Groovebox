@@ -6,6 +6,8 @@ interface GrooveboxNavProps {
   songscribeRunning: boolean;
   songscribeCloned: boolean;
   songscribeUrl: string;
+  onToggleFilePicker?: () => void;
+  filePickerOpen?: boolean;
 }
 
 const NAV_ITEMS = [
@@ -22,6 +24,8 @@ export function GrooveboxNav({
   songscribeRunning,
   songscribeCloned,
   songscribeUrl,
+  onToggleFilePicker,
+  filePickerOpen,
 }: GrooveboxNavProps) {
   return (
     <header className="groovebox-nav" aria-label="Main">
@@ -53,6 +57,16 @@ export function GrooveboxNav({
             </button>
           ))}
         </nav>
+        {onToggleFilePicker && (
+          <button
+            className={`groovebox-nav-link groovebox-nav-filepicker-btn${filePickerOpen ? ' is-active' : ''}`}
+            onClick={onToggleFilePicker}
+            title="Toggle file picker sidebar"
+            aria-label="Toggle file picker"
+          >
+            <i className="bi bi-folder-symlink" />
+          </button>
+        )}
       </div>
     </header>
   );

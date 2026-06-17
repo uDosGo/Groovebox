@@ -139,7 +139,6 @@ body {
   --groovebox-success: #3fb950;
   --groovebox-warning: #d29922;
   --groovebox-error: #f85149;
-  --groovebox-font-size: 14px;
   --groovebox-radius: 6px;
   --groovebox-radius-sm: 4px;
   --groovebox-transition: 150ms ease;
@@ -155,7 +154,6 @@ body {
   height: 100vh;
   background: var(--groovebox-bg);
   color: var(--groovebox-text);
-  font-size: var(--groovebox-font-size);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   overflow: hidden;
 }
@@ -761,6 +759,245 @@ body {
 
 .groovebox-surface ::-webkit-scrollbar-thumb:hover {
   background: var(--groovebox-text-muted);
+}
+
+/* ─── Body Layout (sidebar + pages) ──────────────────────────── */
+.groovebox-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ─── File Picker Sidebar ────────────────────────────────────── */
+.groovebox-filepicker {
+  width: 280px;
+  min-width: 280px;
+  background: var(--groovebox-bg-alt);
+  border-right: 1px solid var(--groovebox-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-size: 0.85rem;
+}
+
+.groovebox-filepicker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--groovebox-border);
+  flex-shrink: 0;
+}
+
+.groovebox-filepicker-title {
+  font-weight: 600;
+  color: var(--groovebox-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.groovebox-filepicker-close {
+  background: none;
+  border: none;
+  color: var(--groovebox-text-secondary);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--groovebox-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--groovebox-transition);
+}
+
+.groovebox-filepicker-close:hover {
+  color: var(--groovebox-text);
+  background: var(--groovebox-bg-hover);
+}
+
+/* Root selector */
+.groovebox-filepicker-roots {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.groovebox-filepicker-root-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--groovebox-radius);
+  background: transparent;
+  color: var(--groovebox-text);
+  cursor: pointer;
+  transition: all var(--groovebox-transition);
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.groovebox-filepicker-root-btn:hover {
+  background: var(--groovebox-bg-hover);
+  border-color: var(--groovebox-border);
+}
+
+.groovebox-filepicker-root-btn i {
+  color: var(--groovebox-accent);
+  font-size: 1.1rem;
+}
+
+.groovebox-filepicker-root-btn span {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.groovebox-filepicker-root-path {
+  font-size: 0.75rem;
+  color: var(--groovebox-text-muted);
+  flex: none;
+  max-width: 120px;
+}
+
+/* Breadcrumb */
+.groovebox-filepicker-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--groovebox-border);
+  flex-shrink: 0;
+  font-size: 0.8rem;
+}
+
+.groovebox-filepicker-breadcrumb-btn {
+  background: none;
+  border: none;
+  color: var(--groovebox-text-secondary);
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: var(--groovebox-radius-sm);
+  display: flex;
+  align-items: center;
+  transition: all var(--groovebox-transition);
+}
+
+.groovebox-filepicker-breadcrumb-btn:hover {
+  color: var(--groovebox-accent);
+  background: var(--groovebox-bg-hover);
+}
+
+.groovebox-filepicker-breadcrumb-label {
+  font-weight: 600;
+  color: var(--groovebox-text);
+}
+
+.groovebox-filepicker-breadcrumb-sep {
+  color: var(--groovebox-text-muted);
+}
+
+.groovebox-filepicker-breadcrumb-path {
+  color: var(--groovebox-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* File tree */
+.groovebox-filepicker-tree {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 0;
+}
+
+.groovebox-filepicker-tree-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  color: var(--groovebox-text);
+  cursor: pointer;
+  transition: background var(--groovebox-transition);
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.groovebox-filepicker-tree-item:hover {
+  background: var(--groovebox-bg-hover);
+}
+
+.groovebox-filepicker-tree-item i {
+  color: var(--groovebox-text-secondary);
+  font-size: 0.9rem;
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.groovebox-filepicker-tree-item span {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.groovebox-filepicker-tree-back {
+  color: var(--groovebox-text-secondary);
+  font-style: italic;
+}
+
+.groovebox-filepicker-tree-back i {
+  color: var(--groovebox-text-muted);
+}
+
+.groovebox-filepicker-tree-size {
+  font-size: 0.7rem;
+  color: var(--groovebox-text-muted);
+  flex: none;
+  margin-left: auto;
+}
+
+.groovebox-filepicker-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 12px;
+  color: var(--groovebox-text-secondary);
+  font-size: 0.8rem;
+}
+
+.groovebox-filepicker-empty {
+  padding: 16px 12px;
+  color: var(--groovebox-text-muted);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.groovebox-filepicker-loading .spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Nav filepicker toggle button */
+.groovebox-nav-filepicker-btn {
+  margin-left: auto;
 }
 
 /* ─── USX: Responsive Grid ────────────────────────────────────── */
