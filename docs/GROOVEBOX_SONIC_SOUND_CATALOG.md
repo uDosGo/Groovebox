@@ -1,18 +1,18 @@
 ---
-title: "GrooveBox888 ↔ Sonic device DB — sound catalog alignment"
+title: "Groovebox ↔ Sonic device DB — sound catalog alignment"
 status: draft
 last_updated: 2026-04-13T01:20:28+10:00
 category: documentation
 tags: [audio, cli, groovebox, sonic]
-description: "This document maps **GrooveBox888** sound-library concepts to **Sonic v4** inventory style ([`SONIC_v4_device-databas..."
+description: "This document maps **Groovebox** sound-library concepts to **Sonic v4** inventory style ([`SONIC_v4_device-databas..."
 ---
-# GrooveBox888 ↔ Sonic device DB — sound catalog alignment
+# Groovebox ↔ Sonic device DB — sound catalog alignment
 
-This document maps **GrooveBox888** sound-library concepts to **Sonic v4** inventory style ([`SONIC_v4_device-database`](https://github.com/fredporter/uDosDev/blob/main/docs/specs/v4/SONIC_v4_device-database.md)) and family **`~/.udos/`** paths ([Sonic `local-artifact-paths.md`](https://github.com/fredporter/SonicScrewdriver/blob/main/docs/local-artifact-paths.md)).
+This document maps **Groovebox** sound-library concepts to **Sonic v4** inventory style ([`SONIC_v4_device-database`](https://github.com/fredporter/uDosDev/blob/main/docs/specs/v4/SONIC_v4_device-database.md)) and family **`~/.udos/`** paths ([Sonic `local-artifact-paths.md`](https://github.com/fredporter/SonicScrewdriver/blob/main/docs/local-artifact-paths.md)).
 
 ## Mental model
 
-| Sonic (hardware) | GrooveBox888 (sound) |
+| Sonic (hardware) | Groovebox (sound) |
 | --- | --- |
 | `devices` rows — one machine | **Sound sets** / **kits** — one logical instrument or drum palette |
 | `manufacturer` / `model` | **`lineage.style`** / **`lineage.era`** — *educational* labels (e.g. 808-style drums, 90s groovebox-style), not product endorsements |
@@ -20,7 +20,7 @@ This document maps **GrooveBox888** sound-library concepts to **Sonic v4** inven
 | SQLite `device.db` | **JSON** in-repo (`src/sample-bank.json`, `src/synth-presets.json`) + optional **manifest** under library root |
 | Community / provenance | **Free and open-source** samples first; CC0 / CC-BY / SPDX in metadata |
 
-GrooveBox888 does **not** write into `~/.udos/sonic/device.db`. Alignment is **spec / path / tagging** so operators and future tooling can correlate “this laptop (Sonic)” with “this sound bundle (Groovebox)”.
+Groovebox does **not** write into `~/.udos/sonic/device.db`. Alignment is **spec / path / tagging** so operators and future tooling can correlate “this laptop (Sonic)” with “this sound bundle (Groovebox)”.
 
 ## Library root (family standard)
 

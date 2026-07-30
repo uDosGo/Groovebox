@@ -1,0 +1,84 @@
+/* ═══════════════════════════════════════════════════════════════════
+   groovebox-tokens.css
+   Groovebox-specific design tokens layered on @udos/usx-tokens.
+
+   These tokens extend the USX system with music-production-specific
+   variables: transport controls, pattern grid, export status, and
+   Groovebox brand accents.
+
+   Usage:
+     import '@udos/usx-tokens/themes/dark.css';
+     import '@udos/groovebox-design-tokens/groovebox-tokens.css';
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ─── Brand Accent ─────────────────────────────────────────────── */
+  --groovebox-brand: #d4a800;
+  --groovebox-brand-hover: #f0c000;
+  --groovebox-brand-dim: rgba(212, 168, 0, 0.15);
+
+  /* ─── Transport Colors ─────────────────────────────────────────── */
+  --groovebox-play: var(--usx-color-success);
+  --groovebox-play-hover: var(--usx-color-success-hover);
+  --groovebox-stop: var(--usx-color-danger);
+  --groovebox-stop-hover: var(--usx-color-danger-hover);
+  --groovebox-loop: var(--usx-color-accent);
+  --groovebox-loop-active: var(--usx-color-accent-hover);
+
+  /* ─── Pattern Grid ─────────────────────────────────────────────── */
+  --groovebox-grid-bg: var(--usx-color-surface-variant);
+  --groovebox-grid-step: var(--usx-color-border);
+  --groovebox-grid-step-active: var(--usx-color-primary);
+  --groovebox-grid-step-current: var(--usx-color-warning);
+  --groovebox-grid-size: 24px;
+
+  /* ─── Track Colors ─────────────────────────────────────────────── */
+  --groovebox-track-kick: #ff6b6b;
+  --groovebox-track-snare: #ffd93d;
+  --groovebox-track-hat: #6bcb77;
+  --groovebox-track-bass: #4d96ff;
+  --groovebox-track-lead: #c084fc;
+  --groovebox-track-pad: #f472b6;
+  --groovebox-track-default: var(--usx-color-on-surface-muted);
+
+  /* ─── Export Status ─────────────────────────────────────────────── */
+  --groovebox-export-success: var(--usx-color-success);
+  --groovebox-export-pending: var(--usx-color-warning);
+  --groovebox-export-error: var(--usx-color-danger);
+
+  /* ─── Transport Bar ─────────────────────────────────────────────── */
+  --groovebox-transport-height: 48px;
+  --groovebox-transport-bg: var(--usx-color-surface);
+  --groovebox-transport-border: var(--usx-color-border);
+
+  /* ─── Composer Layout ──────────────────────────────────────────── */
+  --groovebox-composer-max-width: 900px;
+  --groovebox-editor-min-height: 200px;
+  --groovebox-editor-font: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+
+  /* ─── Snackbar ─────────────────────────────────────────────────── */
+  --groovebox-snack-max-width: 400px;
+  --groovebox-snack-offset: var(--usx-spacing-lg);
+  --groovebox-snack-z: 9999;
+}
+
+/* ─── TV / 10-foot Sizing ─────────────────────────────────────── */
+@media (min-width: 1800px) and (min-height: 800px) {
+  :root {
+    --groovebox-font-size: 32px;
+    --groovebox-grid-size: 36px;
+    --groovebox-transport-height: 72px;
+    --groovebox-editor-min-height: 300px;
+    --groovebox-composer-max-width: 1200px;
+  }
+}
+
+@media (max-width: 720px) {
+  :root {
+    --groovebox-font-size: 14px;
+    --groovebox-grid-size: 20px;
+    --groovebox-transport-height: 40px;
+    --groovebox-composer-max-width: 100%;
+    --groovebox-editor-min-height: 150px;
+  }
+}

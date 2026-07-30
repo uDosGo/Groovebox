@@ -1,6 +1,6 @@
-# GrooveBox888 — quick start (five minutes)
+# Groovebox — quick start (five minutes)
 
-**Free, open-source** pattern groovebox for the **uDos** family. **Repository:** [github.com/fredporter/GrooveBox888](https://github.com/fredporter/GrooveBox888).
+**Free, open-source** pattern groovebox for the **uDos** family. **Repository:** [github.com/fredporter/Groovebox](https://github.com/fredporter/Groovebox).
 
 ## You need
 
@@ -33,7 +33,7 @@ bash scripts/run-groovebox-checks.sh
 
 ## Next to Sonic / hot USB (optional)
 
-If you use **SonicScrewdriver** for hardware and **`~/.udos/library/`** payloads, install GrooveBox888 as a **sibling clone** (e.g. `~/Code/GrooveBox888/`) and see **[`docs/DISTRIBUTION.md`](docs/DISTRIBUTION.md)** plus Sonic **[`groovebox888-family-integration`](https://github.com/fredporter/SonicScrewdriver/blob/main/docs/groovebox888-family-integration.md)**. Large **sample packs** belong under **`GROOVEBOX_AUDIO_ROOT`** or **`$UDOS_LIBRARY_DIR/groovebox/`**, not in git.
+If you use **SonicScrewdriver** for hardware and **`~/.udos/library/`** payloads, install Groovebox as a **sibling clone** (e.g. `~/Code/Groovebox/`) and see **[`docs/DISTRIBUTION.md`](docs/DISTRIBUTION.md)** plus Sonic **[`groovebox-family-integration`](https://github.com/fredporter/SonicScrewdriver/blob/main/docs/groovebox-family-integration.md)**. Large **sample packs** belong under **`GROOVEBOX_AUDIO_ROOT`** or **`$UDOS_LIBRARY_DIR/groovebox/`**, not in git.
 
 ## License
 

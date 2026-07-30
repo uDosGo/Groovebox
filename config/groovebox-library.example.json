@@ -1,5 +1,5 @@
 {
-  "$schema_comment": "Example operator overlay for GrooveBox888 library roots — copy to a non-tracked path or merge into your env; not loaded by default.",
+  "$schema_comment": "Example operator overlay for Groovebox library roots — copy to a non-tracked path or merge into your env; not loaded by default.",
   "udos_library_dir": "${UDOS_LIBRARY_DIR}",
   "groovebox_audio_root": "${GROOVEBOX_AUDIO_ROOT}",
   "default_relative_to_udos_library": "groovebox",

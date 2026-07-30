@@ -5,6 +5,8 @@ import shutil
 import subprocess
 from pathlib import Path
 
+from app.spool_writer import write_spool_event
+
 
 def _repo_root() -> Path:
     return Path(__file__).resolve().parents[1]
@@ -69,6 +71,12 @@ def songscribe_docker_start(root: Path | None = None) -> dict[str, object]:
     r = root or _repo_root()
     proc = _run_compose(r, ["up", "-d"], timeout=180)
     ok = proc.returncode == 0
+    write_spool_event(
+        module="songscribe.docker",
+        level="info" if ok else "error",
+        message=f"Docker compose up {'succeeded' if ok else 'failed'} (rc={proc.returncode})",
+        tags=["songscribe", "docker", "start"],
+    )
     return {
         "ok": ok,
         "returncode": proc.returncode,
@@ -81,6 +89,12 @@ def songscribe_docker_stop(root: Path | None = None) -> dict[str, object]:
     r = root or _repo_root()
     proc = _run_compose(r, ["stop"], timeout=120)
     ok = proc.returncode == 0
+    write_spool_event(
+        module="songscribe.docker",
+        level="info" if ok else "error",
+        message=f"Docker compose stop {'succeeded' if ok else 'failed'} (rc={proc.returncode})",
+        tags=["songscribe", "docker", "stop"],
+    )
     return {
         "ok": ok,
         "returncode": proc.returncode,

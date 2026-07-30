@@ -1,9 +1,9 @@
 {
   "version": "1",
   "meta": {
-    "title": "GrooveBox888 — operator shell (USXD handoff)",
+    "title": "Groovebox — operator shell (USXD handoff)",
     "description": "Wireframe panels for FastAPI + static UI; load in UniversalSurfaceXD composer for alignment.",
-    "profileId": "udos.groovebox888"
+    "profileId": "udos.groovebox"
   },
   "root": {
     "kind": "stack",
@@ -14,7 +14,7 @@
       {
         "catalogId": "shell.panel",
         "props": {
-          "kicker": "udos.groovebox888",
+          "kicker": "udos.groovebox",
           "title": "Compose",
           "body": "Markdown spec, visual composer, playback, exports. Served from app/static; API under /api/*."
         }

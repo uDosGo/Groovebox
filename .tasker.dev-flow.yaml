@@ -1,0 +1,152 @@
+# Groovebox tasker dev flow
+# Seeded from the uCore dev-flow model, scoped to Groovebox delivery.
+
+version: "1.0.0"
+generated_by: "Groovebox planning update"
+source_count: 1
+task_count: 12
+completed_count: 12
+
+sprint:
+  id: "sprint.2026-07-08.groovebox-ucore-integration"
+  name: "uCore Tools + Tasker + USX Vue + Skills/MCP"
+  start: "2026-07-08"
+  end: "2026-07-29"
+  status: "in-progress"
+  total_tasks: 12
+  completed_tasks: 12
+  notes: "Migration sprint for developer tooling, workflow normalization, and operator-surface refactor. Vue 3 refactor complete; spool/snackbar/MCP wired."
+
+metadata:
+  created: "2026-07-08T00:00:00Z"
+  workspace: "Groovebox"
+
+lanes:
+  ui-refactor:
+    description: "USX Vue style kit and shell migration"
+    count: 4
+    tasks:
+      - task.groovebox.ui-refactor.001
+      - task.groovebox.ui-refactor.002
+      - task.groovebox.ui-refactor.003
+      - task.groovebox.ui-refactor.004
+
+  skills-mcp:
+    description: "uCore Skills posture and MCP integration"
+    count: 3
+    tasks:
+      - task.groovebox.skills-mcp.001
+      - task.groovebox.skills-mcp.002
+      - task.groovebox.skills-mcp.003
+
+  runtime-snackbar:
+    description: "Snackbar envelopes, runtime events, and spool visibility"
+    count: 3
+    tasks:
+      - task.groovebox.runtime-snackbar.001
+      - task.groovebox.runtime-snackbar.002
+      - task.groovebox.runtime-snackbar.003
+
+  maintenance:
+    description: "Developer tools integration and guardrails"
+    count: 2
+    tasks:
+      - task.groovebox.maintenance.001
+      - task.groovebox.maintenance.002
+
+tasks:
+  - uid: "task.groovebox.ui-refactor.001"
+    title: "Define USX token mapping for Groovebox shell"
+    status: "done"
+    priority: "high"
+    lane: "ui-refactor"
+    tags: ["usx", "vue", "tokens"]
+    notes: "groovebox-extensions.css maps all --groovebox-* tokens to --usx-* equivalents"
+
+  - uid: "task.groovebox.ui-refactor.002"
+    title: "Implement Vue operator shell over existing FastAPI API"
+    status: "done"
+    priority: "high"
+    lane: "ui-refactor"
+    tags: ["usx", "vue", "shell"]
+    notes: "groovebox-vue/ workspace with Vite + Vue 3 + PicoCSS + USX tokens, replaces React app/surface/"
+
+  - uid: "task.groovebox.ui-refactor.003"
+    title: "Refactor composer panels to shared layout primitives"
+    status: "done"
+    priority: "high"
+    lane: "ui-refactor"
+    tags: ["ui", "layout", "composer"]
+    notes: "Atomic design: atoms/, molecules/, organisms/ with GrooveboxShell layout"
+
+  - uid: "task.groovebox.ui-refactor.004"
+    title: "Remove legacy one-off style blocks from core routes"
+    status: "done"
+    priority: "medium"
+    lane: "ui-refactor"
+    tags: ["cleanup", "ui", "refactor"]
+    notes: "All React .tsx/.css archived to app/surface/archived/; Bootstrap dependency removed"
+
+  - uid: "task.groovebox.skills-mcp.001"
+    title: "Draft Groovebox skill catalog with uCore compatibility labels"
+    status: "done"
+    priority: "high"
+    lane: "skills-mcp"
+    tags: ["skills", "catalog", "ucore"]
+    notes: "docs/groovebox-skills-catalog.md — 25 skills mapped to endpoints + uCore compatibility labels"
+
+  - uid: "task.groovebox.skills-mcp.002"
+    title: "Add MCP manifest entries for Groovebox tool surfaces"
+    status: "done"
+    priority: "high"
+    lane: "skills-mcp"
+    tags: ["mcp", "manifest", "tools"]
+    notes: "backend/mcp/mcp-groovebox-manifest.json with 25 tools"
+
+  - uid: "task.groovebox.skills-mcp.003"
+    title: "Wire skill execution telemetry into spool events"
+    status: "done"
+    priority: "high"
+    lane: "skills-mcp"
+    tags: ["skills", "spool", "telemetry"]
+    notes: "app/spool_writer.py + integrations in export_store, songscribe_docker, songscribe_runtime"
+
+  - uid: "task.groovebox.runtime-snackbar.001"
+    title: "Define snackbar response envelope for runtime and export APIs"
+    status: "done"
+    priority: "high"
+    lane: "runtime-snackbar"
+    tags: ["snackbar", "api", "runtime"]
+    notes: "SnackbarItem interface + useSnackbarStore in frontend; spool events in backend"
+
+  - uid: "task.groovebox.runtime-snackbar.002"
+    title: "Emit structured spool/feed events for runtime lifecycle changes"
+    status: "done"
+    priority: "high"
+    lane: "runtime-snackbar"
+    tags: ["runtime", "spool", "feed"]
+    notes: "exports, docker start/stop, runtime start/stop all emit spool events"
+
+  - uid: "task.groovebox.runtime-snackbar.003"
+    title: "Add operator diagnostics summary panel for recent event stream"
+    status: "done"
+    priority: "medium"
+    lane: "runtime-snackbar"
+    tags: ["diagnostics", "operator", "snackbar"]
+    notes: "DiagnosticsPanel.vue + /api/diagnostics/events endpoint"
+
+  - uid: "task.groovebox.maintenance.001"
+    title: "Create dev-tools parity table against uCore developer tools"
+    status: "done"
+    priority: "medium"
+    lane: "maintenance"
+    tags: ["docs", "devtools", "parity"]
+    notes: "docs/groovebox-dev-tools-parity.md — full Groovebox ↔ uCore capability mapping"
+
+  - uid: "task.groovebox.maintenance.002"
+    title: "Add CI check for shared event schema drift"
+    status: "done"
+    priority: "medium"
+    lane: "maintenance"
+    tags: ["ci", "schema", "guardrail"]
+    notes: "scripts/check-spool-schema.sh — validates spool events against uCore SPOOL_SPEC"

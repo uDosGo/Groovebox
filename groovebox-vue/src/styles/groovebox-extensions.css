@@ -1,0 +1,665 @@
+/* ═══════════════════════════════════════════════════════════════════
+   groovebox-extensions.css
+   Groovebox-specific USX overrides on top of @udos/usx-tokens + PicoCSS.
+
+   Groovebox uses PicoCSS dark theme as baseline, layered with
+   USX token variables. This file adds ONLY Groovebox-specific
+   styling that cannot be expressed purely via token swaps.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── Groovebox Design Tokens (mapped to USX) ─────────────────── */
+:root {
+  --groovebox-font-size: var(--usx-font-size-body);
+  --groovebox-radius: var(--usx-radius-md);
+  --groovebox-radius-sm: var(--usx-radius-sm);
+  --groovebox-transition: 150ms ease;
+  --groovebox-spacing: var(--usx-spacing-lg);
+  --groovebox-spacing-sm: var(--usx-spacing-sm);
+  --groovebox-spacing-lg: var(--usx-spacing-xl);
+}
+
+/* ─── Surface Container ───────────────────────────────────────── */
+.groovebox-surface {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--usx-color-background);
+  color: var(--usx-color-on-surface);
+  font-family: var(--usx-font-family-sans);
+  overflow: hidden;
+}
+
+/* ─── Body Layout (sidebar + pages) ──────────────────────────── */
+.groovebox-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.groovebox-pages {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--groovebox-spacing-lg);
+}
+
+/* ─── Nav Bar ─────────────────────────────────────────────────── */
+.groovebox-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--groovebox-spacing-sm) var(--groovebox-spacing);
+  background: var(--usx-color-surface);
+  border-bottom: var(--usx-border-width) solid var(--usx-color-border);
+  gap: var(--groovebox-spacing);
+  flex-shrink: 0;
+}
+
+.groovebox-nav-top {
+  display: flex;
+  align-items: center;
+  gap: var(--groovebox-spacing);
+  width: 100%;
+}
+
+.groovebox-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--groovebox-spacing-sm);
+  flex-shrink: 0;
+}
+
+.groovebox-nav-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--usx-color-border);
+  border-radius: var(--groovebox-radius);
+  background: transparent;
+  color: var(--usx-color-on-surface-muted);
+  cursor: pointer;
+  transition: all var(--groovebox-transition);
+  font-size: 0.9rem;
+  padding: 0;
+}
+
+.groovebox-nav-home:hover {
+  background: var(--usx-color-surface-hover);
+  color: var(--usx-color-on-surface);
+  border-color: var(--usx-color-primary);
+}
+
+.groovebox-nav-title {
+  font-weight: var(--usx-font-weight-bold);
+  font-size: var(--usx-font-size-body);
+  color: var(--usx-color-on-surface);
+  letter-spacing: -0.02em;
+}
+
+.groovebox-nav-links {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.groovebox-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid transparent;
+  border-radius: var(--groovebox-radius);
+  background: transparent;
+  color: var(--usx-color-on-surface-muted);
+  font-size: var(--usx-font-size-sm);
+  cursor: pointer;
+  transition: all var(--groovebox-transition);
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.groovebox-nav-link:hover {
+  background: var(--usx-color-surface-hover);
+  color: var(--usx-color-on-surface);
+  border-color: var(--usx-color-border);
+}
+
+.groovebox-nav-link.is-active {
+  background: var(--usx-color-primary-disabled);
+  color: var(--usx-color-primary);
+  border-color: var(--usx-color-primary);
+}
+
+.groovebox-nav-link-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.groovebox-nav-link-label {
+  font-weight: var(--usx-font-weight-medium);
+}
+
+.groovebox-nav-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-online {
+  background: var(--usx-color-success);
+  box-shadow: 0 0 4px rgba(25, 135, 84, 0.5);
+}
+
+.dot-offline {
+  background: var(--usx-color-on-surface-muted);
+}
+
+/* ─── Cards ───────────────────────────────────────────────────── */
+.groovebox-card {
+  background: var(--usx-color-surface);
+  border: var(--usx-border-width) solid var(--usx-color-border);
+  border-radius: var(--groovebox-radius);
+  padding: var(--groovebox-spacing);
+  margin-bottom: var(--groovebox-spacing);
+}
+
+.groovebox-card--hero {
+  border-left: 3px solid var(--usx-color-primary);
+}
+
+.groovebox-eyebrow {
+  font-size: var(--usx-font-size-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--usx-color-on-surface-muted);
+  margin: 0 0 4px;
+}
+
+.groovebox-page-title {
+  font-size: var(--usx-font-size-headline);
+  font-weight: var(--usx-font-weight-semibold);
+  color: var(--usx-color-on-surface);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.groovebox-lede {
+  color: var(--usx-color-on-surface-muted);
+  font-size: var(--usx-font-size-body);
+  line-height: 1.5;
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────── */
+.groovebox-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid var(--usx-color-border);
+  border-radius: var(--groovebox-radius);
+  background: transparent;
+  color: var(--usx-color-on-surface);
+  font-size: var(--usx-font-size-sm);
+  cursor: pointer;
+  transition: all var(--groovebox-transition);
+  font-family: inherit;
+}
+
+.groovebox-btn:hover {
+  background: var(--usx-color-surface-hover);
+  border-color: var(--usx-color-primary);
+}
+
+.groovebox-btn--sm {
+  padding: 4px 10px;
+  font-size: 0.8rem;
+}
+
+.groovebox-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ─── Drop Panel ──────────────────────────────────────────────── */
+.drop-panel {
+  border: 2px dashed var(--usx-color-border);
+  border-radius: var(--groovebox-radius);
+  padding: var(--groovebox-spacing);
+  transition: all var(--groovebox-transition);
+  background: var(--usx-color-surface-variant);
+  outline: none;
+}
+
+.drop-panel:focus-visible {
+  border-color: var(--usx-color-primary);
+  box-shadow: 0 0 0 2px var(--usx-color-primary-disabled);
+}
+
+.drop-panel--drag-over {
+  border-color: var(--usx-color-primary);
+  background: var(--usx-color-primary-disabled);
+  border-style: solid;
+}
+
+.drop-panel-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px var(--groovebox-spacing);
+  cursor: pointer;
+  text-align: center;
+  gap: var(--groovebox-spacing-sm);
+}
+
+.drop-panel-text {
+  margin: 0;
+  font-size: var(--usx-font-size-sm);
+  line-height: 1.5;
+}
+
+.drop-panel-actions {
+  display: flex;
+  gap: var(--groovebox-spacing-sm);
+  margin-top: var(--groovebox-spacing);
+  flex-wrap: wrap;
+}
+
+.drop-panel-processing {
+  margin-top: var(--groovebox-spacing-sm);
+}
+
+/* ─── Songscribe Tab ──────────────────────────────────────────── */
+.songscribe-tab {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.songscribe-notation-preview {
+  background: var(--usx-color-surface-variant);
+  border: var(--usx-border-width) solid var(--usx-color-border);
+  border-radius: var(--groovebox-radius);
+  padding: var(--groovebox-spacing);
+  font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--usx-color-on-surface);
+  margin: 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* ─── File Picker Sidebar ────────────────────────────────────── */
+.groovebox-filepicker {
+  width: 280px;
+  min-width: 280px;
+  background: var(--usx-color-surface);
+  border-right: var(--usx-border-width) solid var(--usx-color-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-size: var(--usx-font-size-sm);
+}
+
+.groovebox-filepicker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-bottom: var(--usx-border-width) solid var(--usx-color-border);
+  flex-shrink: 0;
+}
+
+.groovebox-filepicker-title {
+  font-weight: var(--usx-font-weight-semibold);
+  color: var(--usx-color-on-surface);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.groovebox-filepicker-close {
+  background: none;
+  border: none;
+  color: var(--usx-color-on-surface-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--groovebox-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--groovebox-transition);
+}
+
+.groovebox-filepicker-close:hover {
+  color: var(--usx-color-on-surface);
+  background: var(--usx-color-surface-hover);
+}
+
+.groovebox-filepicker-roots {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.groovebox-filepicker-root-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--groovebox-radius);
+  background: transparent;
+  color: var(--usx-color-on-surface);
+  cursor: pointer;
+  transition: all var(--groovebox-transition);
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.groovebox-filepicker-root-btn:hover {
+  background: var(--usx-color-surface-hover);
+  border-color: var(--usx-color-border);
+}
+
+.groovebox-filepicker-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-bottom: var(--usx-border-width) solid var(--usx-color-border);
+  flex-shrink: 0;
+  font-size: 0.8rem;
+}
+
+.groovebox-filepicker-breadcrumb-btn {
+  background: none;
+  border: none;
+  color: var(--usx-color-on-surface-muted);
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: var(--groovebox-radius-sm);
+  display: flex;
+  align-items: center;
+  transition: all var(--groovebox-transition);
+}
+
+.groovebox-filepicker-breadcrumb-btn:hover {
+  color: var(--usx-color-primary);
+  background: var(--usx-color-surface-hover);
+}
+
+.groovebox-filepicker-breadcrumb-label {
+  font-weight: var(--usx-font-weight-semibold);
+  color: var(--usx-color-on-surface);
+}
+
+.groovebox-filepicker-breadcrumb-sep {
+  color: var(--usx-color-on-surface-muted);
+}
+
+.groovebox-filepicker-breadcrumb-path {
+  color: var(--usx-color-on-surface-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.groovebox-filepicker-tree {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 0;
+}
+
+.groovebox-filepicker-tree-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  color: var(--usx-color-on-surface);
+  cursor: pointer;
+  transition: background var(--groovebox-transition);
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.groovebox-filepicker-tree-item:hover {
+  background: var(--usx-color-surface-hover);
+}
+
+.groovebox-filepicker-tree-size {
+  font-size: 0.7rem;
+  color: var(--usx-color-on-surface-muted);
+  flex: none;
+  margin-left: auto;
+}
+
+.groovebox-filepicker-empty {
+  padding: 16px 12px;
+  color: var(--usx-color-on-surface-muted);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+/* ─── Playback Bar ───────────────────────────────────────────── */
+.groovebox-playback-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--groovebox-spacing);
+  padding: var(--groovebox-spacing-sm) var(--groovebox-spacing);
+  background: var(--usx-color-surface);
+  border-top: var(--usx-border-width) solid var(--usx-color-border);
+  flex-shrink: 0;
+}
+
+.groovebox-playback-tempo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--usx-font-size-sm);
+  color: var(--usx-color-on-surface-muted);
+}
+
+.groovebox-playback-tempo-value {
+  font-weight: var(--usx-font-weight-bold);
+  color: var(--usx-color-on-surface);
+  min-width: 3em;
+  text-align: right;
+}
+
+.groovebox-playback-position {
+  flex: 1;
+  font-size: var(--usx-font-size-sm);
+  color: var(--usx-color-on-surface);
+  text-align: center;
+  font-family: 'SF Mono', monospace;
+}
+
+/* ─── Snackbar Host ──────────────────────────────────────────── */
+.groovebox-snackbar-host {
+  position: fixed;
+  bottom: var(--groovebox-spacing-lg);
+  right: var(--groovebox-spacing-lg);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: var(--groovebox-spacing-sm);
+  max-width: 400px;
+}
+
+.groovebox-snack {
+  background: var(--usx-color-surface);
+  border: var(--usx-border-width) solid var(--usx-color-border);
+  border-radius: var(--groovebox-radius);
+  padding: var(--groovebox-spacing-sm) var(--groovebox-spacing);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-size: var(--usx-font-size-sm);
+  color: var(--usx-color-on-surface);
+  display: flex;
+  align-items: center;
+  gap: var(--groovebox-spacing-sm);
+  animation: snack-slide-in 0.2s ease;
+}
+
+.groovebox-snack--info { border-left: 3px solid var(--usx-color-info); }
+.groovebox-snack--success { border-left: 3px solid var(--usx-color-success); }
+.groovebox-snack--warning { border-left: 3px solid var(--usx-color-warning); }
+.groovebox-snack--error { border-left: 3px solid var(--usx-color-danger); }
+
+.groovebox-snack-message { flex: 1; }
+.groovebox-snack-dismiss {
+  background: none;
+  border: none;
+  color: var(--usx-color-on-surface-muted);
+  cursor: pointer;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+@keyframes snack-slide-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Diagnostics Panel ──────────────────────────────────────── */
+.groovebox-diagnostics-events {
+  max-height: 400px;
+  overflow-y: auto;
+  font-family: 'SF Mono', monospace;
+  font-size: 0.8rem;
+}
+
+.groovebox-event-row {
+  display: flex;
+  gap: var(--groovebox-spacing-sm);
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--usx-color-border-light, var(--usx-color-border));
+}
+
+.groovebox-event-row:hover {
+  background: var(--usx-color-surface-hover);
+}
+
+.groovebox-event-time {
+  color: var(--usx-color-on-surface-muted);
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+.groovebox-event-level {
+  font-weight: var(--usx-font-weight-bold);
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  min-width: 48px;
+}
+
+.groovebox-event-level--info { color: var(--usx-color-info); }
+.groovebox-event-level--warn { color: var(--usx-color-warning); }
+.groovebox-event-level--error { color: var(--usx-color-danger); }
+.groovebox-event-level--debug { color: var(--usx-color-on-surface-muted); }
+
+.groovebox-event-module {
+  color: var(--usx-color-accent);
+  min-width: 80px;
+}
+
+.groovebox-event-message {
+  flex: 1;
+  color: var(--usx-color-on-surface);
+}
+
+.groovebox-event-tags {
+  display: flex;
+  gap: 4px;
+}
+
+.groovebox-event-tag {
+  font-size: 0.65rem;
+  padding: 1px 6px;
+  border-radius: var(--groovebox-radius-sm);
+  background: var(--usx-color-surface-variant);
+  color: var(--usx-color-on-surface-muted);
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────────── */
+.groovebox-surface ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.groovebox-surface ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.groovebox-surface ::-webkit-scrollbar-thumb {
+  background: var(--usx-color-border);
+  border-radius: 4px;
+}
+
+.groovebox-surface ::-webkit-scrollbar-thumb:hover {
+  background: var(--usx-color-on-surface-muted);
+}
+
+/* ─── Spacing Utilities ───────────────────────────────────────── */
+.gap-1 { gap: 4px; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; }
+.gap-5 { gap: 24px; }
+
+.mb-1 { margin-bottom: 4px; }
+.mb-2 { margin-bottom: 8px; }
+.mb-3 { margin-bottom: 12px; }
+.mb-4 { margin-bottom: 16px; }
+.mb-5 { margin-bottom: 24px; }
+
+.mt-1 { margin-top: 4px; }
+.mt-2 { margin-top: 8px; }
+.mt-3 { margin-top: 12px; }
+.mt-4 { margin-top: 16px; }
+.mt-5 { margin-top: 24px; }
+
+/* ─── Form Controls (without Bootstrap) ───────────────────────── */
+.groovebox-surface input[type="text"],
+.groovebox-surface input[type="number"],
+.groovebox-surface textarea,
+.groovebox-surface select {
+  background: var(--usx-color-background);
+  border: var(--usx-border-width) solid var(--usx-color-border);
+  color: var(--usx-color-on-surface);
+  font-size: var(--usx-font-size-sm);
+  padding: 8px 12px;
+  border-radius: var(--groovebox-radius);
+  font-family: inherit;
+}
+
+.groovebox-surface input:focus,
+.groovebox-surface textarea:focus,
+.groovebox-surface select:focus {
+  border-color: var(--usx-color-primary);
+  box-shadow: 0 0 0 2px var(--usx-color-primary-disabled);
+  outline: none;
+}
+
+.groovebox-surface textarea {
+  min-height: 200px;
+  font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+  line-height: 1.5;
+  resize: vertical;
+}

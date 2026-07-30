@@ -1,20 +1,20 @@
 ---
-title: "Distribution — GrooveBox888 (Sonic-aligned)"
+title: "Distribution — Groovebox (Sonic-aligned)"
 status: draft
 last_updated: 2026-04-13T01:20:28+10:00
 category: documentation
 tags: [groovebox]
-description: "GrooveBox888 follows the same **family disk contract** as **SonicScrewdriver** ([`docs/local-artifact-paths`](https:/..."
+description: "Groovebox follows the same **family disk contract** as **SonicScrewdriver** ([`docs/local-artifact-paths`](https:/..."
 ---
-# Distribution — GrooveBox888 (Sonic-aligned)
+# Distribution — Groovebox (Sonic-aligned)
 
-GrooveBox888 follows the same **family disk contract** as **SonicScrewdriver** ([`docs/local-artifact-paths`](https://github.com/fredporter/SonicScrewdriver/blob/main/docs/local-artifact-paths.md), [uDos `foundation-distribution`](https://github.com/fredporter/uDosDev/blob/main/docs/foundation-distribution.md) when published).
+Groovebox follows the same **family disk contract** as **SonicScrewdriver** ([`docs/local-artifact-paths`](https://github.com/fredporter/SonicScrewdriver/blob/main/docs/local-artifact-paths.md), [uDos `foundation-distribution`](https://github.com/fredporter/uDosDev/blob/main/docs/foundation-distribution.md) when published).
 
 ## Clone layout (recommended)
 
 | Path | Role |
 | --- | --- |
-| **`~/Code/GrooveBox888/`** | Canonical public clone ([`fredporter/GrooveBox888`](https://github.com/fredporter/GrooveBox888)) |
+| **`~/Code/Groovebox/`** | Canonical public clone ([`fredporter/Groovebox`](https://github.com/fredporter/Groovebox)) |
 | **`~/Code/SonicScrewdriver/`** | Sonic CLI / USB / device DB ([`fredporter/SonicScrewdriver`](https://github.com/fredporter/SonicScrewdriver)) |
 | **`~/Code/Ventoy/`** | Ventoy fork for bootable USB ([`fredporter/Ventoy`](https://github.com/fredporter/Ventoy)) |
 
@@ -25,8 +25,8 @@ Keep repos **siblings** under `~/Code/` so `config/workspaces.json` `${family_ro
 | Family path | Purpose |
 | --- | --- |
 | **`$HOME/.udos/library/`** | Shared mirrors, ISOs, bundles (Sonic standard) |
-| **`$HOME/.udos/library/groovebox/`** | Default **GrooveBox888** audio payloads when `GROOVEBOX_AUDIO_ROOT` is unset |
-| **`$HOME/.udos/library/bundles/groovebox888/`** | Optional **staged zip** of repo + sample packs for **offline USB** handoff |
+| **`$HOME/.udos/library/groovebox/`** | Default **Groovebox** audio payloads when `GROOVEBOX_AUDIO_ROOT` is unset |
+| **`$HOME/.udos/library/bundles/groovebox/`** | Optional **staged zip** of repo + sample packs for **offline USB** handoff |
 
 Set **`GROOVEBOX_AUDIO_ROOT`** to force a different absolute root (second disk, lab share).
 
@@ -35,7 +35,7 @@ Set **`GROOVEBOX_AUDIO_ROOT`** to force a different absolute root (second disk, 
 Same pattern as Sonic: use a **venv** or system Python with `fastapi` + `uvicorn` available. Example:
 
 ```bash
-cd ~/Code/GrooveBox888
+cd ~/Code/Groovebox
 python3 -m venv .venv
 source .venv/bin/activate
 pip install fastapi uvicorn
@@ -46,9 +46,9 @@ bash scripts/run-groovebox-ui.sh
 
 ## Hot USB / Ventoy operator bundle (convention)
 
-1. Build or copy a **payload tree** under `library/bundles/groovebox888/` on the stick (or workstation mirror): clone tarball + `README-DISTRIBUTION.txt` pointing here.
+1. Build or copy a **payload tree** under `library/bundles/groovebox/` on the stick (or workstation mirror): clone tarball + `README-DISTRIBUTION.txt` pointing here.
 2. On a workstation, unpack next to Sonic/Ventoy clones and set `GROOVEBOX_AUDIO_ROOT` to the USB path if samples live on removable media.
-3. See **Sonic** [`docs/groovebox888-family-integration.md`](https://github.com/fredporter/SonicScrewdriver/blob/main/docs/groovebox888-family-integration.md) for the core-product checklist.
+3. See **Sonic** [`docs/groovebox-family-integration.md`](https://github.com/fredporter/SonicScrewdriver/blob/main/docs/groovebox-family-integration.md) for the core-product checklist.
 
 ## Offline-first
 

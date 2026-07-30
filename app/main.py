@@ -28,6 +28,7 @@ from app.songscribe_docker import (
 )
 from app.songscribe_runtime import songscribe_runtime_start, songscribe_runtime_status, songscribe_runtime_stop
 from app.spec_parser import parse_markdown_spec
+from app.spool_writer import read_spool_events
 from app.workspaces import list_tree, load_workspace_config, read_file, write_file
 
 
@@ -55,7 +56,7 @@ def _load_interchange_json(name: str) -> dict[str, object]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-app = FastAPI(title="GrooveBox888", version=APP_VERSION)
+app = FastAPI(title="Groovebox", version=APP_VERSION)
 app.mount("/static", StaticFiles(directory=STATIC_ROOT), name="static")
 
 
@@ -84,7 +85,7 @@ class PatternSavePayload(BaseModel):
 
 @app.get("/api/health")
 def health() -> dict[str, str]:
-    return {"status": "ok", "service": "groovebox888", "version": APP_VERSION}
+    return {"status": "ok", "service": "groovebox", "version": APP_VERSION}
 
 
 @app.get("/api/bootstrap/status")
@@ -444,6 +445,14 @@ def interchange_surface_document() -> dict[str, object]:
 def usxd_surface() -> dict[str, object]:
     """Portable usxd/0.1 surface stub; validate in uDosGo or USXD tooling."""
     return _load_interchange_json("usxd-groovebox-panel.json")
+
+
+# ── Diagnostics ────────────────────────────────────────────────────
+
+
+@app.get("/api/diagnostics/events")
+def diagnostics_events(limit: int = 50) -> dict[str, object]:
+    return {"events": read_spool_events(limit)}
 
 
 # ── Index / SPA ───────────────────────────────────────────────────

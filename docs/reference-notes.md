@@ -6,6 +6,7 @@ category: reference
 tags: [groovebox, reference]
 description: "These are the most useful archived v1 reference surfaces found while"
 ---
+
 # Archived Reference Notes
 
 These are the most useful archived v1 reference surfaces found while
@@ -48,3 +49,23 @@ reconstructing `uDOS-groovebox` as a standalone v2 repo.
 
 This v2 repo scaffold therefore uses the archived references as signals, not as
 an exact structure to copy forward.
+
+## uCore Shared Services References (2026-07)
+
+These references are the current family-level shared services to align with
+while implementing Groovebox roadmap work.
+
+- Spool spec and event feed posture:
+  `../../uCore/docs/SPOOL_SPEC.md`
+- Feed ingestion and bridge to spool:
+  `../../uCore/docs/FEED_SYSTEM_SPEC.md`
+- Spool writer implementation contract:
+  `../../uCore/backend/app/services/spool_writer.py`
+- Feed consumer bridge implementation:
+  `../../uCore/backend/app/services/feed_consumer.py`
+- Runtime lifecycle service references:
+  `../../uCore/backend/app/services/container_manager.py` and
+  `../../uCore/backend/app/services/surface_manager.py`
+
+Adopting these references keeps Groovebox compatible with uCore observability,
+maintenance, and automation conventions without duplicating service patterns.

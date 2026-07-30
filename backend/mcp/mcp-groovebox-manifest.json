@@ -1,0 +1,42 @@
+{
+  "name": "mcp-groovebox-core",
+  "version": "1.0.0",
+  "description": "Groovebox MCP tool surfaces — pattern compilation, playback, export, Songscribe bridge, and diagnostics",
+  "tools": [
+    "groovebox_health",
+    "groovebox_pattern_compile",
+    "groovebox_pattern_parse",
+    "groovebox_pattern_save",
+    "groovebox_patter_library_list",
+    "groovebox_playback_preview",
+    "groovebox_export_midi",
+    "groovebox_export_wav",
+    "groovebox_export_notation",
+    "groovebox_export_mml",
+    "groovebox_export_musicxml",
+    "groovebox_songscribe_status",
+    "groovebox_songscribe_bridge",
+    "groovebox_songscribe_runtime_start",
+    "groovebox_songscribe_runtime_stop",
+    "groovebox_songscribe_docker_start",
+    "groovebox_songscribe_docker_stop",
+    "groovebox_workspace_list",
+    "groovebox_workspace_tree",
+    "groovebox_workspace_read",
+    "groovebox_workspace_write",
+    "groovebox_diagnostics_events",
+    "groovebox_diagnostics_health",
+    "groovebox_session_list",
+    "groovebox_session_save"
+  ],
+  "transport": "http",
+  "health_check": "/api/health",
+  "protocolVersion": "0.1.0",
+  "serverInfo": {
+    "name": "Groovebox MCP",
+    "version": "4.0.0"
+  },
+  "source": "app/main.py",
+  "category": "music-production",
+  "safetyNotes": "All tools are local-only. Exports write to configured workspace paths. No external API calls except Songscribe bridge (local only)."
+}

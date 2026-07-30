@@ -1,13 +1,13 @@
-# GrooveBox888
+# Groovebox
 
 **Free, open-source (MIT)** pattern groovebox for the **uDos** (Universal Device Operating Surface) family: local **FastAPI** + static UI, optional **Songscribe** bridge, pattern library, exports, and **USXD** interchange JSON.
 
-| | |
-| --- | --- |
-| **Version** | **2.2.1** — see `VERSION` · `package.json` |
-| **License** | [MIT](LICENSE) |
-| **Repository** | [github.com/fredporter/GrooveBox888](https://github.com/fredporter/GrooveBox888) |
-| **Quick start** | **[`QUICKSTART.md`](QUICKSTART.md)** (about five minutes) |
+|                     |                                                                                                               |
+| ------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **Version**         | **2.2.1** — see `VERSION` · `package.json`                                                                    |
+| **License**         | [MIT](LICENSE)                                                                                                |
+| **Repository**      | [github.com/fredporter/Groovebox](https://github.com/fredporter/Groovebox)                              |
+| **Quick start**     | **[`QUICKSTART.md`](QUICKSTART.md)** (about five minutes)                                                     |
 | **Learning intake** | **[`docs/learning/README.md`](docs/learning/README.md)** (Sonic-style hub: beginner path + public uDos links) |
 
 **Family context:** this repo **versions independently**. Public uDos governance and teaching surfaces: [uDosDev](https://github.com/fredporter/uDosDev), [AppStoreDocs](https://github.com/fredporter/AppStoreDocs) (`docs/public/`). Optional local sibling: `uDosConnect/uDosDev` when you have it checked out.
@@ -18,7 +18,7 @@
 
 ## Product identity
 
-**GrooveBox888** is the repository and user-facing product name. Interchange
+**Groovebox** is the repository and user-facing product name. Interchange
 and validation scripts still use the stable wire id **`uDOS-groovebox`** on JSON
 `owner` fields and related checks — do not rename those without a coordinated
 schema bump.

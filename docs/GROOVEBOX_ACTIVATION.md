@@ -1,12 +1,12 @@
 ---
-title: "GrooveBox888 activation"
+title: "Groovebox activation"
 status: draft
 last_updated: 2026-04-13T00:21:46+10:00
 category: documentation
 tags: [groovebox]
 description: "Groovebox is active as the family sequencing and composition lane. **New users:** start with [`QUICKSTART.md`](../QUI..."
 ---
-# GrooveBox888 activation
+# Groovebox activation
 
 Groovebox is active as the family sequencing and composition lane. **New users:** start with [`QUICKSTART.md`](../QUICKSTART.md) and [`learning/README.md`](learning/README.md).
 

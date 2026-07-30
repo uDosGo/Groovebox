@@ -1,15 +1,21 @@
 ---
 title: "Groovebox ↔ Songscribe convergence (UI, library, rights)"
 status: draft
-last_updated: 2026-04-13T00:09:52+10:00
+last_updated: 2026-07-08T12:00:00+10:00
 category: documentation
 tags: [audio, groovebox]
 description: "This document frames **intended** integration work. It is a roadmap, not a"
 ---
+
 # Groovebox ↔ Songscribe convergence (UI, library, rights)
 
 This document frames **intended** integration work. It is a roadmap, not a
 promise of current behaviour.
+
+Execution planning for implementation order, milestones, and migration gates is
+tracked in [GROOVEBOX_DEV_PLAN.md](GROOVEBOX_DEV_PLAN.md).
+Task execution state and lane progress are tracked in
+[`../.tasker.dev-flow.yaml`](../.tasker.dev-flow.yaml).
 
 ## Shared UI and Node in this repo
 
@@ -35,6 +41,40 @@ and panel rhythm with Songscribe’s centred layout patterns.
 
 **Packages (scaffold):** see repo-root `package.json` and `packages/design-tokens/`.
 
+## uCore shared services alignment
+
+Use uCore shared services as the baseline for Groovebox operations telemetry,
+runtime lifecycle posture, and feed-driven automation instead of introducing a
+parallel service stack.
+
+### Immediate service touchpoints
+
+- **Spool logging contract:** `../../uCore/backend/app/services/spool_writer.py`
+  and `../../uCore/docs/SPOOL_SPEC.md`.
+- **Feed to spool bridge:**
+  `../../uCore/backend/app/services/feed_consumer.py` and
+  `../../uCore/docs/FEED_SYSTEM_SPEC.md`.
+- **Lifecycle services model:**
+  `../../uCore/backend/app/services/container_manager.py` and
+  `../../uCore/backend/app/services/surface_manager.py`.
+
+### Practical Groovebox integration targets
+
+1. Mirror Groovebox operator events into uCore-compatible spool entries
+   (`module`, `level`, `message`, `tags`) so family telemetry tools can read
+   Groovebox events without adapters.
+2. Expose Groovebox runtime controls with lifecycle semantics aligned to uCore
+   service manager patterns (start, stop, health, and state transitions).
+3. Keep ingest and library events feed-compatible so future binder/task routing
+   can reuse the uCore feed pipeline.
+
+### API compatibility lane (next)
+
+- Keep current Groovebox runtime routes and add a compatibility mapping to the
+  uCore spool/feed endpoint style when introducing new endpoints.
+- Prioritize stable event shape over transport details so local-only and
+  Docker-compat modes share one service contract.
+
 ## Sample library and uDOS feed / spool
 
 Songscribe/Groovebox need an **offline-first sample and sound library** with:
@@ -44,8 +84,8 @@ Songscribe/Groovebox need an **offline-first sample and sound library** with:
 - **Control** — operator chooses what to fetch, retain, and delete; no silent
   “phone home” beyond configured sources.
 - **Storage** — local paths under operator control (e.g. beside `~/.udos/` or
-   repo `sessions/` / vault-adjacent dirs), compatible with **portable** Groovebox
-   sessions.
+  repo `sessions/` / vault-adjacent dirs), compatible with **portable** Groovebox
+  sessions.
 
 **Alignment with family spool thinking:** see
 `uDOS-dev/@dev/notes/candidates/logs-feeds-spool-family-candidate.md` and
@@ -65,20 +105,20 @@ Groovebox playback engine”.
 Rudimentary **YAML frontmatter** (or parallel `.meta.json`) for each collected
 asset and for composed Groovebox specs:
 
-| Field (example) | Purpose |
-| --- | --- |
-| `source_url` | Where the asset was obtained |
-| `license` | SPDX or short label (`CC0`, `CC-BY`, `proprietary`, …) |
-| `attribution` | Human-readable credit line |
-| `ingested_at` | ISO timestamp |
-| `inspiration_note` | Link to original work / idea (not necessarily a download) |
-| `rights_restriction` | e.g. `no-redistribution`, `personal-only` |
+| Field (example)      | Purpose                                                   |
+| -------------------- | --------------------------------------------------------- |
+| `source_url`         | Where the asset was obtained                              |
+| `license`            | SPDX or short label (`CC0`, `CC-BY`, `proprietary`, …)    |
+| `attribution`        | Human-readable credit line                                |
+| `ingested_at`        | ISO timestamp                                             |
+| `inspiration_note`   | Link to original work / idea (not necessarily a download) |
+| `rights_restriction` | e.g. `no-redistribution`, `personal-only`                 |
 
 Groovebox markdown specs already use frontmatter for tempo/bars; **extend** with
 optional `sample_refs` / `provenance` blocks as the library lands.
 
 ## Immediate operator checklist
 
-1. Stem isolation: [songscribe-isolate-audio.md](songscribe-isolate-audio.md)  
-2. Songscribe API: run **songscribe-api** + `.env.local`  
-3. After upstream pull: `bash scripts/apply-songscribe-groovebox-overrides.sh`  
+1. Stem isolation: [songscribe-isolate-audio.md](songscribe-isolate-audio.md)
+2. Songscribe API: run **songscribe-api** + `.env.local`
+3. After upstream pull: `bash scripts/apply-songscribe-groovebox-overrides.sh`

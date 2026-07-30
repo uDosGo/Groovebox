@@ -2,7 +2,7 @@
   "roots": [
     {
       "id": "groovebox",
-      "label": "GrooveBox888",
+      "label": "Groovebox",
       "path": "${family_root}/Groovebox/sessions",
       "kind": "vault"
     },

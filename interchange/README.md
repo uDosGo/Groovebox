@@ -4,7 +4,7 @@ Portable JSON for **lab composer** and **usxd/0.1** alignment.
 
 | File | Role |
 | --- | --- |
-| `surface-groovebox-shell.json` | `surface-document` style stack (`meta.profileId`: `udos.groovebox888`) |
+| `surface-groovebox-shell.json` | `surface-document` style stack (`meta.profileId`: `udos.groovebox`) |
 | `usxd-groovebox-panel.json` | Minimal `usxd/0.1` surface (`schemaVersion`, `grid`, `render`) |
 
 **HTTP:** served from the running Groovebox app:

@@ -1,31 +1,17 @@
 {
-  "name": "groovebox888",
+  "name": "groovebox",
   "private": true,
-  "version": "3.0.0",
-  "description": "GrooveBox888 — React + Bootstrap + GitHub dark theme surface with Songscribe tab",
+  "version": "0.1.0-dev",
+  "description": "Groovebox \u2014 Vue 3 + PicoCSS + USX tokens + uCore snackbar/MCP alignment",
   "type": "module",
   "workspaces": [
+    "groovebox-vue",
     "packages/*"
   ],
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@usx/styles": "file:../uConnect/packages/usx",
-    "bootstrap": "^5.3.3",
-    "bootstrap-icons": "^1.13.1",
-    "esbuild": "^0.28.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
-  "devDependencies": {
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react": "^6.0.2",
-    "typescript": "^5.6.3",
-    "vite": "^8.0.16"
+    "dev": "cd groovebox-vue && vite",
+    "build": "cd groovebox-vue && vue-tsc && vite build",
+    "preview": "cd groovebox-vue && vite preview"
   },
   "engines": {
     "node": ">=18"

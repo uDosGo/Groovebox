@@ -8,6 +8,7 @@ import time
 from pathlib import Path
 
 from app.songscribe_docker import songscribe_docker_start, songscribe_docker_stop
+from app.spool_writer import write_spool_event
 
 
 def _state_dir(root: Path) -> Path:
@@ -144,14 +145,38 @@ def songscribe_runtime_start(root: Path, mode: str | None = None) -> dict[str, o
     use_mode = (mode or _runtime_mode()).lower()
     if use_mode == "docker":
         result = songscribe_docker_start(root)
+        write_spool_event(
+            module="songscribe.runtime",
+            level="info" if result.get("ok") else "error",
+            message=f"Runtime start (docker): {'ok' if result.get('ok') else 'failed'}",
+            tags=["songscribe", "runtime", "start", "docker"],
+        )
         return {"runtime_mode": "docker", **result}
     if use_mode == "auto":
         local = _start_local(root)
         if local.get("ok"):
+            write_spool_event(
+                module="songscribe.runtime",
+                level="info",
+                message="Runtime start (auto → local): ok",
+                tags=["songscribe", "runtime", "start", "local"],
+            )
             return {"runtime_mode": "local", **local}
         docker = songscribe_docker_start(root)
+        write_spool_event(
+            module="songscribe.runtime",
+            level="info" if docker.get("ok") else "error",
+            message=f"Runtime start (auto → docker): {'ok' if docker.get('ok') else 'failed'}",
+            tags=["songscribe", "runtime", "start", "docker-fallback"],
+        )
         return {"runtime_mode": "docker-fallback", "local_attempt": local, **docker}
     local = _start_local(root)
+    write_spool_event(
+        module="songscribe.runtime",
+        level="info" if local.get("ok") else "error",
+        message=f"Runtime start (local): {'ok' if local.get('ok') else 'failed'}",
+        tags=["songscribe", "runtime", "start", "local"],
+    )
     return {"runtime_mode": "local", **local}
 
 
@@ -159,10 +184,28 @@ def songscribe_runtime_stop(root: Path, mode: str | None = None) -> dict[str, ob
     use_mode = (mode or _runtime_mode()).lower()
     if use_mode == "docker":
         result = songscribe_docker_stop(root)
+        write_spool_event(
+            module="songscribe.runtime",
+            level="info",
+            message="Runtime stop (docker)",
+            tags=["songscribe", "runtime", "stop", "docker"],
+        )
         return {"runtime_mode": "docker", **result}
     if use_mode == "auto":
         local = _stop_local(root)
         docker = songscribe_docker_stop(root)
+        write_spool_event(
+            module="songscribe.runtime",
+            level="info",
+            message="Runtime stop (auto)",
+            tags=["songscribe", "runtime", "stop", "auto"],
+        )
         return {"runtime_mode": "auto", "local": local, "docker": docker, "ok": bool(local.get("ok")) and bool(docker.get("ok"))}
     local = _stop_local(root)
+    write_spool_event(
+        module="songscribe.runtime",
+        level="info",
+        message="Runtime stop (local)",
+        tags=["songscribe", "runtime", "stop", "local"],
+    )
     return {"runtime_mode": "local", **local}

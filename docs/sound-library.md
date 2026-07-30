@@ -10,7 +10,7 @@ description: "This document is the **canonical map** for pattern metadata, sampl
 
 This document is the **canonical map** for pattern metadata, samples, presets,
 and where **audio-related outputs** land. It satisfies the “local browsable
-sound library” and “stable locations” requirements for the **GrooveBox888**
+sound library” and “stable locations” requirements for the **Groovebox**
 product lane.
 
 **Sonic alignment:** cataloguing and on-disk layout follow the same **`~/.udos/`**
@@ -20,7 +20,7 @@ family contract as **SonicScrewdriver** (see [`GROOVEBOX_SONIC_SOUND_CATALOG.md`
 
 | Role | Path | Notes |
 | --- | --- | --- |
-| **Library index** | `src/pattern-library.json` | Versioned catalogue: `pattern_id`, names, tempo hints, export hints. **Product:** GrooveBox888 · **index `owner` field:** `uDOS-groovebox` (stable wire id). Validated by `scripts/run-groovebox-checks.sh`. |
+| **Library index** | `src/pattern-library.json` | Versioned catalogue: `pattern_id`, names, tempo hints, export hints. **Product:** Groovebox · **index `owner` field:** `uDOS-groovebox` (stable wire id). Validated by `scripts/run-groovebox-checks.sh`. |
 | **Seed pattern JSON** | `examples/*.json` | Checked-in demos; merged into the library view with `scope: seed`. |
 | **Session-saved patterns** | `sessions/patterns/*.json` | Created when the operator saves from the UI (`/api/patterns/save`). `scope: session` in API summaries. |
 
@@ -103,7 +103,7 @@ created on demand).
 
 If the config file is missing, the app **discovers** `vault/` and `binder/`
 folders under each immediate child of the family root (same parent as the
-GrooveBox888 / `~/Code/` sibling layout).
+Groovebox / `~/Code/` sibling layout).
 
 ## Related
 

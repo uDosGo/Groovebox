@@ -30,7 +30,7 @@
       "sonic.tags": ["groovebox-style", "sample-pack-placeholder"],
       "source": {
         "license": "MIT",
-        "url": "https://github.com/fredporter/GrooveBox888",
+        "url": "https://github.com/fredporter/Groovebox",
         "note": "Educational style tags only; add CC0/CC-BY packs under GROOVEBOX_AUDIO_ROOT when staging samples"
       }
     }
